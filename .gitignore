@@ -1,0 +1,35 @@
+# Build folders
+/Debug/
+/Release/
+/build/
+
+# Generated binary files
+*.elf
+*.axf
+*.bin
+*.hex
+*.map
+
+# Object files and libraries
+*.o
+*.a
+*.so
+
+# Temporary files and logs
+*.log
+*.tmp
+*.bak
+*~
+
+# IDE settings and metadata
+/.settings/
+/.metadata/
+/*.launch
+*.cproject
+*.project
+
+# NXP / MCUXpresso tool files
+*.mex
+
+# Local dependencies and outputs
+/.externalToolBuilders/
