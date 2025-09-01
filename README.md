@@ -1,7 +1,7 @@
 
 # Semaforo de Ruido (Noise Traffic Light)
 
-**Summary**
+# Summary
 The embedded system “Semáforo de Ruído” (Noise Traffic Light) was developed as part of the Final Course Project to monitor ambient noise in 
 laboratories at DEETC (Departamento de Engenharia Eletrónica e Telecomunicações e de Computadores) at ISEL (Instituto Superior de Engenharia de Lisboa).  
 This Embedded system aims at real-time monitoring of noise levels in unmonitored and not supervised laboratories and classrooms. The device uses an LPC1769 microcontroller, a MAX9814 sensor for audio capture, local traffic-light-style signaling (green/yellow/red), an alarm buzzer, and communicates via ESP-01 (ESP8266) with the ThingsBoard platform using MQTT. There is also a web/mobile application (Ionic + Angular) for real-time visualization and historical analysis.
