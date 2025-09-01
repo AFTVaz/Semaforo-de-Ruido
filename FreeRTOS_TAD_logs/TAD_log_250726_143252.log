@@ -1,0 +1,31 @@
+"Task Aware Debugger for GDB" version 11.10.0 (202404041456)
+Copyright 2016-2023 NXP
+==================================
+14:29:30.223 INFO: [TadModel] DSF session ID 0 has started.
+14:29:34.880 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (RESUMED, USER_REQUEST)
+14:29:34.923 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (SUSPENDED, SIGNAL)
+14:29:39.13 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (RESUMED, USER_REQUEST)
+14:29:39.190 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+14:29:41.68 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:32:50.109 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:32:50.109 INFO: [Benchmark] Loading data for "Determine RTOS version" has started.
+14:32:50.124 ERROR: [VariableReader] Could not read variable expression: "&(FreeRTOSDebugConfig)".
+14:32:50.124 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:32:50.124 ERROR: [VariableReader] -data-evaluate-expression &(FreeRTOSDebugConfig)
+14:32:50.124 ERROR: [VariableReader] Error message from debugger back end:
+14:32:50.124 ERROR: [VariableReader] No symbol "FreeRTOSDebugConfig" in current context. java.lang.Exception: No symbol "FreeRTOSDebugConfig" in current context.
+14:32:50.141 ERROR: [VariableReader] Could not read variable expression: "sizeof(struct TaskControlBlock_t)".
+14:32:50.141 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:32:50.141 ERROR: [VariableReader] -data-evaluate-expression "sizeof(struct TaskControlBlock_t)"
+14:32:50.141 ERROR: [VariableReader] Error message from debugger back end:
+14:32:50.141 ERROR: [VariableReader] No struct type named TaskControlBlock_t. java.lang.Exception: No struct type named TaskControlBlock_t.
+14:32:50.157 ERROR: [VariableReader] Could not read variable expression: "&(((struct QueueDefinition *) 0)->pcTail)".
+14:32:50.157 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:32:50.157 ERROR: [VariableReader] -data-evaluate-expression "&(((struct QueueDefinition *) 0)->pcTail)"
+14:32:50.157 ERROR: [VariableReader] Error message from debugger back end:
+14:32:50.157 ERROR: [VariableReader] There is no member named pcTail. java.lang.Exception: There is no member named pcTail.
+14:32:50.157 INFO: [FreeRtosTadModel] FreeRTOS version has been identified from available FreeRTOS symbols as 10.11.
+14:32:50.157 INFO: [Benchmark] Loading data for "Determine RTOS version" took 48 ms.
+14:32:50.157 INFO: [Benchmark] Loading data for "Task List" has started.
+14:32:50.766 INFO: [Benchmark] Loading data for "Task List" took 609 ms.
+14:32:52.201 INFO: [TadModel] DSF session ID 0 has ended.

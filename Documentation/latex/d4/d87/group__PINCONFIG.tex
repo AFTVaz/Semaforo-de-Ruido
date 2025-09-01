@@ -1,0 +1,213 @@
+\doxysubsection{PINCONFIG}
+\hypertarget{group__PINCONFIG}{}\label{group__PINCONFIG}\index{PINCONFIG@{PINCONFIG}}
+
+
+Provides the core capabilities for pin configuration functions.  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}\label{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4} 
+\#define {\bfseries LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}~32
+\begin{DoxyCompactList}\small\item\em Number of GPIO pins per port on the LPC microcontroller (32 pins). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__PINCONFIG_ga689033a02f180279d971164e10c12b93}{PINCFG\+\_\+\+Function\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Enumeration of possible functions for a pin. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5}{PINCFG\+\_\+\+Resistor\+Mode\+Enum}} \{ \mbox{\hyperlink{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a6d031447a3a4f4a8bd019caae5a8eefd}{PULL\+\_\+\+UP}}
+, \mbox{\hyperlink{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a415b70b8108c51e396b88eeeaa0ffb1a}{REPEATER}}
+, \mbox{\hyperlink{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5ac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}
+, \mbox{\hyperlink{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a0351276972489e49e38c22116a9b88be}{PULL\+\_\+\+DOWN}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for internal resistor modes of the pin. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a}{PINCFG\+\_\+\+Open\+Drain\+Mode\+Enum}} \{ \mbox{\hyperlink{group__PINCONFIG_ggaab44fc11f4944b2f9acca7a1b5ba852aa50d1448013c6f17125caee18aa418af7}{NORMAL}}
+, \mbox{\hyperlink{group__PINCONFIG_ggaab44fc11f4944b2f9acca7a1b5ba852aaa90b62c376675b218528e2b0b0a7f123}{OPEN\+\_\+\+DRAIN}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for the open-\/drain mode of the pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__PINCONFIG_ga308879f4eb382f98c382d18fa196ea6a}{PINCFG\+\_\+\+Function}} (PIN\+\_\+\+Value\+Type pin\+Id, PINCFG\+\_\+\+Function\+Type func)
+\begin{DoxyCompactList}\small\item\em Sets the function of the specified pin (e.\+g., GPIO, UART, SPI, etc.) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PINCONFIG_ga5c7163fbce3a732beaf5c8d120225935}{PINCFG\+\_\+\+Mode}} (PIN\+\_\+\+Value\+Type pin\+Id, PINCFG\+\_\+\+Resistor\+Mode\+Type mode)
+\begin{DoxyCompactList}\small\item\em Configures the internal resistor mode of the specified pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PINCONFIG_ga804911c3033b3010c2b956f835fe23be}{PINCFG\+\_\+\+Open\+Drain\+Mode}} (PIN\+\_\+\+Value\+Type pin\+Id, PINCFG\+\_\+\+Open\+Drain\+Mode\+Type mode)
+\begin{DoxyCompactList}\small\item\em Configures the open-\/drain mode of the specified pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for pin configuration functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__PINCONFIG_ga689033a02f180279d971164e10c12b93}\index{PINCONFIG@{PINCONFIG}!PINCFG\_FunctionEnum@{PINCFG\_FunctionEnum}}
+\index{PINCFG\_FunctionEnum@{PINCFG\_FunctionEnum}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_FunctionEnum}{PINCFG\_FunctionEnum}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_ga689033a02f180279d971164e10c12b93} 
+enum \mbox{\hyperlink{group__PINCONFIG_ga689033a02f180279d971164e10c12b93}{PINCFG\+\_\+\+Function\+Enum}}}
+
+
+
+Enumeration of possible functions for a pin. 
+
+Each pin can be configured for a specific function such as GPIO, UART, SPI, I2C, PWM, ADC, etc. The numeric value corresponds to the PINSEL register configuration. 
+
+Definition at line \mbox{\hyperlink{pinconfig_8h_source_l00041}{41}} of file \mbox{\hyperlink{pinconfig_8h_source}{pinconfig.\+h}}.
+
+\Hypertarget{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a}\index{PINCONFIG@{PINCONFIG}!PINCFG\_OpenDrainModeEnum@{PINCFG\_OpenDrainModeEnum}}
+\index{PINCFG\_OpenDrainModeEnum@{PINCFG\_OpenDrainModeEnum}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_OpenDrainModeEnum}{PINCFG\_OpenDrainModeEnum}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a} 
+enum \mbox{\hyperlink{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a}{PINCFG\+\_\+\+Open\+Drain\+Mode\+Enum}}}
+
+
+
+Enumeration for the open-\/drain mode of the pin. 
+
+Defines if the pin operates in normal or open-\/drain mode. \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL@{NORMAL}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!NORMAL@{NORMAL}}}\Hypertarget{group__PINCONFIG_ggaab44fc11f4944b2f9acca7a1b5ba852aa50d1448013c6f17125caee18aa418af7}\label{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a} 
+NORMAL&Normal mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OPEN\_DRAIN@{OPEN\_DRAIN}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!OPEN\_DRAIN@{OPEN\_DRAIN}}}\Hypertarget{group__PINCONFIG_ggaab44fc11f4944b2f9acca7a1b5ba852aaa90b62c376675b218528e2b0b0a7f123}\label{group__PINCONFIG_gaab44fc11f4944b2f9acca7a1b5ba852a} 
+OPEN\+\_\+\+DRAIN&Open-\/drain mode enabled \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{pinconfig_8h_source_l00079}{79}} of file \mbox{\hyperlink{pinconfig_8h_source}{pinconfig.\+h}}.
+
+\Hypertarget{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5}\index{PINCONFIG@{PINCONFIG}!PINCFG\_ResistorModeEnum@{PINCFG\_ResistorModeEnum}}
+\index{PINCFG\_ResistorModeEnum@{PINCFG\_ResistorModeEnum}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_ResistorModeEnum}{PINCFG\_ResistorModeEnum}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5} 
+enum \mbox{\hyperlink{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5}{PINCFG\+\_\+\+Resistor\+Mode\+Enum}}}
+
+
+
+Enumeration for internal resistor modes of the pin. 
+
+Defines the internal resistor mode\+: pull-\/up, pull-\/down, repeater, or none. \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PULL\_UP@{PULL\_UP}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!PULL\_UP@{PULL\_UP}}}\Hypertarget{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a6d031447a3a4f4a8bd019caae5a8eefd}\label{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5} 
+PULL\+\_\+\+UP&Internal pull-\/up resistor enabled \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{REPEATER@{REPEATER}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!REPEATER@{REPEATER}}}\Hypertarget{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a415b70b8108c51e396b88eeeaa0ffb1a}\label{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5} 
+REPEATER&Repeater mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!NONE@{NONE}}}\Hypertarget{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5ac157bdf0b85a40d2619cbc8bc1ae5fe2}\label{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5} 
+NONE&No internal resistor \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PULL\_DOWN@{PULL\_DOWN}!PINCONFIG@{PINCONFIG}}\index{PINCONFIG@{PINCONFIG}!PULL\_DOWN@{PULL\_DOWN}}}\Hypertarget{group__PINCONFIG_gga2e41c162e8d64f2374e68c455e8a8db5a0351276972489e49e38c22116a9b88be}\label{group__PINCONFIG_ga2e41c162e8d64f2374e68c455e8a8db5} 
+PULL\+\_\+\+DOWN&Internal pull-\/down resistor enabled \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{pinconfig_8h_source_l00067}{67}} of file \mbox{\hyperlink{pinconfig_8h_source}{pinconfig.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__PINCONFIG_ga308879f4eb382f98c382d18fa196ea6a}\index{PINCONFIG@{PINCONFIG}!PINCFG\_Function@{PINCFG\_Function}}
+\index{PINCFG\_Function@{PINCFG\_Function}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_Function()}{PINCFG\_Function()}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_ga308879f4eb382f98c382d18fa196ea6a} 
+void PINCFG\+\_\+\+Function (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{, }\item[{PINCFG\+\_\+\+Function\+Type}]{func}{}\end{DoxyParamCaption})}
+
+
+
+Sets the function of the specified pin (e.\+g., GPIO, UART, SPI, etc.) 
+
+\begin{DoxyVerb}      This function updates the appropriate bits in the PINSEL registers for the given pin.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & Pin identifier \\
+\hline
+{\em func} & Function to assign to the pin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pinconfig_8c_source_l00016}{16}} of file \mbox{\hyperlink{pinconfig_8c_source}{pinconfig.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{adc_8c_source_l00018}{ADC\+\_\+\+Init()}}, \mbox{\hyperlink{buzzer_8c_source_l00019}{BUZZER\+\_\+\+Init()}}, \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}, and \mbox{\hyperlink{max9814_8c_source_l00079}{MAX9814\+\_\+\+Init()}}.
+
+\Hypertarget{group__PINCONFIG_ga5c7163fbce3a732beaf5c8d120225935}\index{PINCONFIG@{PINCONFIG}!PINCFG\_Mode@{PINCFG\_Mode}}
+\index{PINCFG\_Mode@{PINCFG\_Mode}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_Mode()}{PINCFG\_Mode()}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_ga5c7163fbce3a732beaf5c8d120225935} 
+void PINCFG\+\_\+\+Mode (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{, }\item[{PINCFG\+\_\+\+Resistor\+Mode\+Type}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Configures the internal resistor mode of the specified pin. 
+
+\begin{DoxyVerb}      This sets the corresponding bits in the PINMODE registers to enable pull-up, pull-down, repeater, or no resistor.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & Pin identifier \\
+\hline
+{\em mode} & Resistor mode to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pinconfig_8c_source_l00029}{29}} of file \mbox{\hyperlink{pinconfig_8c_source}{pinconfig.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{adc_8c_source_l00018}{ADC\+\_\+\+Init()}}.
+
+\Hypertarget{group__PINCONFIG_ga804911c3033b3010c2b956f835fe23be}\index{PINCONFIG@{PINCONFIG}!PINCFG\_OpenDrainMode@{PINCFG\_OpenDrainMode}}
+\index{PINCFG\_OpenDrainMode@{PINCFG\_OpenDrainMode}!PINCONFIG@{PINCONFIG}}
+\doxysubsubsubsection{\texorpdfstring{PINCFG\_OpenDrainMode()}{PINCFG\_OpenDrainMode()}}
+{\footnotesize\ttfamily \label{group__PINCONFIG_ga804911c3033b3010c2b956f835fe23be} 
+void PINCFG\+\_\+\+Open\+Drain\+Mode (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{, }\item[{PINCFG\+\_\+\+Open\+Drain\+Mode\+Type}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Configures the open-\/drain mode of the specified pin. 
+
+\begin{DoxyVerb}      This updates the bits in the PINMODE_OD registers to enable or disable open-drain mode.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & Pin identifier \\
+\hline
+{\em mode} & Open-\/drain mode to set (NORMAL or OPEN\+\_\+\+DRAIN) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pinconfig_8c_source_l00042}{42}} of file \mbox{\hyperlink{pinconfig_8c_source}{pinconfig.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+

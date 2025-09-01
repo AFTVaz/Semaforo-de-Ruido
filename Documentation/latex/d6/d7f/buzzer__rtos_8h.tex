@@ -1,0 +1,46 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/buzzer\+\_\+rtos.h File Reference}
+\hypertarget{buzzer__rtos_8h}{}\label{buzzer__rtos_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/buzzer\_rtos.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/buzzer\_rtos.h}}
+
+
+Contains the Buzzer Free\+RTOS API.  
+
+
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\+\_\+\+Command}} \{ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{BUZZER\+\_\+\+CMD\+\_\+\+ON}} = 0x01
+, \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{BUZZER\+\_\+\+CMD\+\_\+\+OFF}} = 0x02
+, \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{BUZZER\+\_\+\+CMD\+\_\+\+ALARM}} = 0x03
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing buzzer command types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}{BUZZER\+\_\+\+RTOS\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the buzzer task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{BUZZER\+\_\+\+RTOS\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Free\+RTOS task responsible for controlling the buzzer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}{BUZZER\+\_\+\+RTOS\+\_\+\+On}} (void)
+\begin{DoxyCompactList}\small\item\em Sends command to turn the buzzer on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}{BUZZER\+\_\+\+RTOS\+\_\+\+Off}} (void)
+\begin{DoxyCompactList}\small\item\em Sends command to turn the buzzer off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}{BUZZER\+\_\+\+RTOS\+\_\+\+Alarm}} (uint32\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Sends command to activate the buzzer alarm mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the Buzzer Free\+RTOS API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+21 Mar 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{buzzer__rtos_8h_source}{buzzer\+\_\+rtos.\+h}}.
+

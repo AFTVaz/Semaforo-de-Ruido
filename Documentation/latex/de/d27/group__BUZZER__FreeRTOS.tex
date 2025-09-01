@@ -1,0 +1,199 @@
+\doxysubsection{BUZZER\+\_\+\+Free\+RTOS}
+\hypertarget{group__BUZZER__FreeRTOS}{}\label{group__BUZZER__FreeRTOS}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+
+
+Provides the core capabilities for Buzzer Free\+RTOS related functions.  
+
+
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\+\_\+\+Command}} \{ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{BUZZER\+\_\+\+CMD\+\_\+\+ON}} = 0x01
+, \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{BUZZER\+\_\+\+CMD\+\_\+\+OFF}} = 0x02
+, \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{BUZZER\+\_\+\+CMD\+\_\+\+ALARM}} = 0x03
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing buzzer command types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}{BUZZER\+\_\+\+RTOS\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the buzzer task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{BUZZER\+\_\+\+RTOS\+\_\+\+Task}} (void \texorpdfstring{$\ast$}{*}pv\+Parameters)
+\begin{DoxyCompactList}\small\item\em Free\+RTOS task responsible for controlling the buzzer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}{BUZZER\+\_\+\+RTOS\+\_\+\+On}} (void)
+\begin{DoxyCompactList}\small\item\em Sends command to turn the buzzer on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}{BUZZER\+\_\+\+RTOS\+\_\+\+Off}} (void)
+\begin{DoxyCompactList}\small\item\em Sends command to turn the buzzer off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}{BUZZER\+\_\+\+RTOS\+\_\+\+Alarm}} (uint32\+\_\+t duration)
+\begin{DoxyCompactList}\small\item\em Sends command to activate the buzzer alarm mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for Buzzer Free\+RTOS related functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_Command@{BUZZER\_Command}}
+\index{BUZZER\_Command@{BUZZER\_Command}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_Command}{BUZZER\_Command}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd} 
+enum \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\+\_\+\+Command}}}
+
+
+
+Enumeration representing buzzer command types. 
+
+\begin{DoxyVerb}   This enum defines the possible actions that can be sent
+   to the buzzer task, such as turning it ON, OFF or triggering an alarm.
+\end{DoxyVerb}
+ \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUZZER\_CMD\_ON@{BUZZER\_CMD\_ON}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_CMD\_ON@{BUZZER\_CMD\_ON}}}\Hypertarget{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}\label{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd} 
+BUZZER\+\_\+\+CMD\+\_\+\+ON&Turn the buzzer ON. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUZZER\_CMD\_OFF@{BUZZER\_CMD\_OFF}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_CMD\_OFF@{BUZZER\_CMD\_OFF}}}\Hypertarget{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}\label{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd} 
+BUZZER\+\_\+\+CMD\+\_\+\+OFF&Turn the buzzer OFF. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUZZER\_CMD\_ALARM@{BUZZER\_CMD\_ALARM}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_CMD\_ALARM@{BUZZER\_CMD\_ALARM}}}\Hypertarget{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}\label{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd} 
+BUZZER\+\_\+\+CMD\+\_\+\+ALARM&Trigger an alarm for a specific duration. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8h_source_l00035}{35}} of file \mbox{\hyperlink{buzzer__rtos_8h_source}{buzzer\+\_\+rtos.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_RTOS\_Alarm@{BUZZER\_RTOS\_Alarm}}
+\index{BUZZER\_RTOS\_Alarm@{BUZZER\_RTOS\_Alarm}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_RTOS\_Alarm()}{BUZZER\_RTOS\_Alarm()}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f} 
+void BUZZER\+\_\+\+RTOS\+\_\+\+Alarm (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{duration}{}\end{DoxyParamCaption})}
+
+
+
+Sends command to activate the buzzer alarm mode. 
+
+\begin{DoxyVerb}   This function notifies the buzzer task to activate alarm mode
+   for a specified duration.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em duration} & Alarm duration (milliseconds). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8c_source_l00116}{116}} of file \mbox{\hyperlink{buzzer__rtos_8c_source}{buzzer\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer__rtos_8h_source_l00038}{BUZZER\+\_\+\+CMD\+\_\+\+ALARM}}.
+
+\Hypertarget{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_RTOS\_Init@{BUZZER\_RTOS\_Init}}
+\index{BUZZER\_RTOS\_Init@{BUZZER\_RTOS\_Init}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_RTOS\_Init()}{BUZZER\_RTOS\_Init()}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d} 
+void BUZZER\+\_\+\+RTOS\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the buzzer task. 
+
+\begin{DoxyVerb}   This function creates the task responsible for controlling the buzzer state
+   (on, off, or alarm) based on received notifications.
+\end{DoxyVerb}
+
+
+\begin{DoxyNote}{Note}
+This function must be called before accessing any Buzzer-\/related function. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8c_source_l00059}{59}} of file \mbox{\hyperlink{buzzer__rtos_8c_source}{buzzer\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer__rtos_8c_source_l00064}{BUZZER\+\_\+\+RTOS\+\_\+\+Task()}}.
+
+\Hypertarget{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_RTOS\_Off@{BUZZER\_RTOS\_Off}}
+\index{BUZZER\_RTOS\_Off@{BUZZER\_RTOS\_Off}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_RTOS\_Off()}{BUZZER\_RTOS\_Off()}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087} 
+void BUZZER\+\_\+\+RTOS\+\_\+\+Off (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Sends command to turn the buzzer off. 
+
+\begin{DoxyVerb}   This function notifies the buzzer task to turn it off.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8c_source_l00112}{112}} of file \mbox{\hyperlink{buzzer__rtos_8c_source}{buzzer\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer__rtos_8h_source_l00037}{BUZZER\+\_\+\+CMD\+\_\+\+OFF}}.
+
+\Hypertarget{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_RTOS\_On@{BUZZER\_RTOS\_On}}
+\index{BUZZER\_RTOS\_On@{BUZZER\_RTOS\_On}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_RTOS\_On()}{BUZZER\_RTOS\_On()}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f} 
+void BUZZER\+\_\+\+RTOS\+\_\+\+On (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Sends command to turn the buzzer on. 
+
+\begin{DoxyVerb}   This function notifies the buzzer task to turn it on.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8c_source_l00108}{108}} of file \mbox{\hyperlink{buzzer__rtos_8c_source}{buzzer\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer__rtos_8h_source_l00036}{BUZZER\+\_\+\+CMD\+\_\+\+ON}}.
+
+\Hypertarget{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}\index{BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}!BUZZER\_RTOS\_Task@{BUZZER\_RTOS\_Task}}
+\index{BUZZER\_RTOS\_Task@{BUZZER\_RTOS\_Task}!BUZZER\_FreeRTOS@{BUZZER\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_RTOS\_Task()}{BUZZER\_RTOS\_Task()}}
+{\footnotesize\ttfamily \label{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af} 
+void BUZZER\+\_\+\+RTOS\+\_\+\+Task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{pv\+Parameters}{}\end{DoxyParamCaption})}
+
+
+
+Free\+RTOS task responsible for controlling the buzzer. 
+
+\begin{DoxyVerb}   The task waits for notifications containing commands to turn the buzzer
+   on, off, or activate alarm mode.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em pv\+Parameters} & Task parameter (not used).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The task must be initialized using "{}\+BUZZER\+\_\+\+RTOS\+\_\+\+Init()"{}. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{buzzer__rtos_8c_source_l00064}{64}} of file \mbox{\hyperlink{buzzer__rtos_8c_source}{buzzer\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer__rtos_8h_source_l00038}{BUZZER\+\_\+\+CMD\+\_\+\+ALARM}}, \mbox{\hyperlink{buzzer__rtos_8h_source_l00037}{BUZZER\+\_\+\+CMD\+\_\+\+OFF}}, \mbox{\hyperlink{buzzer__rtos_8h_source_l00036}{BUZZER\+\_\+\+CMD\+\_\+\+ON}}, \mbox{\hyperlink{buzzer_8c_source_l00019}{BUZZER\+\_\+\+Init()}}, \mbox{\hyperlink{buzzer_8c_source_l00029}{BUZZER\+\_\+\+Off()}}, and \mbox{\hyperlink{buzzer_8c_source_l00025}{BUZZER\+\_\+\+On()}}.
+
+
+
+Referenced by \mbox{\hyperlink{buzzer__rtos_8c_source_l00059}{BUZZER\+\_\+\+RTOS\+\_\+\+Init()}}.
+

@@ -1,0 +1,38 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/clock.h File Reference}
+\hypertarget{clock_8h}{}\label{clock_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/clock.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/clock.h}}
+
+
+Contains the RTC Free\+RTOS API.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462}{CLOCK\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the RTC module and creates the control mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5}{CLOCK\+\_\+\+Get\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves the current date and time from the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c}{CLOCK\+\_\+\+Set\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the date and time in the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a}{CLOCK\+\_\+\+Set\+Seconds}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Sets the absolute time in seconds since 1970 (Epoch). \end{DoxyCompactList}\item 
+time\+\_\+t \mbox{\hyperlink{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a}{CLOCK\+\_\+\+Get\+Seconds}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current RTC time in seconds since 1970 (Epoch). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the RTC Free\+RTOS API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+17 Mar 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{clock_8h_source}{clock.\+h}}.
+

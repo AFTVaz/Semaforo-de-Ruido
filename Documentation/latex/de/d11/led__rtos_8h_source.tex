@@ -1,0 +1,52 @@
+\doxysection{led\+\_\+rtos.\+h}
+\hypertarget{led__rtos_8h_source}{}\label{led__rtos_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/led\_rtos.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/led\_rtos.h}}
+\mbox{\hyperlink{led__rtos_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_LED\_RTOS\_H\_}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_LED\_RTOS\_H\_}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{led_8h}{led.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00030}00030\ \textcolor{preprocessor}{\#define\ LED\_MAX\_MUTEX\_RETRY\ \ \ \ \ 5}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ LED\_GETSTATE\_DELAY\ \ \ \ \ \ pdMS\_TO\_TICKS(20)}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ LED\_GETSTATE\_TIMEOUT\ \ \ \ pdMS\_TO\_TICKS(1000)}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00043}\mbox{\hyperlink{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}{00043}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00044}\mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473caab3a575bd9dc6d968928f44d9616221d}{00044}}\ \ \ \ \ \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473caab3a575bd9dc6d968928f44d9616221d}{LED\_CMD\_ON}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00045}\mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473ca72abad2cae0cea0abbebf8272f7e4c66}{00045}}\ \ \ \ \ \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473ca72abad2cae0cea0abbebf8272f7e4c66}{LED\_CMD\_OFF}},\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473cabab26de35fdfe5645295380a149d8970}{LED\_CMD\_TOGGLE}}\ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00047}\mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473cabab26de35fdfe5645295380a149d8970}{00047}}\ \}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}{LED\_Command}};}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00053}\mbox{\hyperlink{structLED__RTOS__Command}{00053}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00054}\mbox{\hyperlink{structLED__RTOS__Command_ab3ba36373c90a38789b02ceb4f1f6ffa}{00054}}\ \ \ \ \ LED\_ColorValueType\ \mbox{\hyperlink{structLED__RTOS__Command_ab3ba36373c90a38789b02ceb4f1f6ffa}{color}};\ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00055}\mbox{\hyperlink{structLED__RTOS__Command_a5ac834ae68181ba422e82eef2f0f6c69}{00055}}\ \ \ \ \ LED\_ModelType\ \mbox{\hyperlink{structLED__RTOS__Command_a5ac834ae68181ba422e82eef2f0f6c69}{model}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00056}\mbox{\hyperlink{structLED__RTOS__Command_a54c4036f81775dfb5dbffbbdbe1d484f}{00056}}\ \ \ \ \ \mbox{\hyperlink{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}{LED\_Command}}\ \mbox{\hyperlink{structLED__RTOS__Command_a54c4036f81775dfb5dbffbbdbe1d484f}{command}};\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00057}00057\ \}\ \mbox{\hyperlink{structLED__RTOS__Command}{LED\_RTOS\_Command}};}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00064}00064\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__LED__FreeRTOS_gab518afde57da926ae0a9250e67e84de6}{LED\_RTOS\_Ready}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00074}00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_gab9084ab6701c64d927e9c33b16e1ea52}{LED\_RTOS\_InitRedInt}}(\ \textcolor{keywordtype}{bool}\ state,\ LED\_ModelType\ model\ );}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00084}00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga7fc75e2b032bc1fb9a9bb3c7b0691c14}{LED\_RTOS\_InitAllInt}}(\textcolor{keywordtype}{bool}\ state,\ LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00094}00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga7ec46a8e06acf92265bb4ddc4b8a1022}{LED\_RTOS\_InitAllExt}}(\textcolor{keywordtype}{bool}\ state,\ LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00103}00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_gab82959dc647c0247746b21cc8793ca2f}{LED\_RTOS\_InitSemaphore}}(LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00119}00119\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__LED__FreeRTOS_gaec58641619d73ad9836663c3f54397b6}{LED\_RTOS\_GetState}}(LED\_ColorValueType\ color,\ \textcolor{keywordtype}{bool}\ *state);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00127}00127\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga83e871d26208644be9c5dd1787d390cc}{LED\_RTOS\_On}}(LED\_ColorValueType\ color,\ LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00135}00135\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_gab2d3c9e755a92993f70803aa1ce9fbbe}{LED\_RTOS\_Off}}(LED\_ColorValueType\ color,\ LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00143}00143\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga77e5528135b91d807c5d032c2c17e7ed}{LED\_RTOS\_Toggle}}(LED\_ColorValueType\ color,\ LED\_ModelType\ model);}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00150}00150\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED__FreeRTOS_ga8fbfc4fa794a812cf0517ded3636d4fd}{LED\_RTOS\_Delete}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00153}00153\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_LED\_RTOS\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{led__rtos_8h_source_l00154}00154\ }
+
+\end{DoxyCode}

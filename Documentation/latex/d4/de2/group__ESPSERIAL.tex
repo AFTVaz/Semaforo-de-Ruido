@@ -1,0 +1,82 @@
+\doxysubsection{ESP8266 serial interface}
+\hypertarget{group__ESPSERIAL}{}\label{group__ESPSERIAL}\index{ESP8266 serial interface@{ESP8266 serial interface}}
+
+
+This module provides an interface for communication with the ESP8266 Wi-\/\+Fi module using a serial communication protocol (UART). It use the UART3 on LPC1769 (P0.\+0 and P0.\+1). Reset should be connect to P0.\+5. It allows the user to initialize the serial interface, send commands to the module, and receive responses.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ESPSERIAL_ga6ca0a758318b84eda813dbf3163981f5}{ESPSERIAL\+\_\+\+Init}} (int baudrate)
+\begin{DoxyCompactList}\small\item\em Initializes the serial communication interface for the ESP8266 module. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__ESPSERIAL_gaee19f2521edbbdc9716bf3771bd3fa6a}{ESPSERIAL\+\_\+\+Send}} (void \texorpdfstring{$\ast$}{*}command, int size)
+\begin{DoxyCompactList}\small\item\em Sends data (commands) to the ESP8266 over the serial interface. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__ESPSERIAL_ga05cf9bb05ee1c4efa2e8f529b402b3ad}{ESPSERIAL\+\_\+\+Recv}} (unsigned char \texorpdfstring{$\ast$}{*}response, int max\+Size)
+\begin{DoxyCompactList}\small\item\em Receives data (response) from the ESP8266 over the serial interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+This module provides an interface for communication with the ESP8266 Wi-\/\+Fi module using a serial communication protocol (UART). It use the UART3 on LPC1769 (P0.\+0 and P0.\+1). Reset should be connect to P0.\+5. It allows the user to initialize the serial interface, send commands to the module, and receive responses. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__ESPSERIAL_ga6ca0a758318b84eda813dbf3163981f5}\index{ESP8266 serial interface@{ESP8266 serial interface}!ESPSERIAL\_Init@{ESPSERIAL\_Init}}
+\index{ESPSERIAL\_Init@{ESPSERIAL\_Init}!ESP8266 serial interface@{ESP8266 serial interface}}
+\doxysubsubsubsection{\texorpdfstring{ESPSERIAL\_Init()}{ESPSERIAL\_Init()}}
+{\footnotesize\ttfamily \label{group__ESPSERIAL_ga6ca0a758318b84eda813dbf3163981f5} 
+void ESPSERIAL\+\_\+\+Init (\begin{DoxyParamCaption}\item[{int}]{baudrate}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the serial communication interface for the ESP8266 module. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The baud rate for serial communication. This sets the speed at which data is transmitted between the microcontroller and the ESP8266 module. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function configures the serial interface with the specified baud rate to allow for communication with the ESP8266. Ensure that the baud rate matches the ESP8266\textquotesingle{}s configured baud rate. 
+\end{DoxyNote}
+\Hypertarget{group__ESPSERIAL_ga05cf9bb05ee1c4efa2e8f529b402b3ad}\index{ESP8266 serial interface@{ESP8266 serial interface}!ESPSERIAL\_Recv@{ESPSERIAL\_Recv}}
+\index{ESPSERIAL\_Recv@{ESPSERIAL\_Recv}!ESP8266 serial interface@{ESP8266 serial interface}}
+\doxysubsubsubsection{\texorpdfstring{ESPSERIAL\_Recv()}{ESPSERIAL\_Recv()}}
+{\footnotesize\ttfamily \label{group__ESPSERIAL_ga05cf9bb05ee1c4efa2e8f529b402b3ad} 
+int ESPSERIAL\+\_\+\+Recv (\begin{DoxyParamCaption}\item[{unsigned char \texorpdfstring{$\ast$}{*}}]{response}{, }\item[{int}]{max\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Receives data (response) from the ESP8266 over the serial interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em response} & A pointer to the buffer where the received data will be stored. \\
+\hline
+{\em max\+Size} & The maximum size of the buffer. This limits how many bytes the function can receive from the ESP8266. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes successfully read from the ESP8266. This is the amount of data received and stored in the {\ttfamily response} buffer. 
+\end{DoxyReturn}
+\Hypertarget{group__ESPSERIAL_gaee19f2521edbbdc9716bf3771bd3fa6a}\index{ESP8266 serial interface@{ESP8266 serial interface}!ESPSERIAL\_Send@{ESPSERIAL\_Send}}
+\index{ESPSERIAL\_Send@{ESPSERIAL\_Send}!ESP8266 serial interface@{ESP8266 serial interface}}
+\doxysubsubsubsection{\texorpdfstring{ESPSERIAL\_Send()}{ESPSERIAL\_Send()}}
+{\footnotesize\ttfamily \label{group__ESPSERIAL_gaee19f2521edbbdc9716bf3771bd3fa6a} 
+int ESPSERIAL\+\_\+\+Send (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{command}{, }\item[{int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Sends data (commands) to the ESP8266 over the serial interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & A pointer to the buffer containing the data to be sent to the ESP8266. \\
+\hline
+{\em size} & The size of the data buffer in bytes, indicating how much data to send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes successfully written to the ESP8266. This is the number of bytes transmitted from the buffer to the module. 
+\end{DoxyReturn}

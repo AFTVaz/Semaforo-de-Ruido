@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;FreeRTOS_DRIVERS/src/ledrgb_rtos.c&apos; to &apos;ledrgbint_rtos.c&apos;" description="Rename resource &apos;ledrgb_rtos.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/ledrgb_rtos.c" name="ledrgbint_rtos.c" stamp="1743434501951" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;FreeRTOS_DRIVERS/inc/ledrgb_rtos.h&apos; to &apos;ledrgbint_rtos.h&apos;" description="Rename resource &apos;ledrgb_rtos.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/ledrgb_rtos.h" name="ledrgbint_rtos.h" stamp="1743434510862" updateReferences="true"/>
+</session>

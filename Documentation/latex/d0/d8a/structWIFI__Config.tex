@@ -1,0 +1,98 @@
+\doxysection{WIFI\+\_\+\+Config Struct Reference}
+\hypertarget{structWIFI__Config}{}\label{structWIFI__Config}\index{WIFI\_Config@{WIFI\_Config}}
+
+
+Configuration structure for initializing Wi-\/\+Fi and related services.  
+
+
+
+
+{\ttfamily \#include $<$wifi.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWIFI__Config_a4e834c60fbf5d0a461d86611d4afdedb}{ssid}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWIFI__Config_a95b09dc538aa78ae547a245ecadee7f5}{password}}
+\item 
+\mbox{\hyperlink{group__WIFI_gae5606107ac8642f70b98a5d2f58bc67d}{WIFI\+\_\+\+Service\+Value\+Type}} \mbox{\hyperlink{structWIFI__Config_a27d91ca87f8b5aa3a3063bf2eaacd7a2}{service}}
+\item 
+\mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\+\_\+\+Config\+Callback}} \mbox{\hyperlink{structWIFI__Config_a8cde6b9e713ff0ed4b0ec429e97dafe2}{x\+MQTT\+\_\+\+Config\+Callback}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Configuration structure for initializing Wi-\/\+Fi and related services. 
+
+\begin{DoxyVerb}      This structure holds the necessary parameters for Wi-Fi connection
+      and the selection of additional services such as NTP and MQTT.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00128}{128}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structWIFI__Config_a95b09dc538aa78ae547a245ecadee7f5}\index{WIFI\_Config@{WIFI\_Config}!password@{password}}
+\index{password@{password}!WIFI\_Config@{WIFI\_Config}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily \label{structWIFI__Config_a95b09dc538aa78ae547a245ecadee7f5} 
+char\texorpdfstring{$\ast$}{*} WIFI\+\_\+\+Config\+::password}
+
+Password for the Wi-\/\+Fi network 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00130}{130}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{wifi_8c_source_l00259}{WIFI\+\_\+\+Init()}}.
+
+\Hypertarget{structWIFI__Config_a27d91ca87f8b5aa3a3063bf2eaacd7a2}\index{WIFI\_Config@{WIFI\_Config}!service@{service}}
+\index{service@{service}!WIFI\_Config@{WIFI\_Config}}
+\doxysubsubsection{\texorpdfstring{service}{service}}
+{\footnotesize\ttfamily \label{structWIFI__Config_a27d91ca87f8b5aa3a3063bf2eaacd7a2} 
+\mbox{\hyperlink{group__WIFI_gae5606107ac8642f70b98a5d2f58bc67d}{WIFI\+\_\+\+Service\+Value\+Type}} WIFI\+\_\+\+Config\+::service}
+
+Service(s) to initialize\+: NONE, NTP, MQTT, or BOTH 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00131}{131}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{wifi_8c_source_l00259}{WIFI\+\_\+\+Init()}}.
+
+\Hypertarget{structWIFI__Config_a4e834c60fbf5d0a461d86611d4afdedb}\index{WIFI\_Config@{WIFI\_Config}!ssid@{ssid}}
+\index{ssid@{ssid}!WIFI\_Config@{WIFI\_Config}}
+\doxysubsubsection{\texorpdfstring{ssid}{ssid}}
+{\footnotesize\ttfamily \label{structWIFI__Config_a4e834c60fbf5d0a461d86611d4afdedb} 
+char\texorpdfstring{$\ast$}{*} WIFI\+\_\+\+Config\+::ssid}
+
+SSID of the Wi-\/\+Fi network to connect 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00129}{129}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{wifi_8c_source_l00259}{WIFI\+\_\+\+Init()}}.
+
+\Hypertarget{structWIFI__Config_a8cde6b9e713ff0ed4b0ec429e97dafe2}\index{WIFI\_Config@{WIFI\_Config}!xMQTT\_ConfigCallback@{xMQTT\_ConfigCallback}}
+\index{xMQTT\_ConfigCallback@{xMQTT\_ConfigCallback}!WIFI\_Config@{WIFI\_Config}}
+\doxysubsubsection{\texorpdfstring{xMQTT\_ConfigCallback}{xMQTT\_ConfigCallback}}
+{\footnotesize\ttfamily \label{structWIFI__Config_a8cde6b9e713ff0ed4b0ec429e97dafe2} 
+\mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\+\_\+\+Config\+Callback}} WIFI\+\_\+\+Config\+::x\+MQTT\+\_\+\+Config\+Callback}
+
+Callback function invoked on MQTT configuration/attribute updates 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00132}{132}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{wifi_8c_source_l00259}{WIFI\+\_\+\+Init()}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.\+10.\+0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/\mbox{\hyperlink{wifi_8h}{wifi.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,7 @@
+doxygen/doxygen_new_line_after_brief=true
+doxygen/doxygen_use_brief_tag=false
+doxygen/doxygen_use_javadoc_tags=true
+doxygen/doxygen_use_pre_tag=false
+doxygen/doxygen_use_structural_commands=false
+eclipse.preferences.version=1
+macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<macros>\r\n    <stringMacro name\="project.flashdriver.dir" type\="VALUE_PATH_DIR" value\=""/>\r\n    <stringMacro name\="SDK_LPC_RESOURCES" type\="VALUE_PATH_DIR" value\="C\:\\nxp\\MCUXpressoIDE_11.10.0_3148\\ide\\plugins\\com.nxp.mcuxpresso.core.datamodels.resources_11.10.0.202311280810\\override"/>\r\n</macros>\r\n

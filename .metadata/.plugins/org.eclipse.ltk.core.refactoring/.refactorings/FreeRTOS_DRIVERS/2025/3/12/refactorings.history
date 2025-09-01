@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;FreeRTOS_DRIVERS/inc/rtc_rtos.h&apos; to &apos;clock.h&apos;" description="Rename resource &apos;rtc_rtos.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/rtc_rtos.h" name="clock.h" stamp="1742381597860" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;FreeRTOS_DRIVERS/src/rtc_rtos.c&apos; to &apos;clock.c&apos;" description="Rename resource &apos;rtc_rtos.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/rtc_rtos.c" name="clock.c" stamp="1742381618850" updateReferences="true"/>
+</session>

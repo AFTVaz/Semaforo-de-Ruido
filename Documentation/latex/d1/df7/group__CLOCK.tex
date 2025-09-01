@@ -1,0 +1,185 @@
+\doxysubsection{CLOCK}
+\hypertarget{group__CLOCK}{}\label{group__CLOCK}\index{CLOCK@{CLOCK}}
+
+
+Provides the core capabilities for RTC Free\+RTOS functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462}{CLOCK\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the RTC module and creates the control mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5}{CLOCK\+\_\+\+Get\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves the current date and time from the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c}{CLOCK\+\_\+\+Set\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the date and time in the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a}{CLOCK\+\_\+\+Set\+Seconds}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Sets the absolute time in seconds since 1970 (Epoch). \end{DoxyCompactList}\item 
+time\+\_\+t \mbox{\hyperlink{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a}{CLOCK\+\_\+\+Get\+Seconds}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current RTC time in seconds since 1970 (Epoch). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for RTC Free\+RTOS functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a}\index{CLOCK@{CLOCK}!CLOCK\_GetSeconds@{CLOCK\_GetSeconds}}
+\index{CLOCK\_GetSeconds@{CLOCK\_GetSeconds}!CLOCK@{CLOCK}}
+\doxysubsubsubsection{\texorpdfstring{CLOCK\_GetSeconds()}{CLOCK\_GetSeconds()}}
+{\footnotesize\ttfamily \label{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a} 
+time\+\_\+t CLOCK\+\_\+\+Get\+Seconds (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current RTC time in seconds since 1970 (Epoch). 
+
+\begin{DoxyVerb}   Returns the current time value in seconds since the Unix Epoch (1970-01-01).
+   Read access is protected by a mutex to prevent interference from other tasks.
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+Current time in seconds since 1970-\/01-\/01. 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em 0} & If the RTC is at the initial date or not initialized. \\
+\hline
+{\em $>$0} & Valid time value.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe reading. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{clock_8c_source_l00059}{59}} of file \mbox{\hyperlink{clock_8c_source}{clock.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00083}{RTC\+\_\+\+Get\+Seconds()}}.
+
+\Hypertarget{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5}\index{CLOCK@{CLOCK}!CLOCK\_GetTimeDate@{CLOCK\_GetTimeDate}}
+\index{CLOCK\_GetTimeDate@{CLOCK\_GetTimeDate}!CLOCK@{CLOCK}}
+\doxysubsubsubsection{\texorpdfstring{CLOCK\_GetTimeDate()}{CLOCK\_GetTimeDate()}}
+{\footnotesize\ttfamily \label{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5} 
+void CLOCK\+\_\+\+Get\+Time\+Date (\begin{DoxyParamCaption}\item[{struct tm \texorpdfstring{$\ast$}{*}}]{date\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current date and time from the RTC. 
+
+\begin{DoxyVerb}   The function uses a mutex to ensure exclusive access to the RTC,
+   preventing interference from other tasks. The date and time values
+   are filled into the provided "struct tm".
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Time} & Pointer to the "{}struct tm"{} structure where date and time will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe reading. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{clock_8c_source_l00032}{32}} of file \mbox{\hyperlink{clock_8c_source}{clock.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462}\index{CLOCK@{CLOCK}!CLOCK\_Init@{CLOCK\_Init}}
+\index{CLOCK\_Init@{CLOCK\_Init}!CLOCK@{CLOCK}}
+\doxysubsubsubsection{\texorpdfstring{CLOCK\_Init()}{CLOCK\_Init()}}
+{\footnotesize\ttfamily \label{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462} 
+void CLOCK\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the RTC module and creates the control mutex. 
+
+\begin{DoxyVerb}   This function checks if the RTC mutex has been properly created, and if not,
+   it creates it before initializing the RTC. The mutex is used to protect
+   concurrent access to the RTC.
+\end{DoxyVerb}
+
+
+\begin{DoxyNote}{Note}
+This function must be called before accessing any RTC-\/related function. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{clock_8c_source_l00023}{23}} of file \mbox{\hyperlink{clock_8c_source}{clock.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00027}{RTC\+\_\+\+Init()}}.
+
+\Hypertarget{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a}\index{CLOCK@{CLOCK}!CLOCK\_SetSeconds@{CLOCK\_SetSeconds}}
+\index{CLOCK\_SetSeconds@{CLOCK\_SetSeconds}!CLOCK@{CLOCK}}
+\doxysubsubsubsection{\texorpdfstring{CLOCK\_SetSeconds()}{CLOCK\_SetSeconds()}}
+{\footnotesize\ttfamily \label{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a} 
+void CLOCK\+\_\+\+Set\+Seconds (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{seconds}{}\end{DoxyParamCaption})}
+
+
+
+Sets the absolute time in seconds since 1970 (Epoch). 
+
+\begin{DoxyVerb}   This function updates the RTC with the provided value in seconds.
+   Access is protected by a mutex to ensure no other task interferes during the update.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & Absolute time in seconds since 1970-\/01-\/01 (Epoch).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe writing. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{clock_8c_source_l00050}{50}} of file \mbox{\hyperlink{clock_8c_source}{clock.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00076}{RTC\+\_\+\+Set\+Seconds()}}.
+
+\Hypertarget{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c}\index{CLOCK@{CLOCK}!CLOCK\_SetTimeDate@{CLOCK\_SetTimeDate}}
+\index{CLOCK\_SetTimeDate@{CLOCK\_SetTimeDate}!CLOCK@{CLOCK}}
+\doxysubsubsubsection{\texorpdfstring{CLOCK\_SetTimeDate()}{CLOCK\_SetTimeDate()}}
+{\footnotesize\ttfamily \label{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c} 
+void CLOCK\+\_\+\+Set\+Time\+Date (\begin{DoxyParamCaption}\item[{struct tm \texorpdfstring{$\ast$}{*}}]{date\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Sets the date and time in the RTC. 
+
+\begin{DoxyVerb}   This function sets the system date and time, protecting access to the RTC with a mutex.
+   It ensures that only one task has exclusive access to the RTC during the operation.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Time} & Pointer to the "{}struct tm"{} structure containing the date and time to be set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe writing. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{clock_8c_source_l00041}{41}} of file \mbox{\hyperlink{clock_8c_source}{clock.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00053}{RTC\+\_\+\+Set\+Time\+Date()}}.
+

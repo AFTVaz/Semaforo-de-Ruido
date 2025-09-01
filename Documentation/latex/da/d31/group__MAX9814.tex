@@ -1,0 +1,191 @@
+\doxysubsection{MAX9814}
+\hypertarget{group__MAX9814}{}\label{group__MAX9814}\index{MAX9814@{MAX9814}}
+
+
+Provides the core capabilities for microphone MAX9814 related functions.  
+
+
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} \{ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ab071206c0a600e2fb25862845a15ab9a}{MAX9814\+\_\+\+VCC\+\_\+\+GAIN}} = 40
+, \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77af66fa9b7a3c3621805db08d86d6f7ae4}{MAX9814\+\_\+\+GND\+\_\+\+GAIN}} = 50
+, \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ac0d4227dcba510960c7aeed8074c6e22}{MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN}} = 60
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for selecting the analog gain of the MAX9814 microphone module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__MAX9814_ga83196f81e95ff529918765204515ed86}{MAX9814\+\_\+\+Init}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} mic\+\_\+gain)
+\begin{DoxyCompactList}\small\item\em Initializes the MAX9814 microphone module. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}{MAX9814\+\_\+\+Read}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the current ambient sound level in decibels (dB SPL approximation). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{MAX9814\+\_\+\+Set\+Gain}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} mic\+\_\+gain)
+\begin{DoxyCompactList}\small\item\em Updates the analog gain setting of the MAX9814 microphone module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for microphone MAX9814 related functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}\index{MAX9814@{MAX9814}!MAX9814\_GainValueType@{MAX9814\_GainValueType}}
+\index{MAX9814\_GainValueType@{MAX9814\_GainValueType}!MAX9814@{MAX9814}}
+\doxysubsubsubsection{\texorpdfstring{MAX9814\_GainValueType}{MAX9814\_GainValueType}}
+{\footnotesize\ttfamily \label{group__MAX9814_ga447282e5a307ab474573090ad39e4e77} 
+enum \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}}}
+
+
+
+Enumeration for selecting the analog gain of the MAX9814 microphone module. 
+
+\begin{DoxyVerb}   This enum defines the gain levels that can be applied to the MAX9814 by
+   configuring its gain selection pin. Each level corresponds to a specific
+   hardware wiring: VCC, GND, or floating input.
+\end{DoxyVerb}
+ \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX9814\_VCC\_GAIN@{MAX9814\_VCC\_GAIN}!MAX9814@{MAX9814}}\index{MAX9814@{MAX9814}!MAX9814\_VCC\_GAIN@{MAX9814\_VCC\_GAIN}}}\Hypertarget{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ab071206c0a600e2fb25862845a15ab9a}\label{group__MAX9814_ga447282e5a307ab474573090ad39e4e77} 
+MAX9814\+\_\+\+VCC\+\_\+\+GAIN&Gain = 40 dB (Gain pin connected to VCC) ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX9814\_GND\_GAIN@{MAX9814\_GND\_GAIN}!MAX9814@{MAX9814}}\index{MAX9814@{MAX9814}!MAX9814\_GND\_GAIN@{MAX9814\_GND\_GAIN}}}\Hypertarget{group__MAX9814_gga447282e5a307ab474573090ad39e4e77af66fa9b7a3c3621805db08d86d6f7ae4}\label{group__MAX9814_ga447282e5a307ab474573090ad39e4e77} 
+MAX9814\+\_\+\+GND\+\_\+\+GAIN&Gain = 50 dB (Gain pin connected to GND) ~\newline
+ \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX9814\_FLOAT\_GAIN@{MAX9814\_FLOAT\_GAIN}!MAX9814@{MAX9814}}\index{MAX9814@{MAX9814}!MAX9814\_FLOAT\_GAIN@{MAX9814\_FLOAT\_GAIN}}}\Hypertarget{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ac0d4227dcba510960c7aeed8074c6e22}\label{group__MAX9814_ga447282e5a307ab474573090ad39e4e77} 
+MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN&Gain = 60 dB (Gain pin left floating/open) ~\newline
+ \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{max9814_8h_source_l00037}{37}} of file \mbox{\hyperlink{max9814_8h_source}{max9814.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__MAX9814_ga83196f81e95ff529918765204515ed86}\index{MAX9814@{MAX9814}!MAX9814\_Init@{MAX9814\_Init}}
+\index{MAX9814\_Init@{MAX9814\_Init}!MAX9814@{MAX9814}}
+\doxysubsubsubsection{\texorpdfstring{MAX9814\_Init()}{MAX9814\_Init()}}
+{\footnotesize\ttfamily \label{group__MAX9814_ga83196f81e95ff529918765204515ed86} 
+void MAX9814\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}}}]{mic\+\_\+gain}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the MAX9814 microphone module. 
+
+\begin{DoxyVerb}   This function sets up the ADC input channel, configures the gain selection pin,
+   and performs offset calibration for the ADC to ensure accurate signal centering.
+   It must be called before any sound level measurements are taken.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em mic\+\_\+gain} & Initial gain level for the MAX9814 microphone. Acceptable values\+:
+\begin{DoxyItemize}
+\item MAX9814\+\_\+\+VCC\+\_\+\+GAIN (40 dB)
+\item MAX9814\+\_\+\+GND\+\_\+\+GAIN (50 dB)
+\item MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN (60 dB)
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Requires that ADC and GPIO configuration functions are properly implemented. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{max9814_8c_source_l00079}{79}} of file \mbox{\hyperlink{max9814_8c_source}{max9814.\+c}}.
+
+
+
+References \mbox{\hyperlink{adc_8c_source_l00018}{ADC\+\_\+\+Init()}}, \mbox{\hyperlink{max9814_8c_source_l00095}{MAX9814\+\_\+\+Set\+Gain()}}, and \mbox{\hyperlink{pinconfig_8c_source_l00016}{PINCFG\+\_\+\+Function()}}.
+
+
+
+Referenced by \mbox{\hyperlink{microphone_8c_source_l00021}{MICROPHONE\+\_\+\+Init()}}.
+
+\Hypertarget{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}\index{MAX9814@{MAX9814}!MAX9814\_Read@{MAX9814\_Read}}
+\index{MAX9814\_Read@{MAX9814\_Read}!MAX9814@{MAX9814}}
+\doxysubsubsubsection{\texorpdfstring{MAX9814\_Read()}{MAX9814\_Read()}}
+{\footnotesize\ttfamily \label{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6} 
+float MAX9814\+\_\+\+Read (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Reads the current ambient sound level in decibels (dB SPL approximation). 
+
+\begin{DoxyVerb}   This function captures multiple ADC samples, calculates the RMS (Root Mean Square)
+   value of the signal, and converts it to decibels. The calculation also includes
+   internal compensation for the configured analog gain.
+
+   It also performs automatic gain control (AGC) by adjusting the hardware gain
+   based on configurable dB thresholds with hysteresis.
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+Sound pressure level in decibels (dB SPL approximation). 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/\+INFINITY} & If the signal level is too low to compute a valid dB value. \\
+\hline
+{\em $>$0} & Valid sound level in dB. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{max9814_8c_source_l00086}{86}} of file \mbox{\hyperlink{max9814_8c_source}{max9814.\+c}}.
+
+
+
+References \mbox{\hyperlink{adc_8c_source_l00062}{ADC\+\_\+\+Read()}}.
+
+
+
+Referenced by \mbox{\hyperlink{microphone_8c_source_l00030}{MICROPHONE\+\_\+\+Read()}}.
+
+\Hypertarget{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}\index{MAX9814@{MAX9814}!MAX9814\_SetGain@{MAX9814\_SetGain}}
+\index{MAX9814\_SetGain@{MAX9814\_SetGain}!MAX9814@{MAX9814}}
+\doxysubsubsubsection{\texorpdfstring{MAX9814\_SetGain()}{MAX9814\_SetGain()}}
+{\footnotesize\ttfamily \label{group__MAX9814_gaaed74836fd745df7666cfae704d102c2} 
+void MAX9814\+\_\+\+Set\+Gain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}}}]{mic\+\_\+gain}{}\end{DoxyParamCaption})}
+
+
+
+Updates the analog gain setting of the MAX9814 microphone module. 
+
+\begin{DoxyVerb}  This function sets the appropriate logic level on the GAIN pin to configure
+  the microphone's analog gain (40 dB, 50 dB, or 60 dB). It also updates the
+  internal compensation factor for dB conversion and recalculates the reference
+  output voltage based on the selected gain.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em mic\+\_\+gain} & New gain level to apply. Options\+:
+\begin{DoxyItemize}
+\item MAX9814\+\_\+\+VCC\+\_\+\+GAIN (40 dB)
+\item MAX9814\+\_\+\+GND\+\_\+\+GAIN (50 dB)
+\item MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN (60 dB) 
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{max9814_8c_source_l00095}{95}} of file \mbox{\hyperlink{max9814_8c_source}{max9814.\+c}}.
+
+
+
+References \mbox{\hyperlink{max9814_8h_source_l00040}{MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN}}, \mbox{\hyperlink{max9814_8h_source_l00039}{MAX9814\+\_\+\+GND\+\_\+\+GAIN}}, \mbox{\hyperlink{max9814_8h_source_l00038}{MAX9814\+\_\+\+VCC\+\_\+\+GAIN}}, \mbox{\hyperlink{pin_8c_source_l00044}{PIN\+\_\+\+Clear()}}, \mbox{\hyperlink{pin_8c_source_l00021}{PIN\+\_\+\+Direction()}}, and \mbox{\hyperlink{pin_8c_source_l00035}{PIN\+\_\+\+Set()}}.
+
+
+
+Referenced by \mbox{\hyperlink{max9814_8c_source_l00079}{MAX9814\+\_\+\+Init()}}, and \mbox{\hyperlink{microphone_8c_source_l00043}{MICROPHONE\+\_\+\+Set\+Gain()}}.
+

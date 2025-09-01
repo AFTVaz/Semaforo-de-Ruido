@@ -1,0 +1,107 @@
+\doxysection{flash.\+c}
+\hypertarget{flash_8c_source}{}\label{flash_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/flash.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/flash.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00002}00002\ \textcolor{comment}{\ *\ flash.c}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 19/11/2024}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Emilio\ Mendes\ (48170)}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flash_8h}{flash.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00016}00016\ \textcolor{preprocessor}{\#define\ IAP\_LOCATION\ 0x1FFF1FF1}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00017}00017\ \textcolor{preprocessor}{\#define\ FLASH\_FREQ\ (SystemCoreClock/1000)}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00019}00019\ \textcolor{keyword}{typedef}\ void\ (*IAP)(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}[],\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}[]);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00020}00020\ IAP\ iap\_entry\ =\ (IAP)\ IAP\_LOCATION;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00022}00022\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ FLASH\_GetSectorFromAddress(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ address)\ \{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00023}00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (address\ <\ 0x00010000)\ \{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 4KB\ sectors\ (0x0000\ 0000\ to\ 0x0000\ FFFF)}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ address\ /\ 0x1000;\ \textcolor{comment}{//\ 4\ KB\ =\ 0x1000}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00026}00026\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (address\ <\ 0x00080000)\ \{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32KB\ sectors\ (0x0001\ 0000\ to\ 0x0007\ FFFF)}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 16\ +\ ((address\ -\/\ 0x00010000)\ /\ 0x8000);\ \textcolor{comment}{//\ 32\ KB\ =\ 0x8000}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00029}00029\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0xFFFFFFFF;\ \textcolor{comment}{//\ Invalid\ address}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00032}00032\ \}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00034}\mbox{\hyperlink{group__FLASH_gadaf2dd948bfa26ae4ec93908ec148bab}{00034}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH_gadaf2dd948bfa26ae4ec93908ec148bab}{FLASH\_EraseSector}}\ (\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sector\ )\{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ command[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ result[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00039}00039\ \ \ \ \ command[0]\ =\ \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1f232bc84e178331a1bfb6134e0e3900}{Prepare\_Sectors\_For\_Write}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00040}00040\ \ \ \ \ command[1]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00041}00041\ \ \ \ \ command[2]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00043}00043\ \ \ \ \ iap\_entry(command,\ result);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}(result[0]\ !=\ \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a0a22fcf0d061f9b1473876e43d12c33c}{CMD\_SUCCESS}})\ \textcolor{keywordflow}{return}\ result[0];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00047}00047\ \ \ \ \ command[0]\ =\ \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda5e4681313add6781e9e88469c3bac1f2}{Erase\_Sectors}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00048}00048\ \ \ \ \ command[1]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00049}00049\ \ \ \ \ command[2]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00050}00050\ \ \ \ \ command[3]\ =\ FLASH\_FREQ;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00052}00052\ \ \ \ \ iap\_entry(command,\ result);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{return}\ result[0];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00058}\mbox{\hyperlink{group__FLASH_ga3db6ec18c90224fb77b17365442f9247}{00058}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH_ga3db6ec18c90224fb77b17365442f9247}{FLASH\_WriteData}}(\textcolor{keywordtype}{void}\ *dstAddr,\ \textcolor{keywordtype}{void}\ *srcAddr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ command[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ result[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00061}00061\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ DstAddr\ =\ (\textcolor{keywordtype}{unsigned}\ int)dstAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ SrcAddr\ =\ (\textcolor{keywordtype}{unsigned}\ int)srcAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sector\ =\ FLASH\_GetSectorFromAddress(DstAddr);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{if}\ (sector\ ==\ 0xFFFFFFFF)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a562854c4161d8181b2d0d7108f2f81e7}{INVALID\_SECTOR}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00067}00067\ \ \ \ \ command[0]\ =\ \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1f232bc84e178331a1bfb6134e0e3900}{Prepare\_Sectors\_For\_Write}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00068}00068\ \ \ \ \ command[1]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00069}00069\ \ \ \ \ command[2]\ =\ sector;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00071}00071\ \ \ \ \ iap\_entry(command,\ result);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (result[0]\ !=\ \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a0a22fcf0d061f9b1473876e43d12c33c}{CMD\_SUCCESS}})\ \textcolor{keywordflow}{return}\ result[0];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00074}00074\ \ \ \ \ command[0]\ =\ \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda727b7090cad7ebcd8f671f2a9722b307}{COPY\_RAM\_TO\_FLASH}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00075}00075\ \ \ \ \ command[1]\ =\ DstAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00076}00076\ \ \ \ \ command[2]\ =\ SrcAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00077}00077\ \ \ \ \ command[3]\ =\ size;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00078}00078\ \ \ \ \ command[4]\ =\ FLASH\_FREQ;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00080}00080\ \ \ \ \ iap\_entry(command,\ result);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return}\ result[0];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00085}\mbox{\hyperlink{group__FLASH_ga34f8a70dbbe55c632a9135db50dce515}{00085}}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH_ga34f8a70dbbe55c632a9135db50dce515}{FLASH\_VerifyData}}\ (\ \textcolor{keywordtype}{void}\ *dstAddr\ ,\ \textcolor{keywordtype}{void}\ *srcAddr\ ,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ )\{}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ command[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ result[5];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ DstAddr\ =\ (\textcolor{keywordtype}{unsigned}\ int)dstAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ SrcAddr\ =\ (\textcolor{keywordtype}{unsigned}\ int)srcAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00092}00092\ \ \ \ \ command[0]\ =\ \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda86c1793bd68db3fbc27ecb0d429aa236}{Compare\_Addr1\_Addr2\_nBytes}};}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00093}00093\ \ \ \ \ command[1]\ =\ DstAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00094}00094\ \ \ \ \ command[2]\ =\ SrcAddr;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00095}00095\ \ \ \ \ command[3]\ =\ size;}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00097}00097\ \ \ \ \ iap\_entry(command,\ result);}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{return}\ result[0];}
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{flash_8c_source_l00101}00101\ \}}
+
+\end{DoxyCode}

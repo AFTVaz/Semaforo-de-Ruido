@@ -1,0 +1,79 @@
+\doxysection{mqtt.\+h}
+\hypertarget{mqtt_8h_source}{}\label{mqtt_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/mqtt.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/mqtt.h}}
+\mbox{\hyperlink{mqtt_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00027}00027\ \textcolor{preprocessor}{\#ifndef\ \_MQTT\_H\_}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00028}00028\ \textcolor{preprocessor}{\#define\ \_MQTT\_H\_}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ MQTT\_SERVICE\_ID\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ MQTT\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \ "{}iot-\/ps.ddns.net"{}}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ MQTT\_PORT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1884}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ MQTT\_DEVICE\ \ \ \ \ \ \ \ \ \ \ \ \ "{}DevGrupo12"{}}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00037}00037\ \textcolor{preprocessor}{\#define\ MQTT\_DEVICE\_TOKEN\ \ \ \ \ \ \ "{}SEIOT-\/G12"{}}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00039}00039\ \textcolor{preprocessor}{\#define\ MQTT\_USER\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}seiot-\/g12@iot-\/ps.ddns.net"{}}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ MQTT\_PASSWORD\ \ \ \ \ \ \ \ \ \ \ "{}12345678"{}}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ MQTT\_ERROR\ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/1}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ CONNECTION\_KEEPALIVE\_S\ \ 60UL}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ MQTT\_QUEUE\_TIMEOUT\ \ \ \ \ \ pdMS\_TO\_TICKS(100)}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ MQTT\_CMD\_TIMEOUT\ \ \ \ \ \ \ \ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ MQTT\_CIPSTART\_TIMEOUT\ \ \ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ MQTT\_CIPCLOSE\_TIMEOUT\ \ \ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00050}00050\ \textcolor{preprocessor}{\#define\ MQTT\_BUFFER\_SIZE\ \ \ \ \ \ \ \ 512}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00051}00051\ \textcolor{preprocessor}{\#define\ MQTT\_PAYLOAD\_SIZE\ \ \ \ \ \ \ 128}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ MQTT\_SUBACK\_QOS\_0\ \ \ \ \ \ \ 0x00\ \ }\textcolor{comment}{/*\ Subscrição\ aceita\ com\ QoS\ 0\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ MQTT\_SUBACK\_QOS\_1\ \ \ \ \ \ \ 0x01\ \ }\textcolor{comment}{/*\ Subscrição\ aceita\ com\ QoS\ 1\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00055}00055\ \textcolor{preprocessor}{\#define\ MQTT\_SUBACK\_QOS\_2\ \ \ \ \ \ \ 0x02\ \ }\textcolor{comment}{/*\ Subscrição\ aceita\ com\ QoS\ 2\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ MQTT\_SUBACK\_REJECTED\ \ \ \ 0x80\ \ }\textcolor{comment}{/*\ Subscrição\ recusada\ pelo\ broker\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00058}00058\ \textcolor{preprocessor}{\#define\ MQTT\_WAIT\_DELAY\ \ \ \ \ \ \ \ \ pdMS\_TO\_TICKS(10)}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00070}\mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{00070}}\ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\_ConfigCallback}})(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ payload,\ \textcolor{keywordtype}{int}\ len);}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00080}\mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{00080}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{MQTT\_StateValueType}}\ \{}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00081}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a71dccce62ae50ad642698017342f924e}{00081}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a71dccce62ae50ad642698017342f924e}{MQTT\_STATE\_INIT}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00082}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c0a0aefd5715ecc5fa4d30f1121eb6f}{00082}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c0a0aefd5715ecc5fa4d30f1121eb6f}{MQTT\_STATE\_CONNECT}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00083}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86ac11e59eaf9dc2e1a1c04f39d00395235}{00083}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86ac11e59eaf9dc2e1a1c04f39d00395235}{MQTT\_STATE\_WAIT\_CONNECT}},\ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00084}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a95330b5235833111e78254a019cc96cd}{00084}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a95330b5235833111e78254a019cc96cd}{MQTT\_STATE\_SUBSCRIBE}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00085}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2b59fefaaff7f0de3d8933d3ccc19129}{00085}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2b59fefaaff7f0de3d8933d3ccc19129}{MQTT\_STATE\_WAIT\_SUBACK}},\ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00086}00086\ \ \ \ \ \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c52bceb74a33b1899d881e851fe7509}{MQTT\_STATE\_PUBLISH}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00087}\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c52bceb74a33b1899d881e851fe7509}{00087}}\ \}\ \mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{MQTT\_StateValueType}};}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00095}\mbox{\hyperlink{structMQTT__Item}{00095}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00096}\mbox{\hyperlink{structMQTT__Item_a8327cc00ccbfac55578b50aaa1e8f4c9}{00096}}\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structMQTT__Item_a8327cc00ccbfac55578b50aaa1e8f4c9}{mqtt\_payload}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00097}\mbox{\hyperlink{structMQTT__Item_a2a916607ff41380c73ddf505306474e3}{00097}}\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structMQTT__Item_a2a916607ff41380c73ddf505306474e3}{mqtt\_available\_length}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00098}00098\ \}\ \mbox{\hyperlink{structMQTT__Item}{MQTT\_Item}};}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00104}\mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{00104}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{MQTT\_StatusValueType}}\ \{}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00105}\mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20a21c9d7cf53188d6a577ef484486ff70c}{00105}}\ \ \ \ \ \mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20a21c9d7cf53188d6a577ef484486ff70c}{MQTT\_IDLE}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00106}00106\ \ \ \ \ \mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20aacf64652947adb12d3a5d49bdce08bba}{MQTT\_PROCESSING}}\ \ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00107}\mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20aacf64652947adb12d3a5d49bdce08bba}{00107}}\ \}\ \mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{MQTT\_StatusValueType}};}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00119}00119\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MQTT_ga3027457e4c68ef74e482d23262acdc94}{MQTT\_Init}}(\ \mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\_ConfigCallback}}\ callback\ );}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00128}00128\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__MQTT_gae6895794ae3faf8a8f48f364688975c4}{MQTT\_Ready}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00138}00138\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__MQTT_ga20899976470d143256cbf9f502c34ff9}{MQTT\_isReadyToPublish}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00149}00149\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MQTT_gaf6e47d18c76d360b547238fde729462a}{MQTT\_Publish}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *payload);}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00160}00160\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MQTT_ga27cdfab45c8ed36139d0e35dcfb1d9a3}{MQTT\_NoisePublish}}(\textcolor{keywordtype}{float}\ noiseValue,\ time\_t\ time);}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00173}00173\ \mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{MQTT\_StatusValueType}}\ \mbox{\hyperlink{group__MQTT_gaa9364d021a5b92d361eb30df792c5044}{MQTT\_GetStatus}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00190}00190\ \mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{MQTT\_StateValueType}}\ \mbox{\hyperlink{group__MQTT_ga07774c59e06b7e2cf23fccf12754176e}{MQTT\_GetState}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00202}00202\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MQTT_gaa5203e5a65ace6a86d2f96b31545b33e}{MQTT\_Resume}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00204}00204\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_MQTT\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{mqtt_8h_source_l00205}00205\ }
+
+\end{DoxyCode}

@@ -1,0 +1,383 @@
+\doxysubsection{RTC}
+\hypertarget{group__RTC}{}\label{group__RTC}\index{RTC@{RTC}}
+
+
+Provides the core capabilities for rtc functions.  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__RTC_gabd8357ae3c4cf413eb6380e1369761be}{RTC\+\_\+\+PCONP\+\_\+\+ENABLE}}~9
+\item 
+\#define \mbox{\hyperlink{group__RTC_gaf6eafece7bf5fc0acb7101b612fb1b67}{CLKEN\+\_\+\+BIT\+\_\+\+POS}}~0
+\item 
+\#define \mbox{\hyperlink{group__RTC_gaf60728c8060f7714e406e6d5b763db5d}{CTIME\+\_\+\+SEC\+\_\+\+MASK}}~0x3F
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga7a0b4532dc505e1452ef46c4dd855b3e}{CTIME\+\_\+\+MIN\+\_\+\+MASK}}~0x3\+F00
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga7436f41eab7acb47e6064aab49da77fa}{CTIME\+\_\+\+HOUR\+\_\+\+MASK}}~0x1\+F0000
+\item 
+\#define \mbox{\hyperlink{group__RTC_gad3a19e7a4dc1187943b637d2337c7da5}{CTIME\+\_\+\+DOW\+\_\+\+MASK}}~0x7000000
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga769db2115d896b0d38ea7abefd4b9ed7}{CTIME\+\_\+\+DOM\+\_\+\+MASK}}~0x1F
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga6d31a8c255161c0f8825ad2704a161e6}{CTIME\+\_\+\+MONTH\+\_\+\+MASK}}~0x\+F00
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga04d5919603e9d0012b4cb239a80ae1e3}{CTIME\+\_\+\+YEAR\+\_\+\+MASK}}~0x\+FFF0000
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga575f3362f38d03e5c923ac06f47ed5f4}{CTIME\+\_\+\+DOY\+\_\+\+MASK}}~0x\+FFF
+\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__RTC_ga3001452592b562e69fb10ca12a242cbb}{compare\+By\+Time}} (const struct tm \texorpdfstring{$\ast$}{*}a, const struct tm \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compares the time (hours, minutes, seconds) of two struct tm values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_ga8ce39fc6eece59a57c6343c3ee52cbf5}{RTC\+\_\+\+Init}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Initializes the RTC with a timestamp (seconds since 1970-\/01-\/01 00\+:00). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_gace61f28fc849bb1b75c4cec0be8bd830}{RTC\+\_\+\+Get\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves current date and time from the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_ga6547833680b375126353be4952b7edc9}{RTC\+\_\+\+Set\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the RTC with a full date and time from a struct tm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_gacefa177b35b24cdd98a156950f7d051b}{RTC\+\_\+\+Set\+Seconds}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Sets the RTC time using seconds since the Unix epoch (1970-\/01-\/01 00\+:00). \end{DoxyCompactList}\item 
+time\+\_\+t \mbox{\hyperlink{group__RTC_gaed5e5912abe16282e6934f5c108f4ca9}{RTC\+\_\+\+Get\+Seconds}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of seconds since 1970-\/01-\/01 00\+:00 from RTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for rtc functions. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group__RTC_gaf6eafece7bf5fc0acb7101b612fb1b67}\index{RTC@{RTC}!CLKEN\_BIT\_POS@{CLKEN\_BIT\_POS}}
+\index{CLKEN\_BIT\_POS@{CLKEN\_BIT\_POS}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CLKEN\_BIT\_POS}{CLKEN\_BIT\_POS}}
+{\footnotesize\ttfamily \label{group__RTC_gaf6eafece7bf5fc0acb7101b612fb1b67} 
+\#define CLKEN\+\_\+\+BIT\+\_\+\+POS~0}
+
+Bit position for clock enable in CCR 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00030}{30}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00027}{RTC\+\_\+\+Init()}}, and \mbox{\hyperlink{rtc_8c_source_l00053}{RTC\+\_\+\+Set\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga769db2115d896b0d38ea7abefd4b9ed7}\index{RTC@{RTC}!CTIME\_DOM\_MASK@{CTIME\_DOM\_MASK}}
+\index{CTIME\_DOM\_MASK@{CTIME\_DOM\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_DOM\_MASK}{CTIME\_DOM\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga769db2115d896b0d38ea7abefd4b9ed7} 
+\#define CTIME\+\_\+\+DOM\+\_\+\+MASK~0x1F}
+
+Mask for day of month in CTIME1 (bits 0–4) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00035}{35}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_gad3a19e7a4dc1187943b637d2337c7da5}\index{RTC@{RTC}!CTIME\_DOW\_MASK@{CTIME\_DOW\_MASK}}
+\index{CTIME\_DOW\_MASK@{CTIME\_DOW\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_DOW\_MASK}{CTIME\_DOW\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_gad3a19e7a4dc1187943b637d2337c7da5} 
+\#define CTIME\+\_\+\+DOW\+\_\+\+MASK~0x7000000}
+
+Mask for day of week in CTIME0 (bits 24–26) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00034}{34}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga575f3362f38d03e5c923ac06f47ed5f4}\index{RTC@{RTC}!CTIME\_DOY\_MASK@{CTIME\_DOY\_MASK}}
+\index{CTIME\_DOY\_MASK@{CTIME\_DOY\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_DOY\_MASK}{CTIME\_DOY\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga575f3362f38d03e5c923ac06f47ed5f4} 
+\#define CTIME\+\_\+\+DOY\+\_\+\+MASK~0x\+FFF}
+
+Mask for day of year in CTIME2 (bits 0–11) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00038}{38}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga7436f41eab7acb47e6064aab49da77fa}\index{RTC@{RTC}!CTIME\_HOUR\_MASK@{CTIME\_HOUR\_MASK}}
+\index{CTIME\_HOUR\_MASK@{CTIME\_HOUR\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_HOUR\_MASK}{CTIME\_HOUR\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga7436f41eab7acb47e6064aab49da77fa} 
+\#define CTIME\+\_\+\+HOUR\+\_\+\+MASK~0x1\+F0000}
+
+Mask for hours in CTIME0 (bits 16–20) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00033}{33}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga7a0b4532dc505e1452ef46c4dd855b3e}\index{RTC@{RTC}!CTIME\_MIN\_MASK@{CTIME\_MIN\_MASK}}
+\index{CTIME\_MIN\_MASK@{CTIME\_MIN\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_MIN\_MASK}{CTIME\_MIN\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga7a0b4532dc505e1452ef46c4dd855b3e} 
+\#define CTIME\+\_\+\+MIN\+\_\+\+MASK~0x3\+F00}
+
+Mask for minutes in CTIME0 (bits 8–13) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00032}{32}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga6d31a8c255161c0f8825ad2704a161e6}\index{RTC@{RTC}!CTIME\_MONTH\_MASK@{CTIME\_MONTH\_MASK}}
+\index{CTIME\_MONTH\_MASK@{CTIME\_MONTH\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_MONTH\_MASK}{CTIME\_MONTH\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga6d31a8c255161c0f8825ad2704a161e6} 
+\#define CTIME\+\_\+\+MONTH\+\_\+\+MASK~0x\+F00}
+
+Mask for month in CTIME1 (bits 8–11) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00036}{36}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_gaf60728c8060f7714e406e6d5b763db5d}\index{RTC@{RTC}!CTIME\_SEC\_MASK@{CTIME\_SEC\_MASK}}
+\index{CTIME\_SEC\_MASK@{CTIME\_SEC\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_SEC\_MASK}{CTIME\_SEC\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_gaf60728c8060f7714e406e6d5b763db5d} 
+\#define CTIME\+\_\+\+SEC\+\_\+\+MASK~0x3F}
+
+Mask for seconds in CTIME0 (bits 0–5) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00031}{31}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga04d5919603e9d0012b4cb239a80ae1e3}\index{RTC@{RTC}!CTIME\_YEAR\_MASK@{CTIME\_YEAR\_MASK}}
+\index{CTIME\_YEAR\_MASK@{CTIME\_YEAR\_MASK}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{CTIME\_YEAR\_MASK}{CTIME\_YEAR\_MASK}}
+{\footnotesize\ttfamily \label{group__RTC_ga04d5919603e9d0012b4cb239a80ae1e3} 
+\#define CTIME\+\_\+\+YEAR\+\_\+\+MASK~0x\+FFF0000}
+
+Mask for year in CTIME1 (bits 16–27) 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00037}{37}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_gabd8357ae3c4cf413eb6380e1369761be}\index{RTC@{RTC}!RTC\_PCONP\_ENABLE@{RTC\_PCONP\_ENABLE}}
+\index{RTC\_PCONP\_ENABLE@{RTC\_PCONP\_ENABLE}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_PCONP\_ENABLE}{RTC\_PCONP\_ENABLE}}
+{\footnotesize\ttfamily \label{group__RTC_gabd8357ae3c4cf413eb6380e1369761be} 
+\#define RTC\+\_\+\+PCONP\+\_\+\+ENABLE~9}
+
+Power Control bit position for RTC in PCONP 
+
+Definition at line \mbox{\hyperlink{rtc_8h_source_l00029}{29}} of file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00027}{RTC\+\_\+\+Init()}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__RTC_ga3001452592b562e69fb10ca12a242cbb}\index{RTC@{RTC}!compareByTime@{compareByTime}}
+\index{compareByTime@{compareByTime}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{compareByTime()}{compareByTime()}}
+{\footnotesize\ttfamily \label{group__RTC_ga3001452592b562e69fb10ca12a242cbb} 
+int compare\+By\+Time (\begin{DoxyParamCaption}\item[{const struct tm \texorpdfstring{$\ast$}{*}}]{a}{, }\item[{const struct tm \texorpdfstring{$\ast$}{*}}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Compares the time (hours, minutes, seconds) of two struct tm values. 
+
+\begin{DoxyVerb}      Compares only the time portion (ignores date) between structures.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to time structure A. \\
+\hline
+{\em b} & Pointer to time structure B.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Integer result\+: negative if A \texorpdfstring{$<$}{<} B, positive if A \texorpdfstring{$>$}{>} B, zero if equal. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00018}{18}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{rtc_8c_source_l00053}{RTC\+\_\+\+Set\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_gaed5e5912abe16282e6934f5c108f4ca9}\index{RTC@{RTC}!RTC\_GetSeconds@{RTC\_GetSeconds}}
+\index{RTC\_GetSeconds@{RTC\_GetSeconds}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_GetSeconds()}{RTC\_GetSeconds()}}
+{\footnotesize\ttfamily \label{group__RTC_gaed5e5912abe16282e6934f5c108f4ca9} 
+time\+\_\+t RTC\+\_\+\+Get\+Seconds (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the number of seconds since 1970-\/01-\/01 00\+:00 from RTC. 
+
+\begin{DoxyVerb}      Reads current RTC time, fills struct tm, and converts it to time_t.
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+Seconds since Unix epoch. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00083}{83}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+
+
+Referenced by \mbox{\hyperlink{clock_8c_source_l00059}{CLOCK\+\_\+\+Get\+Seconds()}}.
+
+\Hypertarget{group__RTC_gace61f28fc849bb1b75c4cec0be8bd830}\index{RTC@{RTC}!RTC\_GetTimeDate@{RTC\_GetTimeDate}}
+\index{RTC\_GetTimeDate@{RTC\_GetTimeDate}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_GetTimeDate()}{RTC\_GetTimeDate()}}
+{\footnotesize\ttfamily \label{group__RTC_gace61f28fc849bb1b75c4cec0be8bd830} 
+void RTC\+\_\+\+Get\+Time\+Date (\begin{DoxyParamCaption}\item[{struct tm \texorpdfstring{$\ast$}{*}}]{date\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves current date and time from the RTC. 
+
+\begin{DoxyVerb}      Populates a given struct tm with the current values read from CTIME registers.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Time} & Pointer to a struct tm to be filled with RTC values. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00037}{37}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8h_source_l00035}{CTIME\+\_\+\+DOM\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00034}{CTIME\+\_\+\+DOW\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00038}{CTIME\+\_\+\+DOY\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00033}{CTIME\+\_\+\+HOUR\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00032}{CTIME\+\_\+\+MIN\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00036}{CTIME\+\_\+\+MONTH\+\_\+\+MASK}}, \mbox{\hyperlink{rtc_8h_source_l00031}{CTIME\+\_\+\+SEC\+\_\+\+MASK}}, and \mbox{\hyperlink{rtc_8h_source_l00037}{CTIME\+\_\+\+YEAR\+\_\+\+MASK}}.
+
+
+
+Referenced by \mbox{\hyperlink{clock_8c_source_l00032}{CLOCK\+\_\+\+Get\+Time\+Date()}}, \mbox{\hyperlink{rtc_8c_source_l00083}{RTC\+\_\+\+Get\+Seconds()}}, and \mbox{\hyperlink{rtc_8c_source_l00053}{RTC\+\_\+\+Set\+Time\+Date()}}.
+
+\Hypertarget{group__RTC_ga8ce39fc6eece59a57c6343c3ee52cbf5}\index{RTC@{RTC}!RTC\_Init@{RTC\_Init}}
+\index{RTC\_Init@{RTC\_Init}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_Init()}{RTC\_Init()}}
+{\footnotesize\ttfamily \label{group__RTC_ga8ce39fc6eece59a57c6343c3ee52cbf5} 
+void RTC\+\_\+\+Init (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{seconds}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the RTC with a timestamp (seconds since 1970-\/01-\/01 00\+:00). 
+
+\begin{DoxyVerb}      Enables RTC power, disables the clock during setup, sets time,
+      and then starts the RTC clock.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & Seconds since Unix epoch (1970-\/01-\/01 00\+:00). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00027}{27}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8h_source_l00030}{CLKEN\+\_\+\+BIT\+\_\+\+POS}}, \mbox{\hyperlink{rtc_8h_source_l00029}{RTC\+\_\+\+PCONP\+\_\+\+ENABLE}}, and \mbox{\hyperlink{rtc_8c_source_l00076}{RTC\+\_\+\+Set\+Seconds()}}.
+
+
+
+Referenced by \mbox{\hyperlink{clock_8c_source_l00023}{CLOCK\+\_\+\+Init()}}.
+
+\Hypertarget{group__RTC_gacefa177b35b24cdd98a156950f7d051b}\index{RTC@{RTC}!RTC\_SetSeconds@{RTC\_SetSeconds}}
+\index{RTC\_SetSeconds@{RTC\_SetSeconds}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_SetSeconds()}{RTC\_SetSeconds()}}
+{\footnotesize\ttfamily \label{group__RTC_gacefa177b35b24cdd98a156950f7d051b} 
+void RTC\+\_\+\+Set\+Seconds (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{seconds}{}\end{DoxyParamCaption})}
+
+
+
+Sets the RTC time using seconds since the Unix epoch (1970-\/01-\/01 00\+:00). 
+
+\begin{DoxyVerb}      Converts the seconds to a struct tm using localtime() and sets the RTC.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em seconds} & Seconds since Unix epoch. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00076}{76}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8c_source_l00053}{RTC\+\_\+\+Set\+Time\+Date()}}.
+
+
+
+Referenced by \mbox{\hyperlink{clock_8c_source_l00050}{CLOCK\+\_\+\+Set\+Seconds()}}, and \mbox{\hyperlink{rtc_8c_source_l00027}{RTC\+\_\+\+Init()}}.
+
+\Hypertarget{group__RTC_ga6547833680b375126353be4952b7edc9}\index{RTC@{RTC}!RTC\_SetTimeDate@{RTC\_SetTimeDate}}
+\index{RTC\_SetTimeDate@{RTC\_SetTimeDate}!RTC@{RTC}}
+\doxysubsubsubsection{\texorpdfstring{RTC\_SetTimeDate()}{RTC\_SetTimeDate()}}
+{\footnotesize\ttfamily \label{group__RTC_ga6547833680b375126353be4952b7edc9} 
+void RTC\+\_\+\+Set\+Time\+Date (\begin{DoxyParamCaption}\item[{struct tm \texorpdfstring{$\ast$}{*}}]{date\+Time}{}\end{DoxyParamCaption})}
+
+
+
+Sets the RTC with a full date and time from a struct tm. 
+
+\begin{DoxyVerb}      Attempts to apply the desired date/time repeatedly until RTC reflects it.
+      The clock is stopped during updates and re-enabled after.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em date\+Time} & Pointer to struct tm containing desired time and date. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00053}{53}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+References \mbox{\hyperlink{rtc_8h_source_l00030}{CLKEN\+\_\+\+BIT\+\_\+\+POS}}, \mbox{\hyperlink{rtc_8c_source_l00018}{compare\+By\+Time()}}, and \mbox{\hyperlink{rtc_8c_source_l00037}{RTC\+\_\+\+Get\+Time\+Date()}}.
+
+
+
+Referenced by \mbox{\hyperlink{clock_8c_source_l00041}{CLOCK\+\_\+\+Set\+Time\+Date()}}, and \mbox{\hyperlink{rtc_8c_source_l00076}{RTC\+\_\+\+Set\+Seconds()}}.
+

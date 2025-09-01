@@ -1,0 +1,56 @@
+\doxysection{microphone.\+c}
+\hypertarget{microphone_8c_source}{}\label{microphone_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/microphone.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/microphone.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00002}00002\ \textcolor{comment}{\ *\ microphone.c}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 04/06/2025}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Filipe\ Cruz\ (43468)}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}semphr.h"{}}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{max9814_8h}{max9814.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{microphone_8h}{microphone.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00019}00019\ \textcolor{keyword}{static}\ SemaphoreHandle\_t\ xMicMutex\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00021}\mbox{\hyperlink{group__MICROPHONE_gafc459c8eab4bd2211abd27225abfb926}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MICROPHONE_gafc459c8eab4bd2211abd27225abfb926}{MICROPHONE\_Init}}(\ \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\_GainValueType}}\ gain\ )\{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (xMicMutex\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00023}00023\ \ \ \ \ \ \ \ \ xMicMutex\ =\ xSemaphoreCreateMutex();}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xMicMutex\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__MAX9814_ga83196f81e95ff529918765204515ed86}{MAX9814\_Init}}(gain);}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00030}\mbox{\hyperlink{group__MICROPHONE_gaae4c40bbddbefe5cfa4f36652e298e8a}{00030}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__MICROPHONE_gaae4c40bbddbefe5cfa4f36652e298e8a}{MICROPHONE\_Read}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordtype}{float}\ value\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}\ (xMicMutex\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xSemaphoreTake(xMicMutex,\ portMAX\_DELAY)\ ==\ pdTRUE)\ \{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \mbox{\hyperlink{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}{MAX9814\_Read}}();}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(xMicMutex);}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00043}\mbox{\hyperlink{group__MICROPHONE_ga8c1f1f61d5506acac31880f2ac6ae78a}{00043}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MICROPHONE_ga8c1f1f61d5506acac31880f2ac6ae78a}{MICROPHONE\_SetGain}}(\ \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\_GainValueType}}\ gain\ )\{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{if}(\ xMicMutex\ !=\ NULL\ )\{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ xSemaphoreTake(xMicMutex,\ portMAX\_DELAY)\ ==\ pdTRUE\ )\{}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{MAX9814\_SetGain}}(\ gain\ );}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(\ xMicMutex\ );}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{microphone_8c_source_l00050}00050\ \}}
+
+\end{DoxyCode}

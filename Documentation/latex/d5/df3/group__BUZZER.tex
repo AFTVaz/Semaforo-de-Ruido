@@ -1,0 +1,52 @@
+\doxysubsection{BUZZER}
+\hypertarget{group__BUZZER}{}\label{group__BUZZER}\index{BUZZER@{BUZZER}}
+
+
+Provides the core capabilities for buzzer handling functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__BUZZER_gad98dfff2552f0576790516d6b41ae285}\label{group__BUZZER_gad98dfff2552f0576790516d6b41ae285} 
+void {\bfseries BUZZER\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the buzzer as a GPIO output. \end{DoxyCompactList}\item 
+\Hypertarget{group__BUZZER_gaa4fb942154b813e2238a2481b51a9f60}\label{group__BUZZER_gaa4fb942154b813e2238a2481b51a9f60} 
+void {\bfseries BUZZER\+\_\+\+On} (void)
+\begin{DoxyCompactList}\small\item\em Turns the buzzer On. \end{DoxyCompactList}\item 
+\Hypertarget{group__BUZZER_ga634b641daf6a29bf13c8672795cb3dcd}\label{group__BUZZER_ga634b641daf6a29bf13c8672795cb3dcd} 
+void {\bfseries BUZZER\+\_\+\+Off} (void)
+\begin{DoxyCompactList}\small\item\em Turns the buzzer Off. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__BUZZER_ga81f931fba8272a8aba120fe98d4aeb4a}{BUZZER\+\_\+\+Alarm}} (uint32\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em Turns the buzzer on for a specified duration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for buzzer handling functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__BUZZER_ga81f931fba8272a8aba120fe98d4aeb4a}\index{BUZZER@{BUZZER}!BUZZER\_Alarm@{BUZZER\_Alarm}}
+\index{BUZZER\_Alarm@{BUZZER\_Alarm}!BUZZER@{BUZZER}}
+\doxysubsubsubsection{\texorpdfstring{BUZZER\_Alarm()}{BUZZER\_Alarm()}}
+{\footnotesize\ttfamily \label{group__BUZZER_ga81f931fba8272a8aba120fe98d4aeb4a} 
+void BUZZER\+\_\+\+Alarm (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time}{}\end{DoxyParamCaption})}
+
+
+
+Turns the buzzer on for a specified duration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Represents the duration in milliseconds. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{buzzer_8c_source_l00033}{33}} of file \mbox{\hyperlink{buzzer_8c_source}{buzzer.\+c}}.
+
+
+
+References \mbox{\hyperlink{buzzer_8c_source_l00029}{BUZZER\+\_\+\+Off()}}, \mbox{\hyperlink{buzzer_8c_source_l00025}{BUZZER\+\_\+\+On()}}, and \mbox{\hyperlink{delay_8c_source_l00057}{DELAY\+\_\+\+Stopwatch()}}.
+

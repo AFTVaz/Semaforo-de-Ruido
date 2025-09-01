@@ -1,0 +1,20 @@
+18:17:20 **** Incremental Build of configuration Debug for project MQTTPacket ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libMQTTPacket.a" ; # arm-none-eabi-objdump -h -S "libMQTTPacket.a" >"libMQTTPacket.lss"
+   text	   data	    bss	    dec	    hex	filename
+   1023	      0	      0	   1023	    3ff	MQTTConnectClient.o (ex libMQTTPacket.a)
+    789	      0	      0	    789	    315	MQTTConnectServer.o (ex libMQTTPacket.a)
+    378	      0	      0	    378	    17a	MQTTDeserializePublish.o (ex libMQTTPacket.a)
+   1424	     60	      0	   1484	    5cc	MQTTFormat.o (ex libMQTTPacket.a)
+   1692	      0	      4	   1696	    6a0	MQTTPacket.o (ex libMQTTPacket.a)
+    600	      0	      0	    600	    258	MQTTSerializePublish.o (ex libMQTTPacket.a)
+    532	      0	      0	    532	    214	MQTTSubscribeClient.o (ex libMQTTPacket.a)
+    426	      0	      0	    426	    1aa	MQTTSubscribeServer.o (ex libMQTTPacket.a)
+    370	      0	      0	    370	    172	MQTTUnsubscribeClient.o (ex libMQTTPacket.a)
+    328	      0	      0	    328	    148	MQTTUnsubscribeServer.o (ex libMQTTPacket.a)
+ 
+
+18:17:20 Build Finished. 0 errors, 0 warnings. (took 202ms)
+

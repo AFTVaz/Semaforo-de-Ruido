@@ -1,0 +1,76 @@
+\doxysection{clock.\+c}
+\hypertarget{clock_8c_source}{}\label{clock_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/clock.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/clock.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00002}00002\ \textcolor{comment}{\ *\ clock.c}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 17/03/2025}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Filipe\ Cruz\ (43468)}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}semphr.h"{}}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{rtc_8h}{rtc.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{clock_8h}{clock.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00021}00021\ \textcolor{keyword}{static}\ SemaphoreHandle\_t\ xClockMutex\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00023}\mbox{\hyperlink{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CLOCK_gae7dabcf602ec382ccbbbe3c11822a462}{CLOCK\_Init}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}\ (xClockMutex\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ xClockMutex\ =\ xSemaphoreCreateMutex();}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xClockMutex\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__RTC_ga8ce39fc6eece59a57c6343c3ee52cbf5}{RTC\_Init}}(0);}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00032}\mbox{\hyperlink{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5}{00032}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CLOCK_gafe4e74a3221a6158e13d0536d3c79fd5}{CLOCK\_GetTimeDate}}\ (\ \textcolor{keyword}{struct}\ tm\ *dateTime\ )\{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{if}(\ xClockMutex\ !=\ NULL\ )\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xClockMutex\ ,\ portMAX\_DELAY)\ ==\ pdTRUE)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__RTC_gace61f28fc849bb1b75c4cec0be8bd830}{RTC\_GetTimeDate}}\ (\ dateTime\ );}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(xClockMutex);}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00039}00039\ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00041}\mbox{\hyperlink{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c}{00041}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CLOCK_ga4d1d4ab41bd86f509b053527ba3c9d5c}{CLOCK\_SetTimeDate}}(\ \textcolor{keyword}{struct}\ tm\ *dateTime\ )\{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}(\ xClockMutex\ !=\ NULL\ )\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xClockMutex\ ,\ portMAX\_DELAY)\ ==\ pdTRUE)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__RTC_ga6547833680b375126353be4952b7edc9}{RTC\_SetTimeDate}}\ (\ dateTime\ );}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(xClockMutex);}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00050}\mbox{\hyperlink{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a}{00050}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__CLOCK_ga0d7ab50c78ae65bb0080caf0c952870a}{CLOCK\_SetSeconds}}\ (\ time\_t\ seconds\ )\{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{if}(\ xClockMutex\ !=\ NULL\ )\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xClockMutex\ ,\ portMAX\_DELAY)\ ==\ pdTRUE)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__RTC_gacefa177b35b24cdd98a156950f7d051b}{RTC\_SetSeconds}}\ (\ seconds\ );}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(xClockMutex);}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00059}\mbox{\hyperlink{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a}{00059}}\ time\_t\ \mbox{\hyperlink{group__CLOCK_ga039e0690313b99624d12a4c2a6b7b75a}{CLOCK\_GetSeconds}}\ (\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00060}00060\ \ \ \ \ time\_t\ value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{if}\ (xClockMutex\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xSemaphoreTake(xClockMutex\ ,\ portMAX\_DELAY)\ ==\ pdTRUE)\ \{}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ \mbox{\hyperlink{group__RTC_gaed5e5912abe16282e6934f5c108f4ca9}{RTC\_GetSeconds}}();}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ xSemaphoreGive(xClockMutex);}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{clock_8c_source_l00070}00070\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,113 @@
+\doxysection{WIFI\+\_\+\+Queue\+Item Struct Reference}
+\hypertarget{structWIFI__QueueItem}{}\label{structWIFI__QueueItem}\index{WIFI\_QueueItem@{WIFI\_QueueItem}}
+
+
+Structure used to send commands via queue to the Wi-\/\+Fi task.  
+
+
+
+
+{\ttfamily \#include $<$wifi.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__WIFI_ga8823d4fb6a389d132c4d64943ce381ec}{WIFI\+\_\+\+Command\+Value\+Type}} \mbox{\hyperlink{structWIFI__QueueItem_a80acb82c60bff24b1953fbb647a219a5}{cmd}}
+\item 
+int \mbox{\hyperlink{structWIFI__QueueItem_a6729201fa4dc03db64d60a1738d2aad4}{timeout\+MS}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWIFI__QueueItem_a7b9da89fde03b080e2ce6d00929c7106}{command}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWIFI__QueueItem_a64d2ff548e4434076aee6b7361f98646}{packet}}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structWIFI__QueueItem_a622170d1d609e4991b87e5a774e04e86}{user\+\_\+data}}
+\item 
+int \mbox{\hyperlink{structWIFI__QueueItem_ac8953a5e6bcd21d3cf44208b76f86d4d}{length}}
+\item 
+\mbox{\hyperlink{group__WIFI_ga4b8d9aeb80496c7e3faf9b99badbdd44}{WIFI\+\_\+\+Parser\+Func}} \mbox{\hyperlink{structWIFI__QueueItem_ad4b89c6a84f888f507f9d7d31c42cafa}{parser}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure used to send commands via queue to the Wi-\/\+Fi task. 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00148}{148}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structWIFI__QueueItem_a80acb82c60bff24b1953fbb647a219a5}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!cmd@{cmd}}
+\index{cmd@{cmd}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{cmd}{cmd}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_a80acb82c60bff24b1953fbb647a219a5} 
+\mbox{\hyperlink{group__WIFI_ga8823d4fb6a389d132c4d64943ce381ec}{WIFI\+\_\+\+Command\+Value\+Type}} WIFI\+\_\+\+Queue\+Item\+::cmd}
+
+The command to execute 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00149}{149}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_a7b9da89fde03b080e2ce6d00929c7106}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!command@{command}}
+\index{command@{command}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{command}{command}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_a7b9da89fde03b080e2ce6d00929c7106} 
+char\texorpdfstring{$\ast$}{*} WIFI\+\_\+\+Queue\+Item\+::command}
+
+AT command string 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00151}{151}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_ac8953a5e6bcd21d3cf44208b76f86d4d}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!length@{length}}
+\index{length@{length}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_ac8953a5e6bcd21d3cf44208b76f86d4d} 
+int WIFI\+\_\+\+Queue\+Item\+::length}
+
+Length of data (for send/receive operations) 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00154}{154}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_a64d2ff548e4434076aee6b7361f98646}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!packet@{packet}}
+\index{packet@{packet}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_a64d2ff548e4434076aee6b7361f98646} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} WIFI\+\_\+\+Queue\+Item\+::packet}
+
+Binary Data Packet 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00152}{152}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_ad4b89c6a84f888f507f9d7d31c42cafa}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!parser@{parser}}
+\index{parser@{parser}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_ad4b89c6a84f888f507f9d7d31c42cafa} 
+\mbox{\hyperlink{group__WIFI_ga4b8d9aeb80496c7e3faf9b99badbdd44}{WIFI\+\_\+\+Parser\+Func}} WIFI\+\_\+\+Queue\+Item\+::parser}
+
+Response parser function 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00155}{155}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_a6729201fa4dc03db64d60a1738d2aad4}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!timeoutMS@{timeoutMS}}
+\index{timeoutMS@{timeoutMS}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{timeoutMS}{timeoutMS}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_a6729201fa4dc03db64d60a1738d2aad4} 
+int WIFI\+\_\+\+Queue\+Item\+::timeout\+MS}
+
+Timeout for the command (in milliseconds) 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00150}{150}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+\Hypertarget{structWIFI__QueueItem_a622170d1d609e4991b87e5a774e04e86}\index{WIFI\_QueueItem@{WIFI\_QueueItem}!user\_data@{user\_data}}
+\index{user\_data@{user\_data}!WIFI\_QueueItem@{WIFI\_QueueItem}}
+\doxysubsubsection{\texorpdfstring{user\_data}{user\_data}}
+{\footnotesize\ttfamily \label{structWIFI__QueueItem_a622170d1d609e4991b87e5a774e04e86} 
+void\texorpdfstring{$\ast$}{*} WIFI\+\_\+\+Queue\+Item\+::user\+\_\+data}
+
+User data or output pointer 
+
+Definition at line \mbox{\hyperlink{wifi_8h_source_l00153}{153}} of file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.\+10.\+0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/\mbox{\hyperlink{wifi_8h}{wifi.\+h}}\end{DoxyCompactItemize}

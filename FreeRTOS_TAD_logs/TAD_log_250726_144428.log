@@ -1,0 +1,57 @@
+"Task Aware Debugger for GDB" version 11.10.0 (202404041456)
+Copyright 2016-2023 NXP
+==================================
+14:37:44.851 INFO: [TadModel] DSF session ID 1 has started.
+14:37:48.303 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (RESUMED, USER_REQUEST)
+14:37:48.337 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (SUSPENDED, SIGNAL)
+14:37:49.152 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (RESUMED, USER_REQUEST)
+14:37:49.281 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+14:38:05.128 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:39:48.93 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:39:48.116 INFO: [Benchmark] Loading data for "Determine RTOS version" has started.
+14:39:48.166 ERROR: [VariableReader] Could not read variable expression: "&(FreeRTOSDebugConfig)".
+14:39:48.166 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:39:48.166 ERROR: [VariableReader] -data-evaluate-expression &(FreeRTOSDebugConfig)
+14:39:48.166 ERROR: [VariableReader] Error message from debugger back end:
+14:39:48.166 ERROR: [VariableReader] No symbol "FreeRTOSDebugConfig" in current context. java.lang.Exception: No symbol "FreeRTOSDebugConfig" in current context.
+14:39:48.178 ERROR: [VariableReader] Could not read variable expression: "sizeof(struct TaskControlBlock_t)".
+14:39:48.178 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:39:48.178 ERROR: [VariableReader] -data-evaluate-expression "sizeof(struct TaskControlBlock_t)"
+14:39:48.178 ERROR: [VariableReader] Error message from debugger back end:
+14:39:48.178 ERROR: [VariableReader] No struct type named TaskControlBlock_t. java.lang.Exception: No struct type named TaskControlBlock_t.
+14:39:48.194 ERROR: [VariableReader] Could not read variable expression: "&(((struct QueueDefinition *) 0)->pcTail)".
+14:39:48.194 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:39:48.194 ERROR: [VariableReader] -data-evaluate-expression "&(((struct QueueDefinition *) 0)->pcTail)"
+14:39:48.194 ERROR: [VariableReader] Error message from debugger back end:
+14:39:48.194 ERROR: [VariableReader] There is no member named pcTail. java.lang.Exception: There is no member named pcTail.
+14:39:48.194 INFO: [FreeRtosTadModel] FreeRTOS version has been identified from available FreeRTOS symbols as 10.11.
+14:39:48.194 INFO: [Benchmark] Loading data for "Determine RTOS version" took 79 ms.
+14:39:48.195 INFO: [Benchmark] Loading data for "Task List" has started.
+14:39:49.635 ERROR: [VariableReader] Could not read variable expression: "(((struct tskTaskControlBlock *) 0x10003250)->uxCoreAffinityMask)".
+14:39:49.635 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+14:39:49.635 ERROR: [VariableReader] -data-evaluate-expression "(((struct tskTaskControlBlock *) 0x10003250)->uxCoreAffinityMask)"
+14:39:49.635 ERROR: [VariableReader] Error message from debugger back end:
+14:39:49.635 ERROR: [VariableReader] There is no member named uxCoreAffinityMask. java.lang.Exception: There is no member named uxCoreAffinityMask.
+14:39:49.636 INFO: [FreeRTOS] RTOS macro "configUSE_CORE_AFFINITY" is disabled.
+14:39:52.434 INFO: [Benchmark] Loading data for "Task List" took 4239 ms.
+14:39:53.389 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:41:06.370 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:41:06.371 INFO: [Benchmark] Loading data for "Task List" has started.
+14:41:10.756 INFO: [Benchmark] Loading data for "Task List" took 4385 ms.
+14:41:12.305 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:41:49.880 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:41:49.881 INFO: [Benchmark] Loading data for "Task List" has started.
+14:41:53.457 INFO: [Benchmark] Loading data for "Task List" took 3577 ms.
+14:41:59.120 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:43:04.376 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:43:04.377 INFO: [Benchmark] Loading data for "Task List" has started.
+14:43:08.79 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:43:08.308 INFO: [Benchmark] Loading data for "Task List" took 3931 ms.
+14:43:11.62 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:43:11.63 INFO: [Benchmark] Loading data for "Task List" has started.
+14:43:14.382 INFO: [Benchmark] Loading data for "Task List" took 3319 ms.
+14:43:14.859 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+14:44:26.130 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+14:44:26.131 INFO: [Benchmark] Loading data for "Task List" has started.
+14:44:26.887 INFO: [Benchmark] Loading data for "Task List" took 756 ms.
+14:44:28.283 INFO: [TadModel] DSF session ID 1 has ended.

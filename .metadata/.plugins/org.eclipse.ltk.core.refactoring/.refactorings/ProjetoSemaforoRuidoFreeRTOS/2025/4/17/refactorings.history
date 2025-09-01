@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ProjetoSemaforoRuidoFreeRTOS/src/ProjetoSistemaConfortoFreeRTOS.c&apos; to &apos;ProjetoSemaforoRuidoFreeRTOS.c&apos;" description="Rename resource &apos;ProjetoSistemaConfortoFreeRTOS.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/ProjetoSistemaConfortoFreeRTOS.c" name="ProjetoSemaforoRuidoFreeRTOS.c" stamp="1745506893692" updateReferences="true"/>
+</session>

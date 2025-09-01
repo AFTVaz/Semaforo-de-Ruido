@@ -1,0 +1,275 @@
+\doxysubsection{FLASH}
+\hypertarget{group__FLASH}{}\label{group__FLASH}\index{FLASH@{FLASH}}
+
+
+Provides the core capabilities for flash functions.  
+
+
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30}{FLASH\+\_\+\+Status\+Code\+Type}} \{ \newline
+\mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a0a22fcf0d061f9b1473876e43d12c33c}{CMD\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a495c8431364b64b83e6f7cad3529ffc8}{INVALID\+\_\+\+COMMAND}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ae8e1700ae64fd2768bffba7021b7d952}{SRC\+\_\+\+ADDR\+\_\+\+ERROR}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a4e4b017a858401bfd969a3b6e753095d}{DST\+\_\+\+ADDR\+\_\+\+ERROR}}
+, \newline
+\mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30abac1183d3d8b9b697797e6bd7f332c45}{SRC\+\_\+\+ADDR\+\_\+\+NOT\+\_\+\+MAPPED}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a08e86bb874ef54e185ef63dcfab3a490}{DST\+\_\+\+ADDR\+\_\+\+NOT\+\_\+\+MAPPED}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a136a419e57cee1b9c38dd3b1187711df}{COUNT\+\_\+\+ERROR}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a562854c4161d8181b2d0d7108f2f81e7}{INVALID\+\_\+\+SECTOR}}
+, \newline
+\mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ab1f63a703766fecd25893860833489b8}{SECTOR\+\_\+\+NOT\+\_\+\+BLANK}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a452c999bb4501c15d9e9f92f605bc8a4}{SECTOR\+\_\+\+NOT\+\_\+\+PREPARED\+\_\+\+FOR\+\_\+\+WRITE\+\_\+\+OPERATION}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ad8f7a7969d0f0f7e70ad5bc7e42341af}{COMPARE\+\_\+\+ERROR}}
+, \mbox{\hyperlink{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30aa6e504d57ec9777faa0185fbd3b93b97}{BUSY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Return status codes from IAP Flash operations. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd}{FLASH\+\_\+\+Command\+Code\+Type}} \{ \newline
+\mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1f232bc84e178331a1bfb6134e0e3900}{Prepare\+\_\+\+Sectors\+\_\+\+For\+\_\+\+Write}} = 50
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda727b7090cad7ebcd8f671f2a9722b307}{COPY\+\_\+\+RAM\+\_\+\+TO\+\_\+\+FLASH}} = 51
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda5e4681313add6781e9e88469c3bac1f2}{Erase\+\_\+\+Sectors}} = 52
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1a949241390b98e4c484fbdca58f7454}{Blank\+\_\+\+Check\+\_\+\+Sectors}} = 53
+, \newline
+\mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda9cac959d62538da2201dd19f9dcd5dba}{Read\+\_\+\+Part\+\_\+\+Identification\+\_\+\+Number}} = 54
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdacad4796e34adf397542ac1cb4b11caa9}{Read\+\_\+\+Boot\+\_\+\+Code\+\_\+\+Version\+\_\+\+Number}} = 55
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda86c1793bd68db3fbc27ecb0d429aa236}{Compare\+\_\+\+Addr1\+\_\+\+Addr2\+\_\+n\+Bytes}} = 56
+, \mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdac682ac7ce152c29f1009d021538fb208}{Re\+\_\+\+Invoke\+\_\+\+ISP}} = 57
+, \newline
+\mbox{\hyperlink{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdaee1b27d3fe680ea4f331becb47f38a9b}{Read\+\_\+\+Device\+\_\+\+Serial\+\_\+\+Number}} = 58
+ \}
+\begin{DoxyCompactList}\small\item\em IAP command codes for Flash operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{group__FLASH_gadaf2dd948bfa26ae4ec93908ec148bab}{FLASH\+\_\+\+Erase\+Sector}} (unsigned int sector)
+\begin{DoxyCompactList}\small\item\em Erases a given Flash sector. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{group__FLASH_ga3db6ec18c90224fb77b17365442f9247}{FLASH\+\_\+\+Write\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Writes data from RAM to a given Flash address. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{group__FLASH_ga34f8a70dbbe55c632a9135db50dce515}{FLASH\+\_\+\+Verify\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Compares memory contents between Flash and RAM. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for flash functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd}\index{FLASH@{FLASH}!FLASH\_CommandCodeType@{FLASH\_CommandCodeType}}
+\index{FLASH\_CommandCodeType@{FLASH\_CommandCodeType}!FLASH@{FLASH}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_CommandCodeType}{FLASH\_CommandCodeType}}
+{\footnotesize\ttfamily \label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+enum \mbox{\hyperlink{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd}{FLASH\+\_\+\+Command\+Code\+Type}}}
+
+
+
+IAP command codes for Flash operations. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Prepare\_Sectors\_For\_Write@{Prepare\_Sectors\_For\_Write}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Prepare\_Sectors\_For\_Write@{Prepare\_Sectors\_For\_Write}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1f232bc84e178331a1bfb6134e0e3900}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Prepare\+\_\+\+Sectors\+\_\+\+For\+\_\+\+Write&Prepare sectors for write/erase \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COPY\_RAM\_TO\_FLASH@{COPY\_RAM\_TO\_FLASH}!FLASH@{FLASH}}\index{FLASH@{FLASH}!COPY\_RAM\_TO\_FLASH@{COPY\_RAM\_TO\_FLASH}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda727b7090cad7ebcd8f671f2a9722b307}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+COPY\+\_\+\+RAM\+\_\+\+TO\+\_\+\+FLASH&Copy data from RAM to Flash \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Erase\_Sectors@{Erase\_Sectors}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Erase\_Sectors@{Erase\_Sectors}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda5e4681313add6781e9e88469c3bac1f2}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Erase\+\_\+\+Sectors&Erase Flash sectors \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Blank\_Check\_Sectors@{Blank\_Check\_Sectors}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Blank\_Check\_Sectors@{Blank\_Check\_Sectors}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda1a949241390b98e4c484fbdca58f7454}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Blank\+\_\+\+Check\+\_\+\+Sectors&Check if sectors are blank \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Read\_Part\_Identification\_Number@{Read\_Part\_Identification\_Number}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Read\_Part\_Identification\_Number@{Read\_Part\_Identification\_Number}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda9cac959d62538da2201dd19f9dcd5dba}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Read\+\_\+\+Part\+\_\+\+Identification\+\_\+\+Number&Read part ID number \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Read\_Boot\_Code\_Version\_Number@{Read\_Boot\_Code\_Version\_Number}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Read\_Boot\_Code\_Version\_Number@{Read\_Boot\_Code\_Version\_Number}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdacad4796e34adf397542ac1cb4b11caa9}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Read\+\_\+\+Boot\+\_\+\+Code\+\_\+\+Version\+\_\+\+Number&Read boot code version \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Compare\_Addr1\_Addr2\_nBytes@{Compare\_Addr1\_Addr2\_nBytes}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Compare\_Addr1\_Addr2\_nBytes@{Compare\_Addr1\_Addr2\_nBytes}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bda86c1793bd68db3fbc27ecb0d429aa236}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Compare\+\_\+\+Addr1\+\_\+\+Addr2\+\_\+n\+Bytes&Compare memory contents \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Re\_Invoke\_ISP@{Re\_Invoke\_ISP}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Re\_Invoke\_ISP@{Re\_Invoke\_ISP}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdac682ac7ce152c29f1009d021538fb208}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Re\+\_\+\+Invoke\+\_\+\+ISP&Reinvoke ISP mode \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Read\_Device\_Serial\_Number@{Read\_Device\_Serial\_Number}!FLASH@{FLASH}}\index{FLASH@{FLASH}!Read\_Device\_Serial\_Number@{Read\_Device\_Serial\_Number}}}\Hypertarget{group__FLASH_ggacd4759d767f9f04f70c6739a8f7538bdaee1b27d3fe680ea4f331becb47f38a9b}\label{group__FLASH_gacd4759d767f9f04f70c6739a8f7538bd} 
+Read\+\_\+\+Device\+\_\+\+Serial\+\_\+\+Number&Read device serial number \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{flash_8h_source_l00051}{51}} of file \mbox{\hyperlink{flash_8h_source}{flash.\+h}}.
+
+\Hypertarget{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30}\index{FLASH@{FLASH}!FLASH\_StatusCodeType@{FLASH\_StatusCodeType}}
+\index{FLASH\_StatusCodeType@{FLASH\_StatusCodeType}!FLASH@{FLASH}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_StatusCodeType}{FLASH\_StatusCodeType}}
+{\footnotesize\ttfamily \label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+enum \mbox{\hyperlink{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30}{FLASH\+\_\+\+Status\+Code\+Type}}}
+
+
+
+Return status codes from IAP Flash operations. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CMD\_SUCCESS@{CMD\_SUCCESS}!FLASH@{FLASH}}\index{FLASH@{FLASH}!CMD\_SUCCESS@{CMD\_SUCCESS}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a0a22fcf0d061f9b1473876e43d12c33c}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+CMD\+\_\+\+SUCCESS&Operation successful \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_COMMAND@{INVALID\_COMMAND}!FLASH@{FLASH}}\index{FLASH@{FLASH}!INVALID\_COMMAND@{INVALID\_COMMAND}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a495c8431364b64b83e6f7cad3529ffc8}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+INVALID\+\_\+\+COMMAND&Invalid IAP command code \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SRC\_ADDR\_ERROR@{SRC\_ADDR\_ERROR}!FLASH@{FLASH}}\index{FLASH@{FLASH}!SRC\_ADDR\_ERROR@{SRC\_ADDR\_ERROR}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ae8e1700ae64fd2768bffba7021b7d952}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+SRC\+\_\+\+ADDR\+\_\+\+ERROR&Source address error (not on word boundary) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DST\_ADDR\_ERROR@{DST\_ADDR\_ERROR}!FLASH@{FLASH}}\index{FLASH@{FLASH}!DST\_ADDR\_ERROR@{DST\_ADDR\_ERROR}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a4e4b017a858401bfd969a3b6e753095d}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+DST\+\_\+\+ADDR\+\_\+\+ERROR&Destination address error (not on word boundary) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SRC\_ADDR\_NOT\_MAPPED@{SRC\_ADDR\_NOT\_MAPPED}!FLASH@{FLASH}}\index{FLASH@{FLASH}!SRC\_ADDR\_NOT\_MAPPED@{SRC\_ADDR\_NOT\_MAPPED}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30abac1183d3d8b9b697797e6bd7f332c45}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+SRC\+\_\+\+ADDR\+\_\+\+NOT\+\_\+\+MAPPED&Source address not mapped in memory \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DST\_ADDR\_NOT\_MAPPED@{DST\_ADDR\_NOT\_MAPPED}!FLASH@{FLASH}}\index{FLASH@{FLASH}!DST\_ADDR\_NOT\_MAPPED@{DST\_ADDR\_NOT\_MAPPED}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a08e86bb874ef54e185ef63dcfab3a490}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+DST\+\_\+\+ADDR\+\_\+\+NOT\+\_\+\+MAPPED&Destination address not mapped in memory \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COUNT\_ERROR@{COUNT\_ERROR}!FLASH@{FLASH}}\index{FLASH@{FLASH}!COUNT\_ERROR@{COUNT\_ERROR}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a136a419e57cee1b9c38dd3b1187711df}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+COUNT\+\_\+\+ERROR&Byte count is not valid \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_SECTOR@{INVALID\_SECTOR}!FLASH@{FLASH}}\index{FLASH@{FLASH}!INVALID\_SECTOR@{INVALID\_SECTOR}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a562854c4161d8181b2d0d7108f2f81e7}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+INVALID\+\_\+\+SECTOR&Sector number is invalid or out of range \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SECTOR\_NOT\_BLANK@{SECTOR\_NOT\_BLANK}!FLASH@{FLASH}}\index{FLASH@{FLASH}!SECTOR\_NOT\_BLANK@{SECTOR\_NOT\_BLANK}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ab1f63a703766fecd25893860833489b8}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+SECTOR\+\_\+\+NOT\+\_\+\+BLANK&Sector is not blank \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SECTOR\_NOT\_PREPARED\_FOR\_WRITE\_OPERATION@{SECTOR\_NOT\_PREPARED\_FOR\_WRITE\_OPERATION}!FLASH@{FLASH}}\index{FLASH@{FLASH}!SECTOR\_NOT\_PREPARED\_FOR\_WRITE\_OPERATION@{SECTOR\_NOT\_PREPARED\_FOR\_WRITE\_OPERATION}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30a452c999bb4501c15d9e9f92f605bc8a4}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+SECTOR\+\_\+\+NOT\+\_\+\+PREPARED\+\_\+\+FOR\+\_\+\+WRITE\+\_\+\+OPERATION&Sector not prepared before writing \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMPARE\_ERROR@{COMPARE\_ERROR}!FLASH@{FLASH}}\index{FLASH@{FLASH}!COMPARE\_ERROR@{COMPARE\_ERROR}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30ad8f7a7969d0f0f7e70ad5bc7e42341af}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+COMPARE\+\_\+\+ERROR&Compare operation failed (data mismatch) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUSY@{BUSY}!FLASH@{FLASH}}\index{FLASH@{FLASH}!BUSY@{BUSY}}}\Hypertarget{group__FLASH_gga78e22115e69cdb6038b63214cc54cd30aa6e504d57ec9777faa0185fbd3b93b97}\label{group__FLASH_ga78e22115e69cdb6038b63214cc54cd30} 
+BUSY&Flash is busy with another operation \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{flash_8h_source_l00032}{32}} of file \mbox{\hyperlink{flash_8h_source}{flash.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__FLASH_gadaf2dd948bfa26ae4ec93908ec148bab}\index{FLASH@{FLASH}!FLASH\_EraseSector@{FLASH\_EraseSector}}
+\index{FLASH\_EraseSector@{FLASH\_EraseSector}!FLASH@{FLASH}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_EraseSector()}{FLASH\_EraseSector()}}
+{\footnotesize\ttfamily \label{group__FLASH_gadaf2dd948bfa26ae4ec93908ec148bab} 
+unsigned int FLASH\+\_\+\+Erase\+Sector (\begin{DoxyParamCaption}\item[{unsigned int}]{sector}{}\end{DoxyParamCaption})}
+
+
+
+Erases a given Flash sector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sector} & Sector number to erase (e.\+g., 0 to 29 for LPC1769) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code indicating success or specific error. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash_8c_source_l00034}{34}} of file \mbox{\hyperlink{flash_8c_source}{flash.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8h_source_l00033}{CMD\+\_\+\+SUCCESS}}, \mbox{\hyperlink{flash_8h_source_l00054}{Erase\+\_\+\+Sectors}}, and \mbox{\hyperlink{flash_8h_source_l00052}{Prepare\+\_\+\+Sectors\+\_\+\+For\+\_\+\+Write}}.
+
+
+
+Referenced by \mbox{\hyperlink{flashcontrol_8c_source_l00020}{FLASHCONTROL\+\_\+\+Erase\+Sector()}}.
+
+\Hypertarget{group__FLASH_ga34f8a70dbbe55c632a9135db50dce515}\index{FLASH@{FLASH}!FLASH\_VerifyData@{FLASH\_VerifyData}}
+\index{FLASH\_VerifyData@{FLASH\_VerifyData}!FLASH@{FLASH}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_VerifyData()}{FLASH\_VerifyData()}}
+{\footnotesize\ttfamily \label{group__FLASH_ga34f8a70dbbe55c632a9135db50dce515} 
+unsigned int FLASH\+\_\+\+Verify\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Compares memory contents between Flash and RAM. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Destination address (typically Flash) \\
+\hline
+{\em src\+Addr} & Source address (typically RAM) \\
+\hline
+{\em size} & Number of bytes to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+CMD\+\_\+\+SUCCESS if equal, COMPARE\+\_\+\+ERROR if data differs 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash_8c_source_l00085}{85}} of file \mbox{\hyperlink{flash_8c_source}{flash.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8h_source_l00058}{Compare\+\_\+\+Addr1\+\_\+\+Addr2\+\_\+n\+Bytes}}.
+
+
+
+Referenced by \mbox{\hyperlink{flashcontrol_8c_source_l00061}{FLASHCONTROL\+\_\+\+Verify\+Data()}}.
+
+\Hypertarget{group__FLASH_ga3db6ec18c90224fb77b17365442f9247}\index{FLASH@{FLASH}!FLASH\_WriteData@{FLASH\_WriteData}}
+\index{FLASH\_WriteData@{FLASH\_WriteData}!FLASH@{FLASH}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_WriteData()}{FLASH\_WriteData()}}
+{\footnotesize\ttfamily \label{group__FLASH_ga3db6ec18c90224fb77b17365442f9247} 
+unsigned int FLASH\+\_\+\+Write\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Writes data from RAM to a given Flash address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Destination Flash address (must be 256-\/byte aligned) \\
+\hline
+{\em src\+Addr} & Source RAM address (must be word-\/aligned) \\
+\hline
+{\em size} & Number of bytes to write (must be multiple of 256) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code indicating success or specific error. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash_8c_source_l00058}{58}} of file \mbox{\hyperlink{flash_8c_source}{flash.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8h_source_l00033}{CMD\+\_\+\+SUCCESS}}, \mbox{\hyperlink{flash_8h_source_l00053}{COPY\+\_\+\+RAM\+\_\+\+TO\+\_\+\+FLASH}}, \mbox{\hyperlink{flash_8h_source_l00040}{INVALID\+\_\+\+SECTOR}}, and \mbox{\hyperlink{flash_8h_source_l00052}{Prepare\+\_\+\+Sectors\+\_\+\+For\+\_\+\+Write}}.
+
+
+
+Referenced by \mbox{\hyperlink{flashcontrol_8c_source_l00024}{FLASHCONTROL\+\_\+\+Write\+Data()}}.
+

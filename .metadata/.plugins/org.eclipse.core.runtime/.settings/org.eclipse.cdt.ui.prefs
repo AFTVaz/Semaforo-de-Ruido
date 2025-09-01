@@ -1,0 +1,17 @@
+c_comment_task_tag=255,128,0
+c_multi_line_comment=255,128,0
+c_single_line_comment=255,128,0
+eclipse.preferences.version=1
+matchingBracketsColor=192,192,192
+scalability.detect=false
+semanticHighlighting.globalVariable.color=128,255,0
+semanticHighlighting.globalVariable.enabled=true
+semanticHighlighting.localVariableDeclaration.bold=true
+semanticHighlighting.localVariableDeclaration.color=128,255,255
+semanticHighlighting.macroSubstitution.bold=true
+semanticHighlighting.macroSubstitution.color=128,255,128
+semanticHighlighting.macroSubstitution.enabled=true
+sourceHoverBackgroundColor=47,47,47
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

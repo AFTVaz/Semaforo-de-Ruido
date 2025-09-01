@@ -1,0 +1,113 @@
+/*
+ * max9814.c
+ *
+ *  Created on: 16/04/2025
+ *      Author: André Vaz (48209) e Filipe Cruz (43468)
+ */
+
+#ifdef __USE_CMSIS
+#include "LPC17xx.h"
+#endif
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <math.h>
+#include "pin.h"
+#include "pinconfig.h"
+#include "max9814.h"
+#include "adc.h"
+
+#define MAX9814_NUM_SAMPLES		50
+#define MAX9814_BIAS_MIN    	1.14f
+#define MAX9814_BIAS_MAX    	1.32f
+#define ADC_REFP_VOLTAGE		3.3f
+#define ADC_MAX_VOLTAGE			3.0f
+#define ADC_MAX_DIVISIONS     	4096.0f  	// 12 bits ADC
+
+#define OFFSET_CAL_SAMPLES		5000     	// calibração do offset
+
+#define MAX9814_DB_SPL_REF		94.0f    	// Referência 94 dB SPL = 1 Pa
+#define MAX9814_SENSITIVITY		-44.0f   	// Sensibilidade do microfone sem ganho (em dBV/Pa)
+
+static uint16_t mic_buffer[MAX9814_NUM_SAMPLES];
+static uint8_t mic_channel = 0;
+
+static float adc_offset = 2048.0f;
+static float adc_resolution = ADC_MAX_VOLTAGE/ADC_MAX_DIVISIONS;
+static MAX9814_GainValueType current_gain = MAX9814_FLOAT_GAIN;
+
+static float mic_ref_Vout = 0.0f;
+static float mic_gain_db = 0.0f;
+
+static float mic_bias_min = MAX9814_BIAS_MIN/adc_resolution;
+static float mic_bias_max = MAX9814_BIAS_MAX/adc_resolution;
+
+static void MAX9814_Calculate_Sensitivity( void ) {
+    float mic_sensitivity_v_pa = powf(10.0f, MAX9814_SENSITIVITY / 20.0f);
+    mic_ref_Vout = mic_sensitivity_v_pa * powf(10.0f, mic_gain_db / 20.0f);
+}
+
+static float MAX9814_Calibrate_ADC_Offset(uint8_t channel, uint32_t samples) {
+	uint64_t sum = 0;
+	for (uint32_t i = 0; i < samples; i++) {
+		sum += ADC_Read(channel);
+	}
+	float offset_adc = (float)sum / (float)samples;
+
+	if (offset_adc < mic_bias_min)
+		offset_adc = mic_bias_min;
+	else if (offset_adc > mic_bias_max)
+		offset_adc = mic_bias_max;
+
+	return offset_adc;
+}
+
+static float MAX9814_Calculate_ADC_Average( uint16_t *samples, uint32_t len, float offset ){
+	float sum_squares = 0.0f;
+	for (uint32_t i = 0; i < len; i++) {
+		float centered = (float)samples[i] - offset;
+		sum_squares += centered * centered;
+	}
+	return sqrtf(sum_squares / (float)len);
+}
+
+static float MAX9814_Conversion_To_DB( float adc_avg_value ){
+	float v_out = adc_avg_value * adc_resolution;
+	return 20.0f * log10f(v_out / mic_ref_Vout) + mic_gain_db;
+}
+
+void MAX9814_Init( MAX9814_GainValueType mic_gain ){
+	ADC_Init(mic_channel);
+	PINCFG_Function( MAX9814_GAIN_PIN, GPIO );
+	MAX9814_SetGain(mic_gain);
+	adc_offset = MAX9814_Calibrate_ADC_Offset(mic_channel, OFFSET_CAL_SAMPLES);
+}
+
+float MAX9814_Read(void) {
+	for (uint32_t i = 0; i < MAX9814_NUM_SAMPLES; i++) {
+		mic_buffer[i] = ADC_Read(mic_channel);
+	}
+
+	float rms = MAX9814_Calculate_ADC_Average(mic_buffer, MAX9814_NUM_SAMPLES, adc_offset);
+	return MAX9814_Conversion_To_DB(rms);
+}
+
+void MAX9814_SetGain( MAX9814_GainValueType gain ){
+	current_gain = gain;
+	switch (gain) {
+	case MAX9814_VCC_GAIN:
+		PIN_Direction(MAX9814_GAIN_PIN, OUTPUT);
+		PIN_Clear(MAX9814_GAIN_PIN);
+		mic_gain_db = 40.0f;
+		break;
+	case MAX9814_GND_GAIN:
+		PIN_Direction(MAX9814_GAIN_PIN, OUTPUT);
+		PIN_Set(MAX9814_GAIN_PIN);
+		mic_gain_db = 50.0f;
+		break;
+	case MAX9814_FLOAT_GAIN:
+		PIN_Direction(MAX9814_GAIN_PIN, INPUT);
+		mic_gain_db = 60.0f;
+		break;
+	}
+}

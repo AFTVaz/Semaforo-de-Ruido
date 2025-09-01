@@ -1,0 +1,132 @@
+\doxysubsection{FLASH\+\_\+\+Free\+RTOS}
+\hypertarget{group__FLASH__FreeRTOS}{}\label{group__FLASH__FreeRTOS}\index{FLASH\_FreeRTOS@{FLASH\_FreeRTOS}}
+
+
+Provides the core capabilities for flash memory Free\+RTOS functions.  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}\label{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017} 
+\#define {\bfseries FLASH\+\_\+\+RTOS\+\_\+\+ERROR}~-\/1
+\begin{DoxyCompactList}\small\item\em Error code returned by FLASH\+\_\+\+RTOS functions when an error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__FLASH__FreeRTOS_ga3b01f4403f2420b656baff30f22f0c74}{FLASH\+\_\+\+RTOS\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the internal mutex used to protect flash operations. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__FLASH__FreeRTOS_ga59ce035bc13c4f88bf3884f67d9370ff}{FLASH\+\_\+\+RTOS\+\_\+\+Erase\+Sector}} (unsigned int sector)
+\begin{DoxyCompactList}\small\item\em Erases the specified flash sector in a thread-\/safe manner. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__FLASH__FreeRTOS_ga7f11336c69b95e6e1a3bc7e35015f2b2}{FLASH\+\_\+\+RTOS\+\_\+\+Write\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Writes data to flash memory in a thread-\/safe manner. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__FLASH__FreeRTOS_ga07a32dc0a33b46d9108a8871340bf5c0}{FLASH\+\_\+\+RTOS\+\_\+\+Verify\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Verifies flash memory content against a RAM buffer in a thread-\/safe manner. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for flash memory Free\+RTOS functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__FLASH__FreeRTOS_ga59ce035bc13c4f88bf3884f67d9370ff}\index{FLASH\_FreeRTOS@{FLASH\_FreeRTOS}!FLASH\_RTOS\_EraseSector@{FLASH\_RTOS\_EraseSector}}
+\index{FLASH\_RTOS\_EraseSector@{FLASH\_RTOS\_EraseSector}!FLASH\_FreeRTOS@{FLASH\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_RTOS\_EraseSector()}{FLASH\_RTOS\_EraseSector()}}
+{\footnotesize\ttfamily \label{group__FLASH__FreeRTOS_ga59ce035bc13c4f88bf3884f67d9370ff} 
+int FLASH\+\_\+\+RTOS\+\_\+\+Erase\+Sector (\begin{DoxyParamCaption}\item[{unsigned int}]{sector}{}\end{DoxyParamCaption})}
+
+
+
+Erases the specified flash sector in a thread-\/safe manner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sector} & The sector number to erase. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Result code from FLASHCONTROL\+\_\+\+Erase\+Sector or FLASH\+\_\+\+RTOS\+\_\+\+ERROR if mutex is unavailable. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash__rtos_8c_source_l00029}{29}} of file \mbox{\hyperlink{flash__rtos_8c_source}{flash\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash__rtos_8h_source_l00031}{FLASH\+\_\+\+RTOS\+\_\+\+ERROR}}, and \mbox{\hyperlink{flashcontrol_8c_source_l00020}{FLASHCONTROL\+\_\+\+Erase\+Sector()}}.
+
+\Hypertarget{group__FLASH__FreeRTOS_ga3b01f4403f2420b656baff30f22f0c74}\index{FLASH\_FreeRTOS@{FLASH\_FreeRTOS}!FLASH\_RTOS\_Init@{FLASH\_RTOS\_Init}}
+\index{FLASH\_RTOS\_Init@{FLASH\_RTOS\_Init}!FLASH\_FreeRTOS@{FLASH\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_RTOS\_Init()}{FLASH\_RTOS\_Init()}}
+{\footnotesize\ttfamily \label{group__FLASH__FreeRTOS_ga3b01f4403f2420b656baff30f22f0c74} 
+void FLASH\+\_\+\+RTOS\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the internal mutex used to protect flash operations. 
+
+This function must be called before any other FLASH\+\_\+\+RTOS function is used. 
+
+Definition at line \mbox{\hyperlink{flash__rtos_8c_source_l00023}{23}} of file \mbox{\hyperlink{flash__rtos_8c_source}{flash\+\_\+rtos.\+c}}.
+
+\Hypertarget{group__FLASH__FreeRTOS_ga07a32dc0a33b46d9108a8871340bf5c0}\index{FLASH\_FreeRTOS@{FLASH\_FreeRTOS}!FLASH\_RTOS\_VerifyData@{FLASH\_RTOS\_VerifyData}}
+\index{FLASH\_RTOS\_VerifyData@{FLASH\_RTOS\_VerifyData}!FLASH\_FreeRTOS@{FLASH\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_RTOS\_VerifyData()}{FLASH\_RTOS\_VerifyData()}}
+{\footnotesize\ttfamily \label{group__FLASH__FreeRTOS_ga07a32dc0a33b46d9108a8871340bf5c0} 
+int FLASH\+\_\+\+RTOS\+\_\+\+Verify\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Verifies flash memory content against a RAM buffer in a thread-\/safe manner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Address in flash memory to verify. \\
+\hline
+{\em src\+Addr} & Address in RAM to compare with. \\
+\hline
+{\em size} & Number of bytes to verify (up to 4096).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Result code from FLASHCONTROL\+\_\+\+Verify\+Data or FLASH\+\_\+\+RTOS\+\_\+\+ERROR if mutex is unavailable. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash__rtos_8c_source_l00055}{55}} of file \mbox{\hyperlink{flash__rtos_8c_source}{flash\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash__rtos_8h_source_l00031}{FLASH\+\_\+\+RTOS\+\_\+\+ERROR}}, and \mbox{\hyperlink{flashcontrol_8c_source_l00061}{FLASHCONTROL\+\_\+\+Verify\+Data()}}.
+
+\Hypertarget{group__FLASH__FreeRTOS_ga7f11336c69b95e6e1a3bc7e35015f2b2}\index{FLASH\_FreeRTOS@{FLASH\_FreeRTOS}!FLASH\_RTOS\_WriteData@{FLASH\_RTOS\_WriteData}}
+\index{FLASH\_RTOS\_WriteData@{FLASH\_RTOS\_WriteData}!FLASH\_FreeRTOS@{FLASH\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{FLASH\_RTOS\_WriteData()}{FLASH\_RTOS\_WriteData()}}
+{\footnotesize\ttfamily \label{group__FLASH__FreeRTOS_ga7f11336c69b95e6e1a3bc7e35015f2b2} 
+int FLASH\+\_\+\+RTOS\+\_\+\+Write\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Writes data to flash memory in a thread-\/safe manner. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Destination address in flash memory. \\
+\hline
+{\em src\+Addr} & Source address in RAM. \\
+\hline
+{\em size} & Number of bytes to write (up to 4096).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Result code from FLASHCONTROL\+\_\+\+Write\+Data or FLASH\+\_\+\+RTOS\+\_\+\+ERROR if mutex is unavailable. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flash__rtos_8c_source_l00042}{42}} of file \mbox{\hyperlink{flash__rtos_8c_source}{flash\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash__rtos_8h_source_l00031}{FLASH\+\_\+\+RTOS\+\_\+\+ERROR}}, and \mbox{\hyperlink{flashcontrol_8c_source_l00024}{FLASHCONTROL\+\_\+\+Write\+Data()}}.
+

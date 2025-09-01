@@ -1,0 +1,4 @@
+../src/flashcontrol.c:20:5:FLASHCONTROL_EraseSector	16	static
+../src/flashcontrol.c:24:5:FLASHCONTROL_WriteData	40	static
+../src/flashcontrol.c:61:5:FLASHCONTROL_VerifyData	32	static
+../src/flashcontrol.c:78:7:FLASHCONTROL_GetResultMsg	16	static

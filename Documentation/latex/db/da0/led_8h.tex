@@ -1,0 +1,50 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+DRIVERS/inc/led.h File Reference}
+\hypertarget{led_8h}{}\label{led_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/led.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/led.h}}
+
+
+Contains the led API.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__LED_gab365a684b1689803bf2fcd8c9036ca72}{Led\+Model\+Enum}} \{ \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72a68f800b3397590391b07a5ff6d13e3b0}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+HIGH}}
+, \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72acf22250ec2b45128d8d11e5f828592a4}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+LOW}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of LED driving logic models. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}{Led\+Color\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Enumeration of LED colors and types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__LED_ga1a996747ffb57655e64fccdb07fc5a96}{LED\+\_\+\+Init}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, bool state, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes an LED with the specified color, initial state, and control model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__LED_gae5e3be8fb576148434e9bdf30cce2ada}{LED\+\_\+\+Get\+State}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id)
+\begin{DoxyCompactList}\small\item\em Gets the current state of the specified LED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_gaf4a65f1d317a01864028f4814d01821c}{LED\+\_\+\+On}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns ON the specified LED according to its control model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_ga0d49842394d9d13f433aff94fa96a8ad}{LED\+\_\+\+Off}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns OFF the specified LED according to its control model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_ga5fc82fba5bf80c2d69752d3986aebded}{LED\+\_\+\+Toggle}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Toggles the state of the specified LED (ON to OFF or OFF to ON). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__LED_gaf244d4252bb1e6eb7b6d164c5b8ed377}{LED\+\_\+\+Get\+Led\+By\+Color}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the hardware pin number associated with the specified LED color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the led API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+25 Fev 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{led_8h_source}{led.\+h}}.
+

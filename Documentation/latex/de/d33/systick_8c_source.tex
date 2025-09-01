@@ -1,0 +1,45 @@
+\doxysection{systick.\+c}
+\hypertarget{systick_8c_source}{}\label{systick_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/systick.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/systick.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00002}00002\ \textcolor{comment}{\ *\ systick.c}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 01/10/2024}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Emilio\ Mendes\ (48170)}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{systick_8h}{systick.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00016}00016\ \textcolor{keyword}{static}\ \textcolor{keyword}{volatile}\ uint32\_t\ \_\_tick;}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00018}00018\ \textcolor{keywordtype}{void}\ SysTick\_Handler(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00020}00020\ \ \ \ \ \_\_tick++;}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00023}\mbox{\hyperlink{group__SYSTICK_gac8e56b229544fa928467d8afea097b75}{00023}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__SYSTICK_gac8e56b229544fa928467d8afea097b75}{SYSTICK\_Init}}(uint32\_t\ value)}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00025}00025\ \textcolor{preprocessor}{\#ifdef\ BAREMETAL}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00026}00026\ \ \ \ \ SystemCoreClockUpdate();}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}\ (SysTick\_Config(value)\ ==\ 1)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00028}00028\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00032}\mbox{\hyperlink{group__SYSTICK_ga38f1626b445b517a164b659025e842eb}{00032}}\ uint32\_t\ \mbox{\hyperlink{group__SYSTICK_ga38f1626b445b517a164b659025e842eb}{SYSTICK\_GetValue}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00033}00033\ \{}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00034}00034\ \textcolor{preprocessor}{\#ifdef\ BAREMETAL}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \_\_tick;}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00036}00036\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{return}\ xTaskGetTickCount();}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00038}00038\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{systick_8c_source_l00039}00039\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,4 @@
+../src/buzzer.c:19:6:BUZZER_Init	8	static
+../src/buzzer.c:25:6:BUZZER_On	8	static
+../src/buzzer.c:29:6:BUZZER_Off	8	static
+../src/buzzer.c:33:6:BUZZER_Alarm	16	static

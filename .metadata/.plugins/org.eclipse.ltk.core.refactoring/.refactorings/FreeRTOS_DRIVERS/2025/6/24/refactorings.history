@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;FreeRTOS_DRIVERS/inc/utils_rtos.h&apos; to &apos;csp_utils_rtos.h&apos;" description="Rename resource &apos;utils_rtos.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/utils_rtos.h" name="csp_utils_rtos.h" stamp="1749402129373" updateReferences="true"/>
+</session>

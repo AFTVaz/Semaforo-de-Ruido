@@ -1,0 +1,114 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/wifi.h File Reference}
+\hypertarget{wifi_8h}{}\label{wifi_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/wifi.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/wifi.h}}
+
+
+Contains the Wi-\/\+Fi API.  
+
+
+{\ttfamily \#include "{}ntp.\+h"{}}\newline
+{\ttfamily \#include "{}mqtt.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structWIFI__Config}{WIFI\+\_\+\+Config}}
+\begin{DoxyCompactList}\small\item\em Configuration structure for initializing Wi-\/\+Fi and related services. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structWIFI__Info}{WIFI\+\_\+\+Info}}
+\begin{DoxyCompactList}\small\item\em Structure used to hold the IP and MAC address of the Wi-\/\+Fi module. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structWIFI__QueueItem}{WIFI\+\_\+\+Queue\+Item}}
+\begin{DoxyCompactList}\small\item\em Structure used to send commands via queue to the Wi-\/\+Fi task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef bool(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__WIFI_ga4b8d9aeb80496c7e3faf9b99badbdd44}{WIFI\+\_\+\+Parser\+Func}}) (const char \texorpdfstring{$\ast$}{*}buffer, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Function pointer for parser callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__WIFI_gac3e1df69c2227ca79c44dd2c017124c6}{WIFI\+\_\+\+State\+Value\+Type}} \{ \mbox{\hyperlink{group__WIFI_ggac3e1df69c2227ca79c44dd2c017124c6a0b8eb7a4abfc3767cf2fc8244529435f}{WIFI\+\_\+\+STATE\+\_\+\+DISCONNECTED}}
+, \mbox{\hyperlink{group__WIFI_ggac3e1df69c2227ca79c44dd2c017124c6a95788594e2b516407be3e3e5e4484186}{WIFI\+\_\+\+STATE\+\_\+\+CONNECTED}}
+, \mbox{\hyperlink{group__WIFI_ggac3e1df69c2227ca79c44dd2c017124c6ae013268a1b7a042b913d5c3087c2c1e9}{WIFI\+\_\+\+STATE\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of possible Wi-\/\+Fi states. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__WIFI_gae4ffca2068d376411b7d442139e5b940}{WIFI\+\_\+\+Result\+Value\+Type}} \{ \mbox{\hyperlink{group__WIFI_ggae4ffca2068d376411b7d442139e5b940a660b0c3ad275d4f2afd7b895216902ed}{WIFI\+\_\+\+RESULT\+\_\+\+NONE}}
+, \mbox{\hyperlink{group__WIFI_ggae4ffca2068d376411b7d442139e5b940ad618369ad95452d851fe91f9901e1a1d}{WIFI\+\_\+\+RESULT\+\_\+\+SUCCESS}}
+, \mbox{\hyperlink{group__WIFI_ggae4ffca2068d376411b7d442139e5b940a220233efaa37af97ec5d94db40a84c7e}{WIFI\+\_\+\+RESULT\+\_\+\+ERROR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Result of the last Wi-\/\+Fi command executed. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__WIFI_ga8823d4fb6a389d132c4d64943ce381ec}{WIFI\+\_\+\+Command\+Value\+Type}} \{ \newline
+\mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca3267f8cb186befa2b560f2d33a404d50}{WIFI\+\_\+\+CMD\+\_\+\+DISCONNECT}}
+, \mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca3d9066bf957010362a93cafb484248c3}{WIFI\+\_\+\+CMD\+\_\+\+CONNECT}}
+, \mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca0400e42a6d8c706d4b514b27f2ce3fd7}{WIFI\+\_\+\+CMD\+\_\+\+GET\+\_\+\+INFO}}
+, \mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca87fb838d3ad7267f7e216d3ad825a000}{WIFI\+\_\+\+CMD\+\_\+\+GET\+\_\+\+EXPECTED}}
+, \newline
+\mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca25d0e65da7e06e398a39238de78cdc8e}{WIFI\+\_\+\+CMD\+\_\+\+SEND}}
+, \mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca62a0c0bcdf88c76611b4c9d6d0ccb7b7}{WIFI\+\_\+\+CMD\+\_\+\+RECEIVE}}
+, \mbox{\hyperlink{group__WIFI_gga8823d4fb6a389d132c4d64943ce381eca6d11db01fef291f45dfa3379714a3197}{WIFI\+\_\+\+CMD\+\_\+\+TRANSACTION}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of commands for Wi-\/\+Fi task operations. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__WIFI_gae5606107ac8642f70b98a5d2f58bc67d}{WIFI\+\_\+\+Service\+Value\+Type}} \{ \mbox{\hyperlink{group__WIFI_ggae5606107ac8642f70b98a5d2f58bc67dafb31496fcb0645d49c8b4c0f38b82d2c}{WIFI\+\_\+\+SERVICE\+\_\+\+NONE}}
+, \mbox{\hyperlink{group__WIFI_ggae5606107ac8642f70b98a5d2f58bc67da493ac7f0499ce5578a80a51a2604d1d3}{WIFI\+\_\+\+SERVICE\+\_\+\+NTP}}
+, \mbox{\hyperlink{group__WIFI_ggae5606107ac8642f70b98a5d2f58bc67da3b892478eb7e55aed87e5668003c1186}{WIFI\+\_\+\+SERVICE\+\_\+\+MQTT}}
+, \mbox{\hyperlink{group__WIFI_ggae5606107ac8642f70b98a5d2f58bc67dab4cdb8e416a498a32e28723107371a09}{WIFI\+\_\+\+SERVICE\+\_\+\+BOTH}}
+ \}
+\begin{DoxyCompactList}\small\item\em Specifies which service(s) to initialize along with Wi-\/\+Fi. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__WIFI_gaf96da8a371733d781f47f5e71d8ebad8}{WIFI\+\_\+\+Connection\+Mode\+Value\+Type}} \{ \mbox{\hyperlink{group__WIFI_ggaf96da8a371733d781f47f5e71d8ebad8a2a94d53dc0d70bd0a37ee37df8aeb500}{WIFI\+\_\+\+SINGLE\+\_\+\+CONNECTION}}
+, \mbox{\hyperlink{group__WIFI_ggaf96da8a371733d781f47f5e71d8ebad8a9d9dfac6b84ba7d3c8c6a3b3061becad}{WIFI\+\_\+\+MULTIPLE\+\_\+\+CONNECTION}}
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the connection mode for the ESP Wi-\/\+Fi module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__WIFI_ga9f4e4fafebd054996dcb328d042205f8}{WIFI\+\_\+\+Init}} (\mbox{\hyperlink{structWIFI__Config}{WIFI\+\_\+\+Config}} \texorpdfstring{$\ast$}{*}config)
+\begin{DoxyCompactList}\small\item\em Initializes the Wi-\/\+Fi module and optionally related services. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga1ccc7e69f5526819c6c2200667020240}{WIFI\+\_\+\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether the Wi-\/\+Fi task is ready. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__WIFI_gaad72054258b35c86901d4b6e5e9f0394}{WIFI\+\_\+\+Connect}} (void)
+\begin{DoxyCompactList}\small\item\em Triggers a connection attempt to the configured Wi-\/\+Fi network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__WIFI_ga0c4bc7c63890e92fa7b426968fcdbe89}{WIFI\+\_\+\+Disconnect}} (void)
+\begin{DoxyCompactList}\small\item\em Disconnects from the current Wi-\/\+Fi network. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_gac9465fc98435bdee350606b2853b65f7}{WIFI\+\_\+\+Request\+Info}} (void)
+\begin{DoxyCompactList}\small\item\em Requests the current IP and MAC addresses from the module. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga00b687aec535d88cd7da7ef3d18f8818}{WIFI\+\_\+\+Request\+Expected}} (char \texorpdfstring{$\ast$}{*}command, char \texorpdfstring{$\ast$}{*}expected, int timeout\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Sends a custom AT command and checks for an expected response. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga5c2fe361179dd4e008e103046a8eba94}{WIFI\+\_\+\+Request\+Send\+Packet}} (char \texorpdfstring{$\ast$}{*}command, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, int length, int timeout\+\_\+ms)
+\begin{DoxyCompactList}\small\item\em Sends a raw data packet to the Wi-\/\+Fi module. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_gae88324b4218053103b8b026a2d259027}{WIFI\+\_\+\+Request\+Receive}} (int timeout\+\_\+ms, \mbox{\hyperlink{group__WIFI_ga4b8d9aeb80496c7e3faf9b99badbdd44}{WIFI\+\_\+\+Parser\+Func}} parser\+\_\+recv, void \texorpdfstring{$\ast$}{*}u\+Data)
+\begin{DoxyCompactList}\small\item\em Receives a response from the Wi-\/\+Fi module with a custom parser. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga89dede821c4ab011d3ca1641c168a42e}{WIFI\+\_\+\+Request\+Packet\+Transaction}} (char \texorpdfstring{$\ast$}{*}command, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, int length, int timeout\+\_\+ms, \mbox{\hyperlink{group__WIFI_ga4b8d9aeb80496c7e3faf9b99badbdd44}{WIFI\+\_\+\+Parser\+Func}} parser\+\_\+recv, void \texorpdfstring{$\ast$}{*}u\+Data)
+\begin{DoxyCompactList}\small\item\em Performs an atomic transaction (send followed by receive). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__WIFI_gaf96da8a371733d781f47f5e71d8ebad8}{WIFI\+\_\+\+Connection\+Mode\+Value\+Type}} \mbox{\hyperlink{group__WIFI_ga1088673f6bfa754681ebd94cd1d95d9d}{WIFI\+\_\+\+Get\+CIPMUX}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the current CIPMUX (connection mode) setting. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__WIFI_gac3e1df69c2227ca79c44dd2c017124c6}{WIFI\+\_\+\+State\+Value\+Type}} \mbox{\hyperlink{group__WIFI_gae29d3d42ede730fcfcfca691499ab202}{WIFI\+\_\+\+Get\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieves the current state of the Wi-\/\+Fi connection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__WIFI_gae4ffca2068d376411b7d442139e5b940}{WIFI\+\_\+\+Result\+Value\+Type}} \mbox{\hyperlink{group__WIFI_gac78a6121cc4aa70164b3e3669b15f9fa}{WIFI\+\_\+\+Get\+Result}} (void)
+\begin{DoxyCompactList}\small\item\em Returns the result of the last Wi-\/\+Fi command. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_gab54726034978719be90b62cbd132a1c6}{WIFI\+\_\+\+Get\+Saved\+IP}} (char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Copies the last saved IP address into the provided buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga33293dc3043638e3e0fd1504684ef94b}{WIFI\+\_\+\+Get\+Saved\+MAC}} (char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Copies the last saved MAC address into the provided buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga24bdce7ac42bd744d3cc27ec896178d4}{WIFI\+\_\+\+Wait\+Connect}} (void)
+\begin{DoxyCompactList}\small\item\em Waits for the Wi\+Fi connection process to complete. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga769a49d2a17e20d9cd928133e6633f33}{WIFI\+\_\+\+Wait\+Disconnect}} (void)
+\begin{DoxyCompactList}\small\item\em Waits for the Wi\+Fi disconnection process to complete. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga9009ea3a229cc7997ec129d492aa1ac8}{WIFI\+\_\+\+Wait\+IP}} (char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Waits for a valid IP address to be acquired. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__WIFI_ga24829f38d999945ca2fe4e65d45482e0}{WIFI\+\_\+\+Wait\+MAC}} (char \texorpdfstring{$\ast$}{*}buffer)
+\begin{DoxyCompactList}\small\item\em Waits for a valid MAC address to be acquired. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the Wi-\/\+Fi API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+04 Mai 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{wifi_8h_source}{wifi.\+h}}.
+

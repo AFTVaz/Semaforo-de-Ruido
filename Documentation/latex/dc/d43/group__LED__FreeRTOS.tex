@@ -1,0 +1,345 @@
+\doxysubsection{LED\+\_\+\+Free\+RTOS}
+\hypertarget{group__LED__FreeRTOS}{}\label{group__LED__FreeRTOS}\index{LED\_FreeRTOS@{LED\_FreeRTOS}}
+
+
+Provides the core capabilities for LED Free\+RTOS related functions.  
+
+
+\doxysubsubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structLED__RTOS__Command}{LED\+\_\+\+RTOS\+\_\+\+Command}}
+\begin{DoxyCompactList}\small\item\em Structure representing a command to be executed by the LED task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}{LED\+\_\+\+Command}} \{ \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473caab3a575bd9dc6d968928f44d9616221d}{LED\+\_\+\+CMD\+\_\+\+ON}}
+, \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473ca72abad2cae0cea0abbebf8272f7e4c66}{LED\+\_\+\+CMD\+\_\+\+OFF}}
+, \mbox{\hyperlink{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473cabab26de35fdfe5645295380a149d8970}{LED\+\_\+\+CMD\+\_\+\+TOGGLE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration representing LED operation types for queued commands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__LED__FreeRTOS_gab518afde57da926ae0a9250e67e84de6}{LED\+\_\+\+RTOS\+\_\+\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether the LED RTOS task and queue have been initialized successfully. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_gab9084ab6701c64d927e9c33b16e1ea52}{LED\+\_\+\+RTOS\+\_\+\+Init\+Red\+Int}} (bool state, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes the internal red LED and creates the LED control task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_ga7fc75e2b032bc1fb9a9bb3c7b0691c14}{LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Int}} (bool state, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes all internal RGB LEDs and creates the LED control task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_ga7ec46a8e06acf92265bb4ddc4b8a1022}{LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Ext}} (bool state, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes all external RGB LEDs and creates the LED control task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_gab82959dc647c0247746b21cc8793ca2f}{LED\+\_\+\+RTOS\+\_\+\+Init\+Semaphore}} (LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes the semaphore-\/style traffic light LED set and creates the LED control task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__LED__FreeRTOS_gaec58641619d73ad9836663c3f54397b6}{LED\+\_\+\+RTOS\+\_\+\+Get\+State}} (LED\+\_\+\+Color\+Value\+Type color, bool \texorpdfstring{$\ast$}{*}state)
+\begin{DoxyCompactList}\small\item\em Gets the current state of a specific LED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_ga83e871d26208644be9c5dd1787d390cc}{LED\+\_\+\+RTOS\+\_\+\+On}} (LED\+\_\+\+Color\+Value\+Type color, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns on the specified LED asynchronously using the LED task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_gab2d3c9e755a92993f70803aa1ce9fbbe}{LED\+\_\+\+RTOS\+\_\+\+Off}} (LED\+\_\+\+Color\+Value\+Type color, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns off the specified LED asynchronously using the LED task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_ga77e5528135b91d807c5d032c2c17e7ed}{LED\+\_\+\+RTOS\+\_\+\+Toggle}} (LED\+\_\+\+Color\+Value\+Type color, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Toggles the state of the specified LED asynchronously using the LED task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED__FreeRTOS_ga8fbfc4fa794a812cf0517ded3636d4fd}{LED\+\_\+\+RTOS\+\_\+\+Delete}} (void)
+\begin{DoxyCompactList}\small\item\em Shuts down and cleans up the LED RTOS module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for LED Free\+RTOS related functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_Command@{LED\_Command}}
+\index{LED\_Command@{LED\_Command}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_Command}{LED\_Command}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c} 
+enum \mbox{\hyperlink{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c}{LED\+\_\+\+Command}}}
+
+
+
+Enumeration representing LED operation types for queued commands. 
+
+\begin{DoxyVerb}      This enum defines the possible actions that can be queued
+      to control an LED (turn it on, off, or toggle its state).
+\end{DoxyVerb}
+ \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_CMD\_ON@{LED\_CMD\_ON}!LED\_FreeRTOS@{LED\_FreeRTOS}}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_CMD\_ON@{LED\_CMD\_ON}}}\Hypertarget{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473caab3a575bd9dc6d968928f44d9616221d}\label{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c} 
+LED\+\_\+\+CMD\+\_\+\+ON&Command to turn the LED ON. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_CMD\_OFF@{LED\_CMD\_OFF}!LED\_FreeRTOS@{LED\_FreeRTOS}}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_CMD\_OFF@{LED\_CMD\_OFF}}}\Hypertarget{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473ca72abad2cae0cea0abbebf8272f7e4c66}\label{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c} 
+LED\+\_\+\+CMD\+\_\+\+OFF&Command to turn the LED OFF. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_CMD\_TOGGLE@{LED\_CMD\_TOGGLE}!LED\_FreeRTOS@{LED\_FreeRTOS}}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_CMD\_TOGGLE@{LED\_CMD\_TOGGLE}}}\Hypertarget{group__LED__FreeRTOS_gga63f210bd5fa0f172ca1accb3c92b473cabab26de35fdfe5645295380a149d8970}\label{group__LED__FreeRTOS_ga63f210bd5fa0f172ca1accb3c92b473c} 
+LED\+\_\+\+CMD\+\_\+\+TOGGLE&Command to TOGGLE the LED state. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8h_source_l00043}{43}} of file \mbox{\hyperlink{led__rtos_8h_source}{led\+\_\+rtos.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__LED__FreeRTOS_ga8fbfc4fa794a812cf0517ded3636d4fd}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_Delete@{LED\_RTOS\_Delete}}
+\index{LED\_RTOS\_Delete@{LED\_RTOS\_Delete}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_Delete()}{LED\_RTOS\_Delete()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga8fbfc4fa794a812cf0517ded3636d4fd} 
+void LED\+\_\+\+RTOS\+\_\+\+Delete (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Shuts down and cleans up the LED RTOS module. 
+
+\begin{DoxyVerb}      Deletes the LED task, queue, and mutex.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00147}{147}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+\Hypertarget{group__LED__FreeRTOS_gaec58641619d73ad9836663c3f54397b6}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_GetState@{LED\_RTOS\_GetState}}
+\index{LED\_RTOS\_GetState@{LED\_RTOS\_GetState}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_GetState()}{LED\_RTOS\_GetState()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_gaec58641619d73ad9836663c3f54397b6} 
+bool LED\+\_\+\+RTOS\+\_\+\+Get\+State (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{color}{, }\item[{bool \texorpdfstring{$\ast$}{*}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current state of a specific LED. 
+
+\begin{DoxyVerb}      This function retrieves the state of the LED corresponding to the given color.
+      It uses a mutex to ensure thread-safe access. If the mutex cannot be obtained,
+      the function returns false and the state is not updated.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color of the LED to query. \\
+\hline
+{\em state} & Pointer to a boolean variable to store the LED state. Will be set to true if the LED is ON, or false if OFF.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & If the state was successfully retrieved. \\
+\hline
+{\em false} & If the mutex could not be acquired or state retrieval failed. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00096}{96}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00031}{LED\+\_\+\+Get\+State()}}.
+
+\Hypertarget{group__LED__FreeRTOS_ga7ec46a8e06acf92265bb4ddc4b8a1022}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_InitAllExt@{LED\_RTOS\_InitAllExt}}
+\index{LED\_RTOS\_InitAllExt@{LED\_RTOS\_InitAllExt}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_InitAllExt()}{LED\_RTOS\_InitAllExt()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga7ec46a8e06acf92265bb4ddc4b8a1022} 
+void LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Ext (\begin{DoxyParamCaption}\item[{bool}]{state}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Initializes all external RGB LEDs and creates the LED control task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Initial state of all LEDs (true = on, false = off). \\
+\hline
+{\em model} & LED model type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function sets up red, green, and blue external LEDs. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00074}{74}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}.
+
+\Hypertarget{group__LED__FreeRTOS_ga7fc75e2b032bc1fb9a9bb3c7b0691c14}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_InitAllInt@{LED\_RTOS\_InitAllInt}}
+\index{LED\_RTOS\_InitAllInt@{LED\_RTOS\_InitAllInt}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_InitAllInt()}{LED\_RTOS\_InitAllInt()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga7fc75e2b032bc1fb9a9bb3c7b0691c14} 
+void LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Int (\begin{DoxyParamCaption}\item[{bool}]{state}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Initializes all internal RGB LEDs and creates the LED control task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Initial state of all LEDs (true = on, false = off). \\
+\hline
+{\em model} & LED model type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function sets up red, green, and blue internal LEDs. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00067}{67}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}.
+
+\Hypertarget{group__LED__FreeRTOS_gab9084ab6701c64d927e9c33b16e1ea52}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_InitRedInt@{LED\_RTOS\_InitRedInt}}
+\index{LED\_RTOS\_InitRedInt@{LED\_RTOS\_InitRedInt}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_InitRedInt()}{LED\_RTOS\_InitRedInt()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_gab9084ab6701c64d927e9c33b16e1ea52} 
+void LED\+\_\+\+RTOS\+\_\+\+Init\+Red\+Int (\begin{DoxyParamCaption}\item[{bool}]{state}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the internal red LED and creates the LED control task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Initial state of the LED (true = on, false = off). \\
+\hline
+{\em model} & LED model type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Should be called during system initialization if only the red internal LED is used. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00062}{62}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}.
+
+\Hypertarget{group__LED__FreeRTOS_gab82959dc647c0247746b21cc8793ca2f}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_InitSemaphore@{LED\_RTOS\_InitSemaphore}}
+\index{LED\_RTOS\_InitSemaphore@{LED\_RTOS\_InitSemaphore}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_InitSemaphore()}{LED\_RTOS\_InitSemaphore()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_gab82959dc647c0247746b21cc8793ca2f} 
+void LED\+\_\+\+RTOS\+\_\+\+Init\+Semaphore (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the semaphore-\/style traffic light LED set and creates the LED control task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em model} & LED model type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Initializes red and yellow LEDs to OFF and green to ON by default. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00081}{81}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}.
+
+\Hypertarget{group__LED__FreeRTOS_gab2d3c9e755a92993f70803aa1ce9fbbe}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_Off@{LED\_RTOS\_Off}}
+\index{LED\_RTOS\_Off@{LED\_RTOS\_Off}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_Off()}{LED\_RTOS\_Off()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_gab2d3c9e755a92993f70803aa1ce9fbbe} 
+void LED\+\_\+\+RTOS\+\_\+\+Off (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{color}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Turns off the specified LED asynchronously using the LED task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & LED color to turn off. \\
+\hline
+{\em model} & LED model type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00123}{123}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led__rtos_8h_source_l00054}{LED\+\_\+\+RTOS\+\_\+\+Command\+::color}}, \mbox{\hyperlink{led__rtos_8h_source_l00056}{LED\+\_\+\+RTOS\+\_\+\+Command\+::command}}, \mbox{\hyperlink{led__rtos_8h_source_l00045}{LED\+\_\+\+CMD\+\_\+\+OFF}}, \mbox{\hyperlink{led__rtos_8c_source_l00092}{LED\+\_\+\+RTOS\+\_\+\+Ready()}}, and \mbox{\hyperlink{led__rtos_8h_source_l00055}{LED\+\_\+\+RTOS\+\_\+\+Command\+::model}}.
+
+\Hypertarget{group__LED__FreeRTOS_ga83e871d26208644be9c5dd1787d390cc}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_On@{LED\_RTOS\_On}}
+\index{LED\_RTOS\_On@{LED\_RTOS\_On}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_On()}{LED\_RTOS\_On()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga83e871d26208644be9c5dd1787d390cc} 
+void LED\+\_\+\+RTOS\+\_\+\+On (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{color}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Turns on the specified LED asynchronously using the LED task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & LED color to turn on. \\
+\hline
+{\em model} & LED model type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00111}{111}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led__rtos_8h_source_l00054}{LED\+\_\+\+RTOS\+\_\+\+Command\+::color}}, \mbox{\hyperlink{led__rtos_8h_source_l00056}{LED\+\_\+\+RTOS\+\_\+\+Command\+::command}}, \mbox{\hyperlink{led__rtos_8h_source_l00044}{LED\+\_\+\+CMD\+\_\+\+ON}}, \mbox{\hyperlink{led__rtos_8c_source_l00092}{LED\+\_\+\+RTOS\+\_\+\+Ready()}}, and \mbox{\hyperlink{led__rtos_8h_source_l00055}{LED\+\_\+\+RTOS\+\_\+\+Command\+::model}}.
+
+\Hypertarget{group__LED__FreeRTOS_gab518afde57da926ae0a9250e67e84de6}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_Ready@{LED\_RTOS\_Ready}}
+\index{LED\_RTOS\_Ready@{LED\_RTOS\_Ready}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_Ready()}{LED\_RTOS\_Ready()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_gab518afde57da926ae0a9250e67e84de6} 
+bool LED\+\_\+\+RTOS\+\_\+\+Ready (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks whether the LED RTOS task and queue have been initialized successfully. 
+
+\begin{DoxyReturn}{Returns}
+true if ready; false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00092}{92}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{led__rtos_8c_source_l00123}{LED\+\_\+\+RTOS\+\_\+\+Off()}}, \mbox{\hyperlink{led__rtos_8c_source_l00111}{LED\+\_\+\+RTOS\+\_\+\+On()}}, and \mbox{\hyperlink{led__rtos_8c_source_l00135}{LED\+\_\+\+RTOS\+\_\+\+Toggle()}}.
+
+\Hypertarget{group__LED__FreeRTOS_ga77e5528135b91d807c5d032c2c17e7ed}\index{LED\_FreeRTOS@{LED\_FreeRTOS}!LED\_RTOS\_Toggle@{LED\_RTOS\_Toggle}}
+\index{LED\_RTOS\_Toggle@{LED\_RTOS\_Toggle}!LED\_FreeRTOS@{LED\_FreeRTOS}}
+\doxysubsubsubsection{\texorpdfstring{LED\_RTOS\_Toggle()}{LED\_RTOS\_Toggle()}}
+{\footnotesize\ttfamily \label{group__LED__FreeRTOS_ga77e5528135b91d807c5d032c2c17e7ed} 
+void LED\+\_\+\+RTOS\+\_\+\+Toggle (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{color}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Toggles the state of the specified LED asynchronously using the LED task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & LED color to toggle. \\
+\hline
+{\em model} & LED model type. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led__rtos_8c_source_l00135}{135}} of file \mbox{\hyperlink{led__rtos_8c_source}{led\+\_\+rtos.\+c}}.
+
+
+
+References \mbox{\hyperlink{led__rtos_8h_source_l00054}{LED\+\_\+\+RTOS\+\_\+\+Command\+::color}}, \mbox{\hyperlink{led__rtos_8h_source_l00056}{LED\+\_\+\+RTOS\+\_\+\+Command\+::command}}, \mbox{\hyperlink{led__rtos_8h_source_l00046}{LED\+\_\+\+CMD\+\_\+\+TOGGLE}}, \mbox{\hyperlink{led__rtos_8c_source_l00092}{LED\+\_\+\+RTOS\+\_\+\+Ready()}}, and \mbox{\hyperlink{led__rtos_8h_source_l00055}{LED\+\_\+\+RTOS\+\_\+\+Command\+::model}}.
+

@@ -1,0 +1,122 @@
+\doxysection{max9814.\+c}
+\hypertarget{max9814_8c_source}{}\label{max9814_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/src/max9814.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/src/max9814.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00002}00002\ \textcolor{comment}{\ *\ max9814.c}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 16/04/2025}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Filipe\ Cruz\ (43468)}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pin_8h}{pin.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pinconfig_8h}{pinconfig.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{max9814_8h}{max9814.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{adc_8h}{adc.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00020}00020\ \textcolor{preprocessor}{\#define\ MAX9814\_NUM\_SAMPLES\ \ \ \ \ 50}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00021}00021\ \textcolor{preprocessor}{\#define\ MAX9814\_BIAS\_MIN\ \ \ \ \ \ \ \ 1.14f}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00022}00022\ \textcolor{preprocessor}{\#define\ MAX9814\_BIAS\_MAX\ \ \ \ \ \ \ \ 1.32f}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00023}00023\ \textcolor{preprocessor}{\#define\ ADC\_REFP\_VOLTAGE\ \ \ \ \ \ \ \ 3.3f}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00024}00024\ \textcolor{preprocessor}{\#define\ ADC\_MAX\_VOLTAGE\ \ \ \ \ \ \ \ \ 3.0f}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00025}00025\ \textcolor{preprocessor}{\#define\ ADC\_MAX\_DIVISIONS\ \ \ \ \ \ \ 4096.0f\ \ \ \ \ }\textcolor{comment}{//\ 12\ bits\ ADC}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00026}00026\ \textcolor{preprocessor}{\#define\ ADC\_RESOLUTION\ \ \ \ \ \ \ \ \ \ (ADC\_MAX\_VOLTAGE\ /\ ADC\_MAX\_DIVISIONS)}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00028}00028\ \textcolor{preprocessor}{\#define\ OFFSET\_CAL\_SAMPLES\ \ \ \ \ \ 5000\ \ \ \ \ \ \ \ }\textcolor{comment}{//\ calibração\ do\ offset}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00030}00030\ \textcolor{preprocessor}{\#define\ MAX9814\_DB\_SPL\_REF\ \ \ \ \ \ 94.0f\ \ \ \ \ \ \ }\textcolor{comment}{//\ Referência\ 94\ dB\ SPL\ =\ 1\ Pa}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00031}00031\ \textcolor{preprocessor}{\#define\ MAX9814\_SENSITIVITY\ \ \ \ \ -\/44.0f\ \ \ \ \ \ }\textcolor{comment}{//\ Sensibilidade\ do\ microfone\ sem\ ganho\ (em\ dBV/Pa)}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00033}00033\ \textcolor{keyword}{static}\ uint16\_t\ mic\_buffer[MAX9814\_NUM\_SAMPLES];}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00034}00034\ \textcolor{keyword}{static}\ uint8\_t\ mic\_channel\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00036}00036\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ adc\_offset\ =\ 2048.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00037}00037\ \textcolor{keyword}{static}\ \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\_GainValueType}}\ current\_gain\ =\ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ac0d4227dcba510960c7aeed8074c6e22}{MAX9814\_FLOAT\_GAIN}};}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00039}00039\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ mic\_ref\_Vout\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00040}00040\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ mic\_gain\_db\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00042}00042\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ mic\_bias\_min\ =\ MAX9814\_BIAS\_MIN/ADC\_RESOLUTION;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00043}00043\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ mic\_bias\_max\ =\ MAX9814\_BIAS\_MAX/ADC\_RESOLUTION;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00045}00045\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ MAX9814\_Calculate\_Sensitivity(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{float}\ mic\_sensitivity\_v\ =\ powf(10.0f,\ MAX9814\_SENSITIVITY\ /\ 20.0f);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00047}00047\ \ \ \ \ mic\_ref\_Vout\ =\ mic\_sensitivity\_v\ *\ powf(10.0f,\ mic\_gain\_db\ /\ 20.0f);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00050}00050\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ MAX9814\_Calibrate\_ADC\_Offset(uint8\_t\ channel,\ uint32\_t\ samples)\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00051}00051\ \ \ \ \ uint64\_t\ sum\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ samples;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ sum\ +=\ \mbox{\hyperlink{group__ADC_gab0bfe89c06929fe65db2112532cb4047}{ADC\_Read}}(channel);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{float}\ offset\_adc\ =\ (float)sum\ /\ (\textcolor{keywordtype}{float})samples;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (offset\_adc\ <\ mic\_bias\_min)}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ offset\_adc\ =\ mic\_bias\_min;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (offset\_adc\ >\ mic\_bias\_max)}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ offset\_adc\ =\ mic\_bias\_max;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ offset\_adc;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00065}00065\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ MAX9814\_Calculate\_ADC\_Average(\ uint16\_t\ *samples,\ uint32\_t\ len,\ \textcolor{keywordtype}{float}\ offset\ )\{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordtype}{float}\ sum\_squares\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ len;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ centered\ =\ (float)samples[i]\ -\/\ offset;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ sum\_squares\ +=\ centered\ *\ centered;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{return}\ sqrtf(sum\_squares\ /\ (\textcolor{keywordtype}{float})len);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00074}00074\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ MAX9814\_Conversion\_To\_DB(\ \textcolor{keywordtype}{float}\ adc\_avg\_value\ )\{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00075}00075\ \ \ \ \ \textcolor{keywordtype}{float}\ v\_out\ =\ adc\_avg\_value\ *\ ADC\_RESOLUTION;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{return}\ 20.0f\ *\ log10f(v\_out\ /\ mic\_ref\_Vout)\ +\ MAX9814\_DB\_SPL\_REF;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00079}\mbox{\hyperlink{group__MAX9814_ga83196f81e95ff529918765204515ed86}{00079}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MAX9814_ga83196f81e95ff529918765204515ed86}{MAX9814\_Init}}(\ \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\_GainValueType}}\ mic\_gain\ )\{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00080}00080\ \ \ \ \ \mbox{\hyperlink{group__ADC_ga767bc95c8e890183e4e449033e9e39fc}{ADC\_Init}}(mic\_channel);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00081}00081\ \ \ \ \ \mbox{\hyperlink{group__PINCONFIG_ga308879f4eb382f98c382d18fa196ea6a}{PINCFG\_Function}}(\ MAX9814\_GAIN\_PIN,\ GPIO\ );}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{MAX9814\_SetGain}}(mic\_gain);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00083}00083\ \ \ \ \ adc\_offset\ =\ MAX9814\_Calibrate\_ADC\_Offset(mic\_channel,\ OFFSET\_CAL\_SAMPLES);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00086}\mbox{\hyperlink{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}{00086}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}{MAX9814\_Read}}(\textcolor{keywordtype}{void})\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ i\ =\ 0;\ i\ <\ MAX9814\_NUM\_SAMPLES;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ mic\_buffer[i]\ =\ \mbox{\hyperlink{group__ADC_gab0bfe89c06929fe65db2112532cb4047}{ADC\_Read}}(mic\_channel);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{float}\ adc\_avg\ =\ MAX9814\_Calculate\_ADC\_Average(mic\_buffer,\ MAX9814\_NUM\_SAMPLES,\ adc\_offset);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{return}\ MAX9814\_Conversion\_To\_DB(adc\_avg);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00095}\mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{00095}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{MAX9814\_SetGain}}(\ \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\_GainValueType}}\ gain\ )\{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00096}00096\ \ \ \ \ current\_gain\ =\ gain;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{switch}\ (gain)\ \{}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ab071206c0a600e2fb25862845a15ab9a}{MAX9814\_VCC\_GAIN}}:}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\_Direction}}(MAX9814\_GAIN\_PIN,\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{PIN\_Clear}}(MAX9814\_GAIN\_PIN);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ mic\_gain\_db\ =\ 40.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ MAX9814\_Calculate\_Sensitivity();}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77af66fa9b7a3c3621805db08d86d6f7ae4}{MAX9814\_GND\_GAIN}}:}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\_Direction}}(MAX9814\_GAIN\_PIN,\ OUTPUT);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{PIN\_Set}}(MAX9814\_GAIN\_PIN);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ mic\_gain\_db\ =\ 50.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ MAX9814\_Calculate\_Sensitivity();}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00110}00110\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ac0d4227dcba510960c7aeed8074c6e22}{MAX9814\_FLOAT\_GAIN}}:}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\_Direction}}(MAX9814\_GAIN\_PIN,\ INPUT);}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ mic\_gain\_db\ =\ 60.0f;}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ MAX9814\_Calculate\_Sensitivity();}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{max9814_8c_source_l00116}00116\ \}}
+
+\end{DoxyCode}

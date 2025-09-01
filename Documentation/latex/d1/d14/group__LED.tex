@@ -1,0 +1,254 @@
+\doxysubsection{LED}
+\hypertarget{group__LED}{}\label{group__LED}\index{LED@{LED}}
+
+
+Provides the core capabilities for led related functions.  
+
+
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__LED_gab365a684b1689803bf2fcd8c9036ca72}{Led\+Model\+Enum}} \{ \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72a68f800b3397590391b07a5ff6d13e3b0}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+HIGH}}
+, \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72acf22250ec2b45128d8d11e5f828592a4}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+LOW}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of LED driving logic models. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}{Led\+Color\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Enumeration of LED colors and types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__LED_ga1a996747ffb57655e64fccdb07fc5a96}{LED\+\_\+\+Init}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, bool state, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Initializes an LED with the specified color, initial state, and control model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__LED_gae5e3be8fb576148434e9bdf30cce2ada}{LED\+\_\+\+Get\+State}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id)
+\begin{DoxyCompactList}\small\item\em Gets the current state of the specified LED. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_gaf4a65f1d317a01864028f4814d01821c}{LED\+\_\+\+On}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns ON the specified LED according to its control model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_ga0d49842394d9d13f433aff94fa96a8ad}{LED\+\_\+\+Off}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Turns OFF the specified LED according to its control model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__LED_ga5fc82fba5bf80c2d69752d3986aebded}{LED\+\_\+\+Toggle}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id, LED\+\_\+\+Model\+Type model)
+\begin{DoxyCompactList}\small\item\em Toggles the state of the specified LED (ON to OFF or OFF to ON). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__LED_gaf244d4252bb1e6eb7b6d164c5b8ed377}{LED\+\_\+\+Get\+Led\+By\+Color}} (LED\+\_\+\+Color\+Value\+Type led\+Color\+Id)
+\begin{DoxyCompactList}\small\item\em Returns the hardware pin number associated with the specified LED color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for led related functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}\index{LED@{LED}!LedColorEnum@{LedColorEnum}}
+\index{LedColorEnum@{LedColorEnum}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LedColorEnum}{LedColorEnum}}
+{\footnotesize\ttfamily \label{group__LED_gabf96fd8301c1afcde92e6549f0069c1d} 
+enum \mbox{\hyperlink{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}{Led\+Color\+Enum}}}
+
+
+
+Enumeration of LED colors and types. 
+
+\begin{DoxyVerb}      Represents the color and category of LEDs used in the system.
+\end{DoxyVerb}
+ 
+
+Definition at line \mbox{\hyperlink{led_8h_source_l00047}{47}} of file \mbox{\hyperlink{led_8h_source}{led.\+h}}.
+
+\Hypertarget{group__LED_gab365a684b1689803bf2fcd8c9036ca72}\index{LED@{LED}!LedModelEnum@{LedModelEnum}}
+\index{LedModelEnum@{LedModelEnum}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LedModelEnum}{LedModelEnum}}
+{\footnotesize\ttfamily \label{group__LED_gab365a684b1689803bf2fcd8c9036ca72} 
+enum \mbox{\hyperlink{group__LED_gab365a684b1689803bf2fcd8c9036ca72}{Led\+Model\+Enum}}}
+
+
+
+Enumeration of LED driving logic models. 
+
+\begin{DoxyVerb}      Defines how the LED is controlled electrically.
+\end{DoxyVerb}
+ \begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_MODEL\_ACTIVE\_HIGH@{LED\_MODEL\_ACTIVE\_HIGH}!LED@{LED}}\index{LED@{LED}!LED\_MODEL\_ACTIVE\_HIGH@{LED\_MODEL\_ACTIVE\_HIGH}}}\Hypertarget{group__LED_ggab365a684b1689803bf2fcd8c9036ca72a68f800b3397590391b07a5ff6d13e3b0}\label{group__LED_gab365a684b1689803bf2fcd8c9036ca72} 
+LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+HIGH&LED is ON when output is HIGH \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LED\_MODEL\_ACTIVE\_LOW@{LED\_MODEL\_ACTIVE\_LOW}!LED@{LED}}\index{LED@{LED}!LED\_MODEL\_ACTIVE\_LOW@{LED\_MODEL\_ACTIVE\_LOW}}}\Hypertarget{group__LED_ggab365a684b1689803bf2fcd8c9036ca72acf22250ec2b45128d8d11e5f828592a4}\label{group__LED_gab365a684b1689803bf2fcd8c9036ca72} 
+LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+LOW&LED is ON when output is LOW \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{led_8h_source_l00036}{36}} of file \mbox{\hyperlink{led_8h_source}{led.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__LED_gaf244d4252bb1e6eb7b6d164c5b8ed377}\index{LED@{LED}!LED\_GetLedByColor@{LED\_GetLedByColor}}
+\index{LED\_GetLedByColor@{LED\_GetLedByColor}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_GetLedByColor()}{LED\_GetLedByColor()}}
+{\footnotesize\ttfamily \label{group__LED_gaf244d4252bb1e6eb7b6d164c5b8ed377} 
+int LED\+\_\+\+Get\+Led\+By\+Color (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Returns the hardware pin number associated with the specified LED color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The hardware pin number corresponding to the LED. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00060}{60}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{led_8c_source_l00031}{LED\+\_\+\+Get\+State()}}, \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}, \mbox{\hyperlink{led_8c_source_l00044}{LED\+\_\+\+Off()}}, and \mbox{\hyperlink{led_8c_source_l00037}{LED\+\_\+\+On()}}.
+
+\Hypertarget{group__LED_gae5e3be8fb576148434e9bdf30cce2ada}\index{LED@{LED}!LED\_GetState@{LED\_GetState}}
+\index{LED\_GetState@{LED\_GetState}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_GetState()}{LED\_GetState()}}
+{\footnotesize\ttfamily \label{group__LED_gae5e3be8fb576148434e9bdf30cce2ada} 
+bool LED\+\_\+\+Get\+State (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current state of the specified LED. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the LED is ON; false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00031}{31}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00060}{LED\+\_\+\+Get\+Led\+By\+Color()}}, and \mbox{\hyperlink{pin_8c_source_l00053}{PIN\+\_\+\+Value()}}.
+
+
+
+Referenced by \mbox{\hyperlink{led__rtos_8c_source_l00096}{LED\+\_\+\+RTOS\+\_\+\+Get\+State()}}, and \mbox{\hyperlink{led_8c_source_l00051}{LED\+\_\+\+Toggle()}}.
+
+\Hypertarget{group__LED_ga1a996747ffb57655e64fccdb07fc5a96}\index{LED@{LED}!LED\_Init@{LED\_Init}}
+\index{LED\_Init@{LED\_Init}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_Init()}{LED\_Init()}}
+{\footnotesize\ttfamily \label{group__LED_ga1a996747ffb57655e64fccdb07fc5a96} 
+void LED\+\_\+\+Init (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{, }\item[{bool}]{state}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Initializes an LED with the specified color, initial state, and control model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED to initialize. \\
+\hline
+{\em state} & The initial state of the LED (true for ON, false for OFF). \\
+\hline
+{\em model} & The LED control model (active-\/high or active-\/low). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00018}{18}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00060}{LED\+\_\+\+Get\+Led\+By\+Color()}}, \mbox{\hyperlink{led_8c_source_l00044}{LED\+\_\+\+Off()}}, \mbox{\hyperlink{led_8c_source_l00037}{LED\+\_\+\+On()}}, \mbox{\hyperlink{pin_8c_source_l00021}{PIN\+\_\+\+Direction()}}, and \mbox{\hyperlink{pinconfig_8c_source_l00016}{PINCFG\+\_\+\+Function()}}.
+
+
+
+Referenced by \mbox{\hyperlink{led__rtos_8c_source_l00074}{LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Ext()}}, \mbox{\hyperlink{led__rtos_8c_source_l00067}{LED\+\_\+\+RTOS\+\_\+\+Init\+All\+Int()}}, \mbox{\hyperlink{led__rtos_8c_source_l00062}{LED\+\_\+\+RTOS\+\_\+\+Init\+Red\+Int()}}, and \mbox{\hyperlink{led__rtos_8c_source_l00081}{LED\+\_\+\+RTOS\+\_\+\+Init\+Semaphore()}}.
+
+\Hypertarget{group__LED_ga0d49842394d9d13f433aff94fa96a8ad}\index{LED@{LED}!LED\_Off@{LED\_Off}}
+\index{LED\_Off@{LED\_Off}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_Off()}{LED\_Off()}}
+{\footnotesize\ttfamily \label{group__LED_ga0d49842394d9d13f433aff94fa96a8ad} 
+void LED\+\_\+\+Off (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Turns OFF the specified LED according to its control model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED. \\
+\hline
+{\em model} & The LED control model (active-\/high or active-\/low). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00044}{44}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00060}{LED\+\_\+\+Get\+Led\+By\+Color()}}, \mbox{\hyperlink{led_8h_source_l00038}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+LOW}}, \mbox{\hyperlink{pin_8c_source_l00044}{PIN\+\_\+\+Clear()}}, and \mbox{\hyperlink{pin_8c_source_l00035}{PIN\+\_\+\+Set()}}.
+
+
+
+Referenced by \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}, and \mbox{\hyperlink{led_8c_source_l00051}{LED\+\_\+\+Toggle()}}.
+
+\Hypertarget{group__LED_gaf4a65f1d317a01864028f4814d01821c}\index{LED@{LED}!LED\_On@{LED\_On}}
+\index{LED\_On@{LED\_On}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_On()}{LED\_On()}}
+{\footnotesize\ttfamily \label{group__LED_gaf4a65f1d317a01864028f4814d01821c} 
+void LED\+\_\+\+On (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Turns ON the specified LED according to its control model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED. \\
+\hline
+{\em model} & The LED control model (active-\/high or active-\/low). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00037}{37}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00060}{LED\+\_\+\+Get\+Led\+By\+Color()}}, \mbox{\hyperlink{led_8h_source_l00038}{LED\+\_\+\+MODEL\+\_\+\+ACTIVE\+\_\+\+LOW}}, \mbox{\hyperlink{pin_8c_source_l00044}{PIN\+\_\+\+Clear()}}, and \mbox{\hyperlink{pin_8c_source_l00035}{PIN\+\_\+\+Set()}}.
+
+
+
+Referenced by \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}, and \mbox{\hyperlink{led_8c_source_l00051}{LED\+\_\+\+Toggle()}}.
+
+\Hypertarget{group__LED_ga5fc82fba5bf80c2d69752d3986aebded}\index{LED@{LED}!LED\_Toggle@{LED\_Toggle}}
+\index{LED\_Toggle@{LED\_Toggle}!LED@{LED}}
+\doxysubsubsubsection{\texorpdfstring{LED\_Toggle()}{LED\_Toggle()}}
+{\footnotesize\ttfamily \label{group__LED_ga5fc82fba5bf80c2d69752d3986aebded} 
+void LED\+\_\+\+Toggle (\begin{DoxyParamCaption}\item[{LED\+\_\+\+Color\+Value\+Type}]{led\+Color\+Id}{, }\item[{LED\+\_\+\+Model\+Type}]{model}{}\end{DoxyParamCaption})}
+
+
+
+Toggles the state of the specified LED (ON to OFF or OFF to ON). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em led\+Color\+Id} & The color identifier of the LED. \\
+\hline
+{\em model} & The LED control model (active-\/high or active-\/low). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{led_8c_source_l00051}{51}} of file \mbox{\hyperlink{led_8c_source}{led.\+c}}.
+
+
+
+References \mbox{\hyperlink{led_8c_source_l00031}{LED\+\_\+\+Get\+State()}}, \mbox{\hyperlink{led_8c_source_l00044}{LED\+\_\+\+Off()}}, and \mbox{\hyperlink{led_8c_source_l00037}{LED\+\_\+\+On()}}.
+

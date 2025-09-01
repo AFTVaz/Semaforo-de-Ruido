@@ -1,0 +1,51 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+HAL/inc/pin.h File Reference}
+\hypertarget{pin_8h}{}\label{pin_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/inc/pin.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/inc/pin.h}}
+
+
+Contains the pin API.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__PIN_ga5d28abde6fa780c3f4845300e2452844}\label{group__PIN_ga5d28abde6fa780c3f4845300e2452844} 
+enum \mbox{\hyperlink{group__PIN_ga5d28abde6fa780c3f4845300e2452844}{PIN\+\_\+\+Value\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Pin name enumeration. \end{DoxyCompactList}\item 
+\Hypertarget{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}\label{group__PIN_ga85d12e067890c194f890f31c3b9bac2a} 
+enum \mbox{\hyperlink{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}{PIN\+\_\+\+Port\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Port name enumeration. \end{DoxyCompactList}\item 
+\Hypertarget{group__PIN_ga1f864fb7859e046506175133cd77aa91}\label{group__PIN_ga1f864fb7859e046506175133cd77aa91} 
+enum \mbox{\hyperlink{group__PIN_ga1f864fb7859e046506175133cd77aa91}{PIN\+\_\+\+Direction\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Pin direction enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\+\_\+\+Direction}} (PIN\+\_\+\+Value\+Type pin\+Id, PIN\+\_\+\+DIRType dir)
+\begin{DoxyCompactList}\small\item\em Configures the direction of the specified pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{PIN\+\_\+\+Set}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the specified pin to logical HIGH. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{PIN\+\_\+\+Clear}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Clears the specified pin to logical LOW. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__PIN_ga4654757dd7462fae40685a02db0f8244}{PIN\+\_\+\+Value}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Reads the current logical state of the specified pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}{PIN\+\_\+\+Port\+Write}} (PIN\+\_\+\+Port\+Type port\+Id, uint32\+\_\+t value, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Writes a masked value to the entire GPIO port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the pin API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+1 Out 2017 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Emilio Mendes (48170)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{pin_8h_source}{pin.\+h}}.
+

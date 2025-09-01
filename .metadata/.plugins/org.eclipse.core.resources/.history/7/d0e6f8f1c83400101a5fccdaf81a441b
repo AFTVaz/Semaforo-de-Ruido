@@ -1,0 +1,225 @@
+/*
+ * mqtt.c
+ *
+ *  Created on: 13/05/2025
+ *      Author: André Vaz (48209) e Filipe Cruz (43468)
+ */
+
+#ifdef __USE_CMSIS
+#include "LPC17xx.h"
+#endif
+
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include "FreeRTOS.h"
+#include "MQTTPacket.h"
+#include "transport.h"
+#include "task.h"
+#include "semphr.h"
+#include "espserial.h"
+#include "wifi.h"
+#include "mqtt.h"
+
+
+#define MQTT_ADDRESS			"IOT-PS.DDNS.NET:8080"
+#define MQTT_PORT				1884
+#define MQTT_DEVICE				"DevGrupo12"
+#define MQTT_DEVICE_TOKEN		"SEIOT-G12"
+#define CONNECTION_KEEPALIVE_S 	60UL
+
+#define MQTT_USER				"SEIOT-G12@IOT-PS.DDNS.NET"
+#define MQTT_PASSWORD			"12345678"
+
+#define MQTT_ERROR				-1
+
+#define MQTT_CMD_TIMEOUT       	pdMS_TO_TICKS(5000)
+#define MQTT_CIPMUX_TIMEOUT		pdMS_TO_TICKS(5000)
+#define MQTT_CIPSTART_TIMEOUT	pdMS_TO_TICKS(5000)
+
+#define MQTT_BUFFER_SIZE		512
+
+static unsigned char xMQTT_Buffer[MQTT_BUFFER_SIZE];
+static MQTT_Item info = {
+		.mqtt_payload = xMQTT_Buffer,
+		.mqtt_available_length = 0
+};
+
+static bool MQTT_ParsePacket( const char *buffer, void *user_data ){
+	if (buffer == NULL || user_data == NULL) return false;
+
+	const char *ipd = strstr(buffer, "+IPD,");
+	if (ipd) {
+		int data_len = 0;
+		const char *header_end = strchr(ipd, ':');
+
+		if (header_end && sscanf(ipd, "+IPD,%d:", &data_len) == 1){
+
+			char data[data_len];
+
+			int len = ESPSERIAL_Recv((unsigned char *)&data, data_len);
+			if (len == data_len){
+				MQTT_Item *info = (MQTT_Item *)user_data;
+				memcpy(info->mqtt_payload, data, data_len);
+				info->mqtt_available_length = data_len;
+
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+static int MQTT_Send( unsigned char *buffer, unsigned int len ){
+
+	if (buffer == NULL || len == 0) return MQTT_ERROR;
+
+	WIFI_ResultValueType result;
+    char cmd[32];
+    snprintf(cmd, sizeof(cmd), "AT+CIPSEND=%d\r\n", len);
+    WIFI_RequestExpected(cmd, ">", MQTT_CMD_TIMEOUT);
+    while((result = WIFI_GetResult()) == WIFI_RESULT_NONE){
+    	taskYIELD();
+    }
+    if(result == WIFI_RESULT_SUCCESS){
+    	WIFI_RequestSendPacket(buffer, len);
+    	while((result = WIFI_GetResult()) == WIFI_RESULT_NONE) taskYIELD();
+    	if(result == WIFI_RESULT_SUCCESS) return len;
+    }
+    return MQTT_ERROR;
+}
+
+static int MQTT_Recv( unsigned char *buffer, unsigned int maxlen ) {
+
+	if (buffer == NULL || maxlen == 0) return 0;
+
+	WIFI_ResultValueType result;
+	int total_cpy = 0;
+
+	if( info.mqtt_available_length == 0 ){
+		WIFI_RequestReceive(MQTT_CMD_TIMEOUT, MQTT_ParsePacket, &info);
+		while((result = WIFI_GetResult()) == WIFI_RESULT_NONE) taskYIELD();
+		if(result == WIFI_RESULT_ERROR) return total_cpy;
+	}
+
+	if(info.mqtt_available_length < maxlen){
+		memcpy(buffer, info.mqtt_payload, info.mqtt_available_length);
+		total_cpy = info.mqtt_available_length;
+	}
+	else {
+		memcpy(buffer, info.mqtt_payload, maxlen);
+		total_cpy = maxlen;
+	}
+
+    memmove(info.mqtt_payload, info.mqtt_payload + total_cpy, info.mqtt_available_length - total_cpy);
+    info.mqtt_available_length -= total_cpy;
+
+    return total_cpy;
+}
+
+static bool MQTT_Connect( const char *host, const unsigned short int port,
+		const unsigned short int keepalive ) {
+	WIFI_ResultValueType result;
+    char cmd[128];
+
+    WIFI_RequestExpected("AT+CIPMUX=0\r\n", "OK\r\n", MQTT_CIPMUX_TIMEOUT);
+    while ((result = WIFI_GetResult()) == WIFI_RESULT_NONE) taskYIELD();
+    if (result == WIFI_RESULT_ERROR) return false;
+
+    snprintf(cmd, sizeof(cmd), "AT+CIPSTART=\"TCP\",\"%s\",%d,%d\r\n", host, port, keepalive);
+    WIFI_RequestExpected(cmd, "CONNECT", WIFI_CONN_SUCESS_TIMEOUT);
+    while ((result = WIFI_GetResult()) == WIFI_RESULT_NONE) taskYIELD();
+    return result == WIFI_RESULT_SUCCESS;
+}
+
+static void MQTT_Task( void *pvParameters ){
+	unsigned char buffer[128];
+	MQTTTransport transporter;
+	int result;
+	int length;
+
+	// ESP8266 Transport Layer
+	static transport_iofunctions_t iof = { MQTT_Send, MQTT_Recv };
+	int transport_socket = transport_open(&iof);
+
+	MQTT_StateValueType state = MQTT_STATE_INIT;
+
+	while (true) {
+
+		while( WIFI_GetState() != WIFI_STATE_CONNECTED){
+			state = MQTT_STATE_INIT;
+			WIFI_Connect();
+			vTaskDelay(WIFI_CONN_SUCESS_TIMEOUT + MQTT_CMD_TIMEOUT);
+		}
+
+		switch (state) {
+			case MQTT_STATE_INIT:
+				if (MQTT_Connect(MQTT_ADDRESS, MQTT_PORT, CONNECTION_KEEPALIVE_S * 2))
+				{
+					state++;
+				}
+				break;
+			case MQTT_STATE_CONNECT:
+				transporter.sck = &transport_socket;
+				transporter.getfn = transport_getdatanb;
+				transporter.state = 0;
+
+				MQTTPacket_connectData connectData = MQTTPacket_connectData_initializer;
+				connectData.MQTTVersion = 3;
+				connectData.username.cstring = MQTT_DEVICE_TOKEN;
+				connectData.clientID.cstring = MQTT_DEVICE_TOKEN;
+				connectData.keepAliveInterval = CONNECTION_KEEPALIVE_S;
+				length = MQTTSerialize_connect(buffer, sizeof(buffer), &connectData);
+				// Send CONNECT to the mqtt broker.
+				if ((result = transport_sendPacketBuffer(transport_socket, buffer, length)) == length) {
+					state++;
+				} else {
+					state = MQTT_STATE_INIT;
+				}
+				break;
+			case MQTT_STATE_WAIT_CONNECT:
+				// Wait for CONNACK response from the MQTT broker.
+				while (true) {
+					if ((result = MQTTPacket_readnb(buffer, sizeof(buffer), &transporter)) == CONNACK) {
+						// Check if the connection was accepted.
+						unsigned char sessionPresent, connack_rc;
+						if ((MQTTDeserialize_connack(&sessionPresent, &connack_rc, buffer,
+								sizeof(buffer)) != 1) || (connack_rc != 0)) {
+							state = MQTT_STATE_INIT;
+							break;
+						} else {
+							state++;
+							break;
+						}
+					} else if (result == MQTT_ERROR) {
+						state = MQTT_STATE_INIT;
+						break;
+					}
+				}
+				break;
+			case MQTT_STATE_PUBLISH:
+				MQTTString topicString = MQTTString_initializer;
+				topicString.cstring = "v1/devices/me/telemetry";
+				unsigned char payload[64];
+
+				length = sprintf(payload, "{\"fooKey\":%d, \"fooValue\":%d}", key, value);
+				length = MQTTSerialize_publish(buffer, sizeof(buffer), 0, 0, 0, 0, topicString, payload, length);
+				// Send PUBLISH to the MQTT broker.
+				if ((result = transport_sendPacketBuffer(transport_socket, buffer, length)) == length) {
+					// Wait for new data.
+				} else {
+					state = MQTT_STATE_INIT;
+				}
+				break;
+			default:
+				state = MQTT_STATE_INIT;
+		}
+	}
+}
+
+void MQTT_Init( void ) {
+	xTaskCreate(MQTT_Task, "MQTT_Task", 4 * configMINIMAL_STACK_SIZE, NULL, 1, NULL);
+}

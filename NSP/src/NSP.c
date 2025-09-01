@@ -1,0 +1,390 @@
+/**
+ *
+ * NSP.c
+ *
+ * Author: André Vaz (48209) e Filipe Cruz (43468)
+ *
+ * NSP: Noise Semaphore Project
+ */
+
+#include <stdio.h>
+#include <time.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+#include "led_rtos.h"
+#include "buzzer_rtos.h"
+#include "clock.h"
+#include "microphone.h"
+#include "wifi.h"
+#include "ntp.h"
+#include "mqtt.h"
+#include "flash_rtos.h"
+
+#define WIFI_SSID			"?"
+#define WIFI_PASSWORD		"?"
+
+#define ZMILLIS(Z) 			pdMS_TO_TICKS((Z))
+#define YSEG(Y) 			pdMS_TO_TICKS((Y) * 1000)
+#define XMIN(X)				pdMS_TO_TICKS((X) * 1000 * 60)
+#define TIME(X,Y,Z)			XMIN(X) + YSEG(Y) + ZMILLIS(Z)
+
+#define DELAY_10MILLIS		ZMILLIS(10)
+#define DELAY_100MILLIS		ZMILLIS(100)
+#define DELAY_500MILLIS		ZMILLIS(500)
+#define DELAY_1SEG 			YSEG(1)
+#define DELAY_2SEG 			YSEG(2)
+#define DELAY_3SEG 			YSEG(3)
+#define DELAY_5SEG 			YSEG(5)
+#define DELAY_20SEG 		YSEG(20)
+#define DELAY_30SEG			YSEG(30)
+#define DELAY_1MIN			XMIN(1)
+#define DELAY_1MIN30SEG		XMIN(1) + YSEG(30)
+#define DELAY_2MIN			XMIN(2)
+#define DELAY_2MIN30SEG		XMIN(2) + YSEG(30)
+#define DELAY_5MIN			XMIN(5)
+#define DELAY_15MIN			XMIN(15)
+
+#define DEFAULT_MIC_READ_RATE_MS  	6000
+#define DEFAULT_ALARM_DURATION_MS 	1000
+#define DEFAULT_GREEN_THRESHOLD   	45.0f
+#define DEFAULT_YELLOW_THRESHOLD	65.0f
+
+#define MIC_READ_RATE_MIN          	6000
+#define MIC_READ_RATE_MAX          	60000
+
+#define ALARM_DURATION_MIN         	10
+#define ALARM_DURATION_MAX         	10000
+
+#define GREEN_NOISE_THRESHOLD_MIN  	30.0f
+#define GREEN_NOISE_THRESHOLD_MAX  	60.0f
+
+#define YELLOW_NOISE_THRESHOLD_MIN 	60.0f
+#define YELLOW_NOISE_THRESHOLD_MAX 	110.0f
+
+#define THRESHOLD_OFFSET			5.0f
+
+#define FLASH_CONFIG_SECTOR     	29
+#define FLASH_CONFIG_ADDR       	((void *)0x00078000)
+
+#define APP_MUTEX_TIMEOUT			portMAX_DELAY
+
+#define APP_MAX_WIFI_RETRY			3
+#define APP_MAX_NTP_RETRY			3
+
+typedef enum {
+	INIT_APP,
+	READ,
+	PROCESSING,
+	ACTION,
+	ERROR
+} NSPStateType;
+
+typedef enum {
+	OFFLINE,
+	ONLINE
+} NSPModeType;
+
+typedef struct NSPSensorData{
+    float noiseValue;
+    time_t timestamp;
+} NSPSensorData;
+
+typedef struct NSPConfig{
+	int micReadRate;
+	int alarmDuration;
+	float greenNoiseThreshold;
+	float yellowNoiseThreshold;
+} NSPConfig;
+
+static TaskHandle_t xNSPAppTaskHandle = NULL;
+static TaskHandle_t xConnTaskHandle = NULL;
+static SemaphoreHandle_t xNSPModeMutex = NULL;
+static SemaphoreHandle_t xNSPConfigMutex = NULL;
+
+static NSPSensorData micData;
+static LED_ColorValueType lastColor = LED_SEM_GREEN;
+static LED_ColorValueType semaphoreColor = LED_SEM_GREEN;
+
+static time_t xNTP_Date = 0;
+static NSPModeType xNSPAppMode = OFFLINE;
+
+static NSPConfig systemConfig = {
+		.micReadRate = DEFAULT_MIC_READ_RATE_MS,
+		.alarmDuration = DEFAULT_ALARM_DURATION_MS,
+		.greenNoiseThreshold = DEFAULT_GREEN_THRESHOLD,
+		.yellowNoiseThreshold = DEFAULT_YELLOW_THRESHOLD,
+};
+
+static int NSP_SaveConfigToFlash(void) {
+    if (FLASH_RTOS_EraseSector(FLASH_CONFIG_SECTOR) != 0) return FLASH_RTOS_ERROR;
+    return FLASH_RTOS_WriteData(FLASH_CONFIG_ADDR, &systemConfig, sizeof(NSPConfig));
+}
+
+static int NSP_LoadConfigFromFlash(void) {
+    NSPConfig temp;
+    memcpy(&temp, FLASH_CONFIG_ADDR, sizeof(NSPConfig));
+
+    if (temp.micReadRate < MIC_READ_RATE_MIN || temp.micReadRate > MIC_READ_RATE_MAX) return FLASH_RTOS_ERROR;
+    if (temp.alarmDuration < ALARM_DURATION_MIN || temp.alarmDuration > ALARM_DURATION_MAX) return FLASH_RTOS_ERROR;
+    if (temp.greenNoiseThreshold < GREEN_NOISE_THRESHOLD_MIN || temp.greenNoiseThreshold > GREEN_NOISE_THRESHOLD_MAX) return FLASH_RTOS_ERROR;
+    if (temp.yellowNoiseThreshold < YELLOW_NOISE_THRESHOLD_MIN || temp.yellowNoiseThreshold > YELLOW_NOISE_THRESHOLD_MAX) return FLASH_RTOS_ERROR;
+
+
+    if (xNSPConfigMutex != NULL) xSemaphoreTake(xNSPConfigMutex, portMAX_DELAY);
+    systemConfig = temp;
+    if (xNSPConfigMutex != NULL) xSemaphoreGive(xNSPConfigMutex);
+
+    return 0;
+}
+
+
+static void NSP_UpdateAttributes(const char* payload, int len) {
+    if (payload == NULL || len <= 0) return;
+
+    char json[len + 1];
+    memcpy(json, payload, len);
+    json[len] = '\0';
+
+    if (xNSPConfigMutex != NULL) xSemaphoreTake(xNSPConfigMutex, portMAX_DELAY);
+
+    char *ptr;
+    int intVal;
+    float floatVal;
+
+    ptr = strstr(json, "\"micReadRate\":");
+    if (ptr && sscanf(ptr, "\"micReadRate\":%d", &intVal) == 1) {
+    	if (intVal < MIC_READ_RATE_MIN) intVal = MIC_READ_RATE_MIN;
+    	if (intVal > MIC_READ_RATE_MAX) intVal = MIC_READ_RATE_MAX;
+    	systemConfig.micReadRate = intVal;
+    }
+
+    ptr = strstr(json, "\"alarmDuration\":");
+    if (ptr && sscanf(ptr, "\"alarmDuration\":%d", &intVal) == 1) {
+    	if (intVal < systemConfig.micReadRate){
+    		if (intVal < ALARM_DURATION_MIN) intVal = ALARM_DURATION_MIN;
+    		if (intVal > ALARM_DURATION_MAX) intVal = ALARM_DURATION_MAX;
+    		systemConfig.alarmDuration = intVal;
+    	}
+    }
+
+    ptr = strstr(json, "\"greenNoiseThreshold\":");
+    if (ptr && sscanf(ptr, "\"greenNoiseThreshold\":%f", &floatVal) == 1) {
+    	if (floatVal < GREEN_NOISE_THRESHOLD_MIN) floatVal = GREEN_NOISE_THRESHOLD_MIN;
+    	if (floatVal > GREEN_NOISE_THRESHOLD_MAX) floatVal = GREEN_NOISE_THRESHOLD_MAX;
+    	systemConfig.greenNoiseThreshold = floatVal;
+    }
+
+    ptr = strstr(json, "\"yellowNoiseThreshold\":");
+    if (ptr && sscanf(ptr, "\"yellowNoiseThreshold\":%f", &floatVal) == 1) {
+    	if (floatVal < systemConfig.greenNoiseThreshold + THRESHOLD_OFFSET) {
+    		floatVal = systemConfig.greenNoiseThreshold + THRESHOLD_OFFSET;
+    	}
+    	if (floatVal < YELLOW_NOISE_THRESHOLD_MIN) floatVal = YELLOW_NOISE_THRESHOLD_MIN;
+    	if (floatVal > YELLOW_NOISE_THRESHOLD_MAX) floatVal = YELLOW_NOISE_THRESHOLD_MAX;
+    	systemConfig.yellowNoiseThreshold = floatVal;
+    }
+
+    if (xNSPConfigMutex != NULL) xSemaphoreGive(xNSPConfigMutex);
+
+    NSP_SaveConfigToFlash();
+}
+
+void NSP_SetAppMode(NSPModeType mode) {
+	if (xNSPModeMutex != NULL) {
+		xSemaphoreTake(xNSPModeMutex, portMAX_DELAY);
+		xNSPAppMode = mode;
+		xSemaphoreGive(xNSPModeMutex);
+	}
+}
+
+NSPModeType NSP_GetAppMode(void) {
+	NSPModeType mode = OFFLINE;
+	if (xNSPModeMutex != NULL) {
+		xSemaphoreTake(xNSPModeMutex, portMAX_DELAY);
+		mode = xNSPAppMode;
+		xSemaphoreGive(xNSPModeMutex);
+	}
+	return mode;
+}
+
+static bool TrySyncNTP(void) {
+    for (int ntpRetry = 0; ntpRetry < APP_MAX_NTP_RETRY; ++ntpRetry) {
+        if (NTP_RequestAndWait(&xNTP_Date)) {
+            return true;
+        }
+        vTaskDelay(DELAY_5SEG);
+    }
+    return false;
+}
+
+void ConnectionManager_Task(void *pvParameters) {
+
+	int wifiRetry = 0;
+	xNTP_Date = 0;
+
+	while (true) {
+		if (WIFI_WaitConnect()){
+			wifiRetry = 0;
+			if(xNTP_Date != 0){
+				NSP_SetAppMode(ONLINE);
+				MQTT_Resume();
+				vTaskDelay(DELAY_2MIN30SEG);
+				continue;
+			} else {
+				if (TrySyncNTP()) {
+					CLOCK_SetSeconds(xNTP_Date);
+					NSP_SetAppMode(ONLINE);
+					MQTT_Resume();
+					vTaskDelay(DELAY_2MIN30SEG);
+					continue;
+				}
+			}
+		}
+
+		NSP_SetAppMode(OFFLINE);
+		xNTP_Date = 0;
+		wifiRetry = 0;
+		if( wifiRetry < APP_MAX_WIFI_RETRY ){
+			++wifiRetry;
+			vTaskDelay(DELAY_5SEG);
+		} else vTaskDelay(DELAY_15MIN);
+	}
+}
+
+NSPStateType init_app( void ){
+
+	WIFI_Config config = {
+			.ssid = WIFI_SSID,
+			.password = WIFI_PASSWORD,
+			.service = WIFI_SERVICE_BOTH,
+//			.xMQTT_ConfigCallback = NULL
+			.xMQTT_ConfigCallback = NSP_UpdateAttributes
+	};
+
+	FLASH_RTOS_Init();
+	CLOCK_Init();
+	WIFI_Init( &config );
+	while (!WIFI_Ready()) taskYIELD();
+	MICROPHONE_Init( MAX9814_FLOAT_GAIN );
+	LED_RTOS_InitSemaphore( LED_MODEL_ACTIVE_HIGH );
+	while(!LED_RTOS_Ready()) taskYIELD();
+	BUZZER_RTOS_Init();
+	while(!BUZZER_RTOS_Ready()) taskYIELD();
+
+	NSP_LoadConfigFromFlash();
+
+	return READ;
+}
+
+void NSP_APP_Task(void *pvParameters){	// Funcionamento da APP
+
+	TickType_t xLastWakeTime;
+
+	int state = INIT_APP;
+
+	state = init_app();
+
+	while(true){
+
+		switch(state){
+			case READ: // Ler valor do microfone
+
+				micData.noiseValue = MICROPHONE_Read();
+
+				xLastWakeTime = xTaskGetTickCount();
+
+				if ((NSP_GetAppMode() == ONLINE) && MQTT_isReadyToPublish()) {
+					micData.timestamp = CLOCK_GetSeconds();
+					MQTT_NoisePublish( micData.noiseValue, micData.timestamp );
+				}
+
+				state = PROCESSING;
+				break;
+
+			case PROCESSING: // Processar valores lidos
+
+				if (xNSPConfigMutex != NULL) xSemaphoreTake(xNSPConfigMutex, portMAX_DELAY);
+				float gThresh = systemConfig.greenNoiseThreshold;
+				float yThresh = systemConfig.yellowNoiseThreshold;
+				if (xNSPConfigMutex != NULL) xSemaphoreGive(xNSPConfigMutex);
+
+				if( micData.noiseValue < gThresh ){
+					semaphoreColor = LED_SEM_GREEN;
+				} else if( micData.noiseValue < yThresh ){
+					semaphoreColor = LED_SEM_YELLOW;
+				} else {
+					semaphoreColor = LED_SEM_RED;
+				}
+
+				state = ACTION;
+				break;
+
+			case ACTION: // Acionar a cor no semádoro (+ buzzer se vermelho)
+
+				xSemaphoreTake(xNSPConfigMutex, portMAX_DELAY);
+				int alarmDurationCopy = systemConfig.alarmDuration;
+				int micReadRateCopy = systemConfig.micReadRate;
+				xSemaphoreGive(xNSPConfigMutex);
+
+				if(lastColor != semaphoreColor){
+					LED_RTOS_Off( lastColor, LED_MODEL_ACTIVE_HIGH );
+					LED_RTOS_On( semaphoreColor, LED_MODEL_ACTIVE_HIGH );
+					lastColor = semaphoreColor;
+				}
+
+				if (semaphoreColor == LED_SEM_RED) {
+					BUZZER_RTOS_Alarm(alarmDurationCopy);
+				}
+
+				vTaskDelayUntil(&xLastWakeTime, ZMILLIS(micReadRateCopy));
+				state = READ;
+				break;
+
+			case ERROR:
+				while( true ) vTaskDelay(portMAX_DELAY);
+				break;
+		}
+	}
+}
+
+int main( void ){
+
+	xNSPModeMutex = xSemaphoreCreateMutex();
+	if(xNSPModeMutex == NULL) while( true );
+	xNSPConfigMutex = xSemaphoreCreateMutex();
+	if (xNSPConfigMutex == NULL) while(true);
+
+	xTaskCreate(NSP_APP_Task, "NSP_APP_Task", 4 * configMINIMAL_STACK_SIZE, NULL, 1, &xNSPAppTaskHandle);
+	xTaskCreate(ConnectionManager_Task, "ConnTask", 2 * configMINIMAL_STACK_SIZE, NULL, 1, &xConnTaskHandle);
+
+	vTaskStartScheduler();
+	while(1);
+	return 0;
+}
+
+/*-----------------------------------------------------------*/
+
+void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
+{
+	/* This function will get called if a task overflows its stack. */
+
+	( void ) pxTask;
+	( void ) pcTaskName;
+	printf("Stack overflow: %s\n", pcTaskName);
+	for( ;; );
+}
+
+/*-----------------------------------------------------------*/
+
+void vApplicationMallocFailedHook( void )
+{
+	/* This function will get called if a malloc fail. */
+
+	printf("Fail memory alloc\n");
+	for( ;; );
+}

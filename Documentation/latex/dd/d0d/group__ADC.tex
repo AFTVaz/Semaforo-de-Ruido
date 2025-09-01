@@ -1,0 +1,87 @@
+\doxysubsection{ADC}
+\hypertarget{group__ADC}{}\label{group__ADC}\index{ADC@{ADC}}
+
+
+Provides the core capabilities for ADC configuration functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ADC_ga767bc95c8e890183e4e449033e9e39fc}{ADC\+\_\+\+Init}} (uint8\+\_\+t channel)
+\begin{DoxyCompactList}\small\item\em Initializes the ADC on the specified channel. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{group__ADC_gab0bfe89c06929fe65db2112532cb4047}{ADC\+\_\+\+Read}} (uint8\+\_\+t channel)
+\begin{DoxyCompactList}\small\item\em Performs a blocking ADC read on the specified channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for ADC configuration functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__ADC_ga767bc95c8e890183e4e449033e9e39fc}\index{ADC@{ADC}!ADC\_Init@{ADC\_Init}}
+\index{ADC\_Init@{ADC\_Init}!ADC@{ADC}}
+\doxysubsubsubsection{\texorpdfstring{ADC\_Init()}{ADC\_Init()}}
+{\footnotesize\ttfamily \label{group__ADC_ga767bc95c8e890183e4e449033e9e39fc} 
+void ADC\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the ADC on the specified channel. 
+
+\begin{DoxyVerb}      Powers up the ADC peripheral, configures the ADC clock, and sets the appropriate pin function
+      for the selected channel.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & ADC channel to initialize (range\+: 0 to 7). \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00018}{18}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00070}{NONE}}, \mbox{\hyperlink{pinconfig_8c_source_l00016}{PINCFG\+\_\+\+Function()}}, and \mbox{\hyperlink{pinconfig_8c_source_l00029}{PINCFG\+\_\+\+Mode()}}.
+
+
+
+Referenced by \mbox{\hyperlink{max9814_8c_source_l00079}{MAX9814\+\_\+\+Init()}}.
+
+\Hypertarget{group__ADC_gab0bfe89c06929fe65db2112532cb4047}\index{ADC@{ADC}!ADC\_Read@{ADC\_Read}}
+\index{ADC\_Read@{ADC\_Read}!ADC@{ADC}}
+\doxysubsubsubsection{\texorpdfstring{ADC\_Read()}{ADC\_Read()}}
+{\footnotesize\ttfamily \label{group__ADC_gab0bfe89c06929fe65db2112532cb4047} 
+uint16\+\_\+t ADC\+\_\+\+Read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{channel}{}\end{DoxyParamCaption})}
+
+
+
+Performs a blocking ADC read on the specified channel. 
+
+\begin{DoxyVerb}      Starts a single ADC conversion and waits until the result is ready.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em channel} & ADC channel to read from (range\+: 0 to 7).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+12-\/bit digital value from the ADC conversion (range\+: 0 to 4095).
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function performs a blocking read. It waits until the conversion is complete. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{adc_8c_source_l00062}{62}} of file \mbox{\hyperlink{adc_8c_source}{adc.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{max9814_8c_source_l00086}{MAX9814\+\_\+\+Read()}}.
+

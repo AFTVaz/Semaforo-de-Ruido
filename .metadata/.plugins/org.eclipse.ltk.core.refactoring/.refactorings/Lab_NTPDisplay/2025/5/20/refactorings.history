@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab_NTPDisplay/src/Lab_WIFIDisplay.c&apos; to &apos;Lab_NTPDisplay.c&apos;" description="Rename resource &apos;Lab_WIFIDisplay.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Lab_WIFIDisplay.c" name="Lab_NTPDisplay.c" stamp="1747040520157" updateReferences="true"/>
+</session>

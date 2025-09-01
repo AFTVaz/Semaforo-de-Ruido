@@ -1,0 +1,72 @@
+\doxysection{flash\+\_\+rtos.\+c}
+\hypertarget{flash__rtos_8c_source}{}\label{flash__rtos_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/flash\_rtos.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/flash\_rtos.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00002}00002\ \textcolor{comment}{\ *\ flash\_rtos.c}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 13/06/2025}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Filipe\ Cruz\ (43468)}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}semphr.h"{}}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flashcontrol_8h}{flashcontrol.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{flash__rtos_8h}{flash\_rtos.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00021}00021\ \textcolor{keyword}{static}\ SemaphoreHandle\_t\ xFlashMutex\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00023}\mbox{\hyperlink{group__FLASH__FreeRTOS_ga3b01f4403f2420b656baff30f22f0c74}{00023}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga3b01f4403f2420b656baff30f22f0c74}{FLASH\_RTOS\_Init}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{if}(xFlashMutex\ ==\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00025}00025\ \ \ \ \ \ \ \ \ xFlashMutex\ =\ xSemaphoreCreateMutex();}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00029}\mbox{\hyperlink{group__FLASH__FreeRTOS_ga59ce035bc13c4f88bf3884f67d9370ff}{00029}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga59ce035bc13c4f88bf3884f67d9370ff}{FLASH\_RTOS\_EraseSector}}(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sector\ )\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{if}(xFlashMutex\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xFlashMutex,\ portMAX\_DELAY)\ ==\ pdTRUE)\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ result\ =\ \mbox{\hyperlink{group__FLASHCONTROL_gace77e5c27877cb6ce9fb82c0191345ad}{FLASHCONTROL\_EraseSector}}(sector);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ xSemaphoreGive(xFlashMutex);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00042}\mbox{\hyperlink{group__FLASH__FreeRTOS_ga7f11336c69b95e6e1a3bc7e35015f2b2}{00042}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga7f11336c69b95e6e1a3bc7e35015f2b2}{FLASH\_RTOS\_WriteData}}(\ \textcolor{keywordtype}{void}\ *dstAddr,\ \textcolor{keywordtype}{void}\ *srcAddr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ )\ \{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{if}(xFlashMutex\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xFlashMutex,\ portMAX\_DELAY)\ ==\ pdTRUE)\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ result\ =\ \mbox{\hyperlink{group__FLASHCONTROL_ga4721da6792cb81415806d3eae01798a8}{FLASHCONTROL\_WriteData}}(dstAddr,\ srcAddr,\ size);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ xSemaphoreGive(xFlashMutex);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00055}\mbox{\hyperlink{group__FLASH__FreeRTOS_ga07a32dc0a33b46d9108a8871340bf5c0}{00055}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga07a32dc0a33b46d9108a8871340bf5c0}{FLASH\_RTOS\_VerifyData}}(\ \textcolor{keywordtype}{void}\ *dstAddr,\ \textcolor{keywordtype}{void}\ *srcAddr,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ )\ \{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{if}(xFlashMutex\ ==\ NULL)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{int}\ result\ =\ \mbox{\hyperlink{group__FLASH__FreeRTOS_ga52dcf7589c50bf221eb9abbc8d7ed017}{FLASH\_RTOS\_ERROR}};}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}(xSemaphoreTake(xFlashMutex,\ portMAX\_DELAY)\ ==\ pdTRUE)\{}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ result\ =\ \mbox{\hyperlink{group__FLASHCONTROL_ga9fde9f2e5cb6ab96056d8294292a8a11}{FLASHCONTROL\_VerifyData}}(dstAddr,\ srcAddr,\ size);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ xSemaphoreGive(xFlashMutex);}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{flash__rtos_8c_source_l00066}00066\ \}}
+
+\end{DoxyCode}

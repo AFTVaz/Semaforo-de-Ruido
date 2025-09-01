@@ -1,0 +1,42 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+DRIVERS/inc/max9814.h File Reference}
+\hypertarget{max9814_8h}{}\label{max9814_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/max9814.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/max9814.h}}
+
+
+Contains the microphone MAX9814 API.  
+
+
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} \{ \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ab071206c0a600e2fb25862845a15ab9a}{MAX9814\+\_\+\+VCC\+\_\+\+GAIN}} = 40
+, \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77af66fa9b7a3c3621805db08d86d6f7ae4}{MAX9814\+\_\+\+GND\+\_\+\+GAIN}} = 50
+, \mbox{\hyperlink{group__MAX9814_gga447282e5a307ab474573090ad39e4e77ac0d4227dcba510960c7aeed8074c6e22}{MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN}} = 60
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for selecting the analog gain of the MAX9814 microphone module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__MAX9814_ga83196f81e95ff529918765204515ed86}{MAX9814\+\_\+\+Init}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} mic\+\_\+gain)
+\begin{DoxyCompactList}\small\item\em Initializes the MAX9814 microphone module. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__MAX9814_ga5fc1e85569038df8b8444fc575d475a6}{MAX9814\+\_\+\+Read}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the current ambient sound level in decibels (dB SPL approximation). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MAX9814_gaaed74836fd745df7666cfae704d102c2}{MAX9814\+\_\+\+Set\+Gain}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} mic\+\_\+gain)
+\begin{DoxyCompactList}\small\item\em Updates the analog gain setting of the MAX9814 microphone module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the microphone MAX9814 API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+16 Abr 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{max9814_8h_source}{max9814.\+h}}.
+

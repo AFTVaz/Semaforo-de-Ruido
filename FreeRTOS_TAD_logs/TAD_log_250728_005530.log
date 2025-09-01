@@ -1,0 +1,63 @@
+"Task Aware Debugger for GDB" version 11.10.0 (202404041456)
+Copyright 2016-2023 NXP
+==================================
+00:47:13.844 INFO: [TadModel] DSF session ID 1 has started.
+00:47:17.304 INFO: [TadState] TAD state changed: DEBUG_STARTED -> DEBUG_INIT_0 (RESUMED, USER_REQUEST)
+00:47:17.330 INFO: [TadState] TAD state changed: DEBUG_INIT_0 -> DEBUG_INIT_1 (SUSPENDED, SIGNAL)
+00:47:22.682 INFO: [TadState] TAD state changed: DEBUG_INIT_1 -> DEBUG_SUSPENDED (RESUMED, USER_REQUEST)
+00:47:22.812 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_SUSPENDED (SUSPENDED, BREAKPOINT)
+00:47:24.163 INFO: [TadState] TAD state changed: DEBUG_SUSPENDED -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+00:47:52.349 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+00:47:52.370 INFO: [Benchmark] Loading data for "Determine RTOS version" has started.
+00:47:52.398 ERROR: [VariableReader] Could not read variable expression: "&(FreeRTOSDebugConfig)".
+00:47:52.398 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+00:47:52.398 ERROR: [VariableReader] -data-evaluate-expression &(FreeRTOSDebugConfig)
+00:47:52.398 ERROR: [VariableReader] Error message from debugger back end:
+00:47:52.398 ERROR: [VariableReader] No symbol "FreeRTOSDebugConfig" in current context. java.lang.Exception: No symbol "FreeRTOSDebugConfig" in current context.
+00:47:52.418 ERROR: [VariableReader] Could not read variable expression: "sizeof(struct TaskControlBlock_t)".
+00:47:52.418 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+00:47:52.418 ERROR: [VariableReader] -data-evaluate-expression "sizeof(struct TaskControlBlock_t)"
+00:47:52.418 ERROR: [VariableReader] Error message from debugger back end:
+00:47:52.418 ERROR: [VariableReader] No struct type named TaskControlBlock_t. java.lang.Exception: No struct type named TaskControlBlock_t.
+00:47:52.420 ERROR: [VariableReader] Could not read variable expression: "&(((struct QueueDefinition *) 0)->pcTail)".
+00:47:52.420 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+00:47:52.420 ERROR: [VariableReader] -data-evaluate-expression "&(((struct QueueDefinition *) 0)->pcTail)"
+00:47:52.420 ERROR: [VariableReader] Error message from debugger back end:
+00:47:52.420 ERROR: [VariableReader] There is no member named pcTail. java.lang.Exception: There is no member named pcTail.
+00:47:52.420 INFO: [FreeRtosTadModel] FreeRTOS version has been identified from available FreeRTOS symbols as 10.11.
+00:47:52.420 INFO: [Benchmark] Loading data for "Determine RTOS version" took 50 ms.
+00:47:52.420 INFO: [Benchmark] Loading data for "Heap Usage" has started.
+00:47:53.514 ERROR: [VariableReader] Could not read variable expression: "(((struct tskTaskControlBlock *) 0x10003250)->uxCoreAffinityMask)".
+00:47:53.514 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+00:47:53.514 ERROR: [VariableReader] -data-evaluate-expression "(((struct tskTaskControlBlock *) 0x10003250)->uxCoreAffinityMask)"
+00:47:53.514 ERROR: [VariableReader] Error message from debugger back end:
+00:47:53.514 ERROR: [VariableReader] There is no member named uxCoreAffinityMask. java.lang.Exception: There is no member named uxCoreAffinityMask.
+00:47:53.514 INFO: [FreeRTOS] RTOS macro "configUSE_CORE_AFFINITY" is disabled.
+00:47:56.371 ERROR: [VariableReader] Could not read variable expression: "freeRTOSMemoryScheme".
+00:47:56.371 ERROR: [VariableReader] Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+00:47:56.371 ERROR: [VariableReader] -data-evaluate-expression freeRTOSMemoryScheme
+00:47:56.371 ERROR: [VariableReader] Error message from debugger back end:
+00:47:56.371 ERROR: [VariableReader] No symbol "freeRTOSMemoryScheme" in current context. java.lang.Exception: No symbol "freeRTOSMemoryScheme" in current context.
+00:47:56.371 ERROR: [TadFactory] Reading exception during: "readIntVariableSafely(freeRTOSMemoryScheme)"
+00:47:56.371 INFO: [HeapFactory] TAD will try to determine heap type (memory scheme) from available variables.
+00:47:56.371 INFO: [HeapFactory] Make sure you have correctly defined "configFRTOS_MEMORY_SCHEME" macro in FreeRTOSConfig.h. TAD determines heap type either from MCUXpresso IDE's "FreeRTOSDebugConfig" structure (which uses "configFRTOS_MEMORY_SCHEME" define) or user defined variable "static const uint8_t freeRTOSMemoryScheme = <heap_type_used>;".
+00:47:56.371 INFO: [FreeRTOS] RTOS macro "configFRTOS_MEMORY_SCHEME" is disabled.
+00:47:56.399 INFO: [HeapFactory] Heap variable ucHeap is equal to "0x100025c0".
+00:47:56.399 INFO: [HeapFactory] Heap variable xHeapStructSize is equal to "0x10008000".
+00:47:56.399 INFO: [HeapFactory] Heap type (memory allocation scheme) has been identified from available heap variables as Heap #4. 
+00:47:56.564 INFO: [Benchmark] Loading data for "Heap Usage" took 4144 ms.
+00:47:57.726 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+00:48:44.388 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+00:48:44.388 INFO: [Benchmark] Loading data for "Heap Usage" has started.
+00:48:48.774 INFO: [Benchmark] Loading data for "Heap Usage" took 4385 ms.
+00:48:49.643 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+00:51:42.300 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+00:51:42.300 INFO: [Benchmark] Loading data for "Heap Usage" has started.
+00:51:46.573 INFO: [Benchmark] Loading data for "Heap Usage" took 4273 ms.
+00:51:50.172 INFO: [Benchmark] Loading data for "Task List" has started.
+00:51:50.172 INFO: [Benchmark] Loaded data for "Task List" from cache.
+00:51:56.510 INFO: [TadState] TAD state changed: READY -> DEBUG_RESUMED (RESUMED, USER_REQUEST)
+00:55:28.483 INFO: [TadState] TAD state changed: DEBUG_RESUMED -> READY (SUSPENDED, SIGNAL)
+00:55:28.483 INFO: [Benchmark] Loading data for "Task List" has started.
+00:55:29.281 INFO: [Benchmark] Loading data for "Task List" took 798 ms.
+00:55:30.670 INFO: [TadModel] DSF session ID 1 has ended.

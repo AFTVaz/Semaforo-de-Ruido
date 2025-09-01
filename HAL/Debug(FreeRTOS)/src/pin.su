@@ -1,0 +1,5 @@
+../src/pin.c:21:6:PIN_Direction	32	static
+../src/pin.c:35:6:PIN_Set	32	static
+../src/pin.c:44:6:PIN_Clear	32	static
+../src/pin.c:53:10:PIN_Value	32	static
+../src/pin.c:63:6:PIN_PortWrite	32	static

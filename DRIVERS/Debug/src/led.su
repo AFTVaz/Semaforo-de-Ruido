@@ -1,0 +1,6 @@
+../src/led.c:18:6:LED_Init	24	static
+../src/led.c:31:6:LED_GetState	24	static
+../src/led.c:37:6:LED_On	24	static
+../src/led.c:44:6:LED_Off	24	static
+../src/led.c:51:6:LED_Toggle	16	static
+../src/led.c:60:5:LED_GetLedByColor	24	static

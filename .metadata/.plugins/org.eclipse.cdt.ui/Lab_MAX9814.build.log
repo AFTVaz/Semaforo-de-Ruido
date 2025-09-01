@@ -1,0 +1,24 @@
+21:16:03 **** Incremental Build of configuration Debug for project Lab_MAX9814 ****
+make -r -j32 all 
+Building file: ../src/Lab_MAX9814.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\Lab_MAX9814\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/Lab_MAX9814.d" -MT"src/Lab_MAX9814.o" -MT"src/Lab_MAX9814.d" -o "src/Lab_MAX9814.o" "../src/Lab_MAX9814.c"
+Finished building: ../src/Lab_MAX9814.c
+ 
+Building target: Lab_MAX9814.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\Debug" -Xlinker -Map="Lab_MAX9814.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T Lab_MAX9814_Debug.ld -u _printf_float -u _scanf_float -o "Lab_MAX9814.axf" ./src/Lab_MAX9814.o ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       50964 B       512 KB      9.72%
+        RamLoc32:       19768 B        32 KB     60.33%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: Lab_MAX9814.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Lab_MAX9814.axf"; # arm-none-eabi-objcopy -v -O binary "Lab_MAX9814.axf" "Lab_MAX9814.bin" ; # checksum -p LPC1769 -d "Lab_MAX9814.bin";
+   text	   data	    bss	    dec	    hex	filename
+  50484	    480	  19288	  70252	  1126c	Lab_MAX9814.axf
+ 
+
+21:16:04 Build Finished. 0 errors, 0 warnings. (took 332ms)
+

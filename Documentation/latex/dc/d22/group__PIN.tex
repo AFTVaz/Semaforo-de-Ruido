@@ -1,0 +1,180 @@
+\doxysubsection{PIN}
+\hypertarget{group__PIN}{}\label{group__PIN}\index{PIN@{PIN}}
+
+
+Provides the core capabilities for pin related functions.  
+
+
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{group__PIN_ga5d28abde6fa780c3f4845300e2452844}\label{group__PIN_ga5d28abde6fa780c3f4845300e2452844} 
+enum \mbox{\hyperlink{group__PIN_ga5d28abde6fa780c3f4845300e2452844}{PIN\+\_\+\+Value\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Pin name enumeration. \end{DoxyCompactList}\item 
+\Hypertarget{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}\label{group__PIN_ga85d12e067890c194f890f31c3b9bac2a} 
+enum \mbox{\hyperlink{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}{PIN\+\_\+\+Port\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Port name enumeration. \end{DoxyCompactList}\item 
+\Hypertarget{group__PIN_ga1f864fb7859e046506175133cd77aa91}\label{group__PIN_ga1f864fb7859e046506175133cd77aa91} 
+enum \mbox{\hyperlink{group__PIN_ga1f864fb7859e046506175133cd77aa91}{PIN\+\_\+\+Direction\+Enum}} 
+\begin{DoxyCompactList}\small\item\em Pin direction enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\+\_\+\+Direction}} (PIN\+\_\+\+Value\+Type pin\+Id, PIN\+\_\+\+DIRType dir)
+\begin{DoxyCompactList}\small\item\em Configures the direction of the specified pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{PIN\+\_\+\+Set}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the specified pin to logical HIGH. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{PIN\+\_\+\+Clear}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Clears the specified pin to logical LOW. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__PIN_ga4654757dd7462fae40685a02db0f8244}{PIN\+\_\+\+Value}} (PIN\+\_\+\+Value\+Type pin\+Id)
+\begin{DoxyCompactList}\small\item\em Reads the current logical state of the specified pin. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}{PIN\+\_\+\+Port\+Write}} (PIN\+\_\+\+Port\+Type port\+Id, uint32\+\_\+t value, uint32\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em Writes a masked value to the entire GPIO port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for pin related functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}\index{PIN@{PIN}!PIN\_Clear@{PIN\_Clear}}
+\index{PIN\_Clear@{PIN\_Clear}!PIN@{PIN}}
+\doxysubsubsubsection{\texorpdfstring{PIN\_Clear()}{PIN\_Clear()}}
+{\footnotesize\ttfamily \label{group__PIN_ga652b39254ee8eaf76e63a0284d07e647} 
+void PIN\+\_\+\+Clear (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Clears the specified pin to logical LOW. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & The identifier of the pin to clear. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pin_8c_source_l00044}{44}} of file \mbox{\hyperlink{pin_8c_source}{pin.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{buzzer_8c_source_l00029}{BUZZER\+\_\+\+Off()}}, \mbox{\hyperlink{led_8c_source_l00044}{LED\+\_\+\+Off()}}, \mbox{\hyperlink{led_8c_source_l00037}{LED\+\_\+\+On()}}, and \mbox{\hyperlink{max9814_8c_source_l00095}{MAX9814\+\_\+\+Set\+Gain()}}.
+
+\Hypertarget{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}\index{PIN@{PIN}!PIN\_Direction@{PIN\_Direction}}
+\index{PIN\_Direction@{PIN\_Direction}!PIN@{PIN}}
+\doxysubsubsubsection{\texorpdfstring{PIN\_Direction()}{PIN\_Direction()}}
+{\footnotesize\ttfamily \label{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4} 
+void PIN\+\_\+\+Direction (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{, }\item[{PIN\+\_\+\+DIRType}]{dir}{}\end{DoxyParamCaption})}
+
+
+
+Configures the direction of the specified pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & The identifier of the pin. \\
+\hline
+{\em dir} & The desired direction of the pin\+: INPUT or OUTPUT. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pin_8c_source_l00021}{21}} of file \mbox{\hyperlink{pin_8c_source}{pin.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{buzzer_8c_source_l00019}{BUZZER\+\_\+\+Init()}}, \mbox{\hyperlink{led_8c_source_l00018}{LED\+\_\+\+Init()}}, and \mbox{\hyperlink{max9814_8c_source_l00095}{MAX9814\+\_\+\+Set\+Gain()}}.
+
+\Hypertarget{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}\index{PIN@{PIN}!PIN\_PortWrite@{PIN\_PortWrite}}
+\index{PIN\_PortWrite@{PIN\_PortWrite}!PIN@{PIN}}
+\doxysubsubsubsection{\texorpdfstring{PIN\_PortWrite()}{PIN\_PortWrite()}}
+{\footnotesize\ttfamily \label{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3} 
+void PIN\+\_\+\+Port\+Write (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Port\+Type}]{port\+Id}{, }\item[{uint32\+\_\+t}]{value}{, }\item[{uint32\+\_\+t}]{mask}{}\end{DoxyParamCaption})}
+
+
+
+Writes a masked value to the entire GPIO port. 
+
+\begin{DoxyVerb}      Only bits specified by the mask are affected; others remain unchanged.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+Id} & The identifier of the port (Port0, Port1, Port2, Port3). \\
+\hline
+{\em value} & The bits to write on the port (only bits in mask apply). \\
+\hline
+{\em mask} & A bitmask selecting which bits in the port are modified. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pin_8c_source_l00063}{63}} of file \mbox{\hyperlink{pin_8c_source}{pin.\+c}}.
+
+\Hypertarget{group__PIN_ga13902f416c781690b7f4a0ca9050b667}\index{PIN@{PIN}!PIN\_Set@{PIN\_Set}}
+\index{PIN\_Set@{PIN\_Set}!PIN@{PIN}}
+\doxysubsubsubsection{\texorpdfstring{PIN\_Set()}{PIN\_Set()}}
+{\footnotesize\ttfamily \label{group__PIN_ga13902f416c781690b7f4a0ca9050b667} 
+void PIN\+\_\+\+Set (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Sets the specified pin to logical HIGH. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & The identifier of the pin to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{pin_8c_source_l00035}{35}} of file \mbox{\hyperlink{pin_8c_source}{pin.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{buzzer_8c_source_l00025}{BUZZER\+\_\+\+On()}}, \mbox{\hyperlink{led_8c_source_l00044}{LED\+\_\+\+Off()}}, \mbox{\hyperlink{led_8c_source_l00037}{LED\+\_\+\+On()}}, and \mbox{\hyperlink{max9814_8c_source_l00095}{MAX9814\+\_\+\+Set\+Gain()}}.
+
+\Hypertarget{group__PIN_ga4654757dd7462fae40685a02db0f8244}\index{PIN@{PIN}!PIN\_Value@{PIN\_Value}}
+\index{PIN\_Value@{PIN\_Value}!PIN@{PIN}}
+\doxysubsubsubsection{\texorpdfstring{PIN\_Value()}{PIN\_Value()}}
+{\footnotesize\ttfamily \label{group__PIN_ga4654757dd7462fae40685a02db0f8244} 
+uint32\+\_\+t PIN\+\_\+\+Value (\begin{DoxyParamCaption}\item[{PIN\+\_\+\+Value\+Type}]{pin\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Reads the current logical state of the specified pin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\+Id} & The identifier of the pin to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t The current value of the pin (non-\/zero if HIGH, zero if LOW). 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{pin_8c_source_l00053}{53}} of file \mbox{\hyperlink{pin_8c_source}{pin.\+c}}.
+
+
+
+References \mbox{\hyperlink{pinconfig_8h_source_l00033}{LPC\+\_\+\+GPIO\+\_\+\+NUM\+\_\+\+PINS}}.
+
+
+
+Referenced by \mbox{\hyperlink{led_8c_source_l00031}{LED\+\_\+\+Get\+State()}}.
+

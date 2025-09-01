@@ -1,0 +1,80 @@
+\doxysubsection{TIMER2}
+\hypertarget{group__TIMER2}{}\label{group__TIMER2}\index{TIMER2@{TIMER2}}
+
+
+Provides the core capabilities for timer2 functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__TIMER2_ga14bdf2934e5489f6e2aa8280a524fba8}{TIMER2\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes Timer2 with a 1 µs resolution. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__TIMER2_ga8824f8e492a5f84857c974ca277f6773}{TIMER2\+\_\+\+Stop\+Watch}} (uint32\+\_\+t wait)
+\begin{DoxyCompactList}\small\item\em Performs a blocking delay using Timer2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for timer2 functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__TIMER2_ga14bdf2934e5489f6e2aa8280a524fba8}\index{TIMER2@{TIMER2}!TIMER2\_Init@{TIMER2\_Init}}
+\index{TIMER2\_Init@{TIMER2\_Init}!TIMER2@{TIMER2}}
+\doxysubsubsubsection{\texorpdfstring{TIMER2\_Init()}{TIMER2\_Init()}}
+{\footnotesize\ttfamily \label{group__TIMER2_ga14bdf2934e5489f6e2aa8280a524fba8} 
+void TIMER2\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes Timer2 with a 1 µs resolution. 
+
+\begin{DoxyVerb}      Powers up Timer2, selects the peripheral clock (PCLK) for Timer2,
+      resets the timer, and sets the prescaler to generate a tick every 1 microsecond.
+\end{DoxyVerb}
+
+
+\begin{DoxyNote}{Note}
+This configuration assumes PCLK = System\+Core\+Clock / 4. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{timer2_8c_source_l00018}{18}} of file \mbox{\hyperlink{timer2_8c_source}{timer2.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{delay_8c_source_l00051}{DELAY\+\_\+\+Stopwatch\+Init()}}.
+
+\Hypertarget{group__TIMER2_ga8824f8e492a5f84857c974ca277f6773}\index{TIMER2@{TIMER2}!TIMER2\_StopWatch@{TIMER2\_StopWatch}}
+\index{TIMER2\_StopWatch@{TIMER2\_StopWatch}!TIMER2@{TIMER2}}
+\doxysubsubsubsection{\texorpdfstring{TIMER2\_StopWatch()}{TIMER2\_StopWatch()}}
+{\footnotesize\ttfamily \label{group__TIMER2_ga8824f8e492a5f84857c974ca277f6773} 
+void TIMER2\+\_\+\+Stop\+Watch (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{wait}{}\end{DoxyParamCaption})}
+
+
+
+Performs a blocking delay using Timer2. 
+
+\begin{DoxyVerb}      Starts Timer2 in stopwatch mode to wait for a specified time (in microseconds).
+      The timer generates an interrupt on match, resets, and stops automatically.
+      The function blocks until the match event occurs.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait} & Time to wait, in microseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function is blocking and uses Match Register 0 (MR0). 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{timer2_8c_source_l00025}{25}} of file \mbox{\hyperlink{timer2_8c_source}{timer2.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{delay_8c_source_l00057}{DELAY\+\_\+\+Stopwatch()}}.
+

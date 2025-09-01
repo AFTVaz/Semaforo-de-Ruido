@@ -1,0 +1,4 @@
+../src/flash_rtos.c:23:6:FLASH_RTOS_Init	8	static
+../src/flash_rtos.c:29:5:FLASH_RTOS_EraseSector	24	static
+../src/flash_rtos.c:42:5:FLASH_RTOS_WriteData	32	static
+../src/flash_rtos.c:55:5:FLASH_RTOS_VerifyData	32	static

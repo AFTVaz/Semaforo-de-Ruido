@@ -1,0 +1,4 @@
+../src/flash.c:22:21:FLASH_GetSectorFromAddress	16	static
+../src/flash.c:34:14:FLASH_EraseSector	56	static
+../src/flash.c:58:14:FLASH_WriteData	80	static
+../src/flash.c:85:14:FLASH_VerifyData	72	static

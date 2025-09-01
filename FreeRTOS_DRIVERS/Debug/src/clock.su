@@ -1,0 +1,5 @@
+../src/clock.c:23:6:CLOCK_Init	8	static
+../src/clock.c:32:6:CLOCK_GetTimeDate	16	static
+../src/clock.c:41:6:CLOCK_SetTimeDate	16	static
+../src/clock.c:50:6:CLOCK_SetSeconds	16	static
+../src/clock.c:59:8:CLOCK_GetSeconds	16	static

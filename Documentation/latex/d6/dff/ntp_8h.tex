@@ -1,0 +1,54 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/ntp.h File Reference}
+\hypertarget{ntp_8h}{}\label{ntp_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/ntp.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/ntp.h}}
+
+
+Contains the NTP (Network Time Protocol) API.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structNTP__Packet}{NTP\+\_\+\+Packet}}
+\begin{DoxyCompactList}\small\item\em Represents a 48-\/byte NTP (Network Time Protocol) packet structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}} \{ \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ad0d5745c50ace4913192a09c737b1ccc}{NTP\+\_\+\+IDLE}}
+, \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ab8804aa21d5a07c2496574041d4ba5b1}{NTP\+\_\+\+PROCESSING}}
+, \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2a33157c0f963d4fe6e5f80ce0f1c45277}{NTP\+\_\+\+READY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Internal state of the NTP client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__NTP_gaccc0fb39eb7b19f86d15e01fe6937cfe}{NTP\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the NTP module and creates the background task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_gaf20a777ffcf6e63cff72f0b58dabdce0}{NTP\+\_\+\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if the NTP module has been initialised. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}} \mbox{\hyperlink{group__NTP_gae13b25d0c1ba975c33fa6df1ea85be8b}{NTP\+\_\+\+Get\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieves the current state of the NTP client. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NTP_ga794dd16f57bb514643dada07cfa61525}{NTP\+\_\+\+Request\+Time}} (void)
+\begin{DoxyCompactList}\small\item\em Sends a time request to the configured NTP server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_ga765930b8d45a60f24169b16c3dfae7b0}{NTP\+\_\+\+Get\+Timestamp}} (time\+\_\+t \texorpdfstring{$\ast$}{*}timestamp)
+\begin{DoxyCompactList}\small\item\em Retrieves the latest timestamp received from the NTP server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_ga2e8934b32ca00d2b46751c035e0fa3dd}{NTP\+\_\+\+Request\+And\+Wait}} (time\+\_\+t \texorpdfstring{$\ast$}{*}timestamp)
+\begin{DoxyCompactList}\small\item\em Sends an NTP request and blocks until a response is received. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the NTP (Network Time Protocol) API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+05 Mai 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{ntp_8h_source}{ntp.\+h}}.
+

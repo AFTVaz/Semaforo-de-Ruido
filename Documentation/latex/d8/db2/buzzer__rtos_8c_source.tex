@@ -1,0 +1,126 @@
+\doxysection{buzzer\+\_\+rtos.\+c}
+\hypertarget{buzzer__rtos_8c_source}{}\label{buzzer__rtos_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/buzzer\_rtos.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/src/buzzer\_rtos.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00002}00002\ \textcolor{comment}{\ *\ buzzer\_rtos.c}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 21/03/2025}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Filipe\ Cruz\ (43468)}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}FreeRTOS.h"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}task.h"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}timers.h"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buzzer_8h}{buzzer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buzzer__rtos_8h}{buzzer\_rtos.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00021}00021\ \textcolor{preprocessor}{\#define\ BUZZER\_DEFAULT\_ALARM\_DURATION\ \ \ pdMS\_TO\_TICKS(1000)}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00023}00023\ \textcolor{keyword}{static}\ TaskHandle\_t\ xBuzzerTaskHandle\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00024}00024\ \textcolor{keyword}{static}\ TimerHandle\_t\ buzzerTimer\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00026}00026\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ buzzerTimerCallback(\ TimerHandle\_t\ xTimer\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00027}00027\ \ \ \ \ \mbox{\hyperlink{group__BUZZER_ga634b641daf6a29bf13c8672795cb3dcd}{BUZZER\_Off}}();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00030}00030\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BUZZER\_InitTimer(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{if}\ (buzzerTimer\ ==\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00032}00032\ \ \ \ \ \ \ \ \ buzzerTimer\ =\ xTimerCreate(}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}BuzzerTimer"{}},}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BUZZER\_DEFAULT\_ALARM\_DURATION,}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pdFALSE,}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NULL,}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buzzerTimerCallback}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00040}00040\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00042}00042\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BUZZER\_RTOS\_Alarm\_Start(\ uint32\_t\ duration\_ms\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00043}00043\ \ \ \ \ \mbox{\hyperlink{group__BUZZER_gaa4fb942154b813e2238a2481b51a9f60}{BUZZER\_On}}();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (buzzerTimer\ ==\ NULL)\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ BUZZER\_InitTimer();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00049}00049\ \ \ \ \ xTimerChangePeriod(buzzerTimer,\ pdMS\_TO\_TICKS(duration\_ms),\ 0);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00050}00050\ \ \ \ \ xTimerStart(buzzerTimer,\ 0);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00053}00053\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BUZZER\_RTOS\_Alarm\_Stop(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ ((buzzerTimer\ !=\ NULL)\ \&\&\ (xTimerIsTimerActive(buzzerTimer)\ ==\ pdTRUE))\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ xTimerStop(buzzerTimer,\ 0);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00059}\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}{00059}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}{BUZZER\_RTOS\_Init}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00060}00060\ \ \ \ \ xTaskCreate(\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{BUZZER\_RTOS\_Task}},\ \textcolor{stringliteral}{"{}Buzzer\_Task"{}},}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ configMINIMAL\_STACK\_SIZE,\ NULL,\ 1,\ \&xBuzzerTaskHandle\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00062}00062\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00064}\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{00064}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{BUZZER\_RTOS\_Task}}(\ \textcolor{keywordtype}{void}\ *pvParameters\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{group__BUZZER_gad98dfff2552f0576790516d6b41ae285}{BUZZER\_Init}}();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00066}00066\ \ \ \ \ BUZZER\_InitTimer();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00068}00068\ \ \ \ \ uint32\_t\ command;}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{while}(\ \textcolor{keyword}{true}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xTaskNotifyWait(0,\ 0xFFFFFFFF,\ \&command,\ portMAX\_DELAY)\ ==\ pdPASS)\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\_Command}}\ cmd\ =\ (\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\_Command}})(command\ \&\ 0xFF);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ duration\ =\ (command\ >>\ 8)\ \&\ 0xFFFFFF;}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (cmd)\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{BUZZER\_CMD\_ON}}:}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BUZZER\_RTOS\_Alarm\_Stop();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__BUZZER_gaa4fb942154b813e2238a2481b51a9f60}{BUZZER\_On}}();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{BUZZER\_CMD\_OFF}}:}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BUZZER\_RTOS\_Alarm\_Stop();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__BUZZER_ga634b641daf6a29bf13c8672795cb3dcd}{BUZZER\_Off}}();}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{BUZZER\_CMD\_ALARM}}:}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BUZZER\_RTOS\_Alarm\_Start(duration);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00097}00097\ \textcolor{keywordtype}{bool}\ BUZZER\_RTOS\_Ready(\ \textcolor{keywordtype}{void}\ )\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{return}\ xBuzzerTaskHandle\ !=\ NULL;}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00101}00101\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BUZZER\_RTOS\_SendNotify(\ uint32\_t\ command\ )\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (xBuzzerTaskHandle\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ xTaskNotify(xBuzzerTaskHandle,\ command,\ eSetValueWithOverwrite);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00104}00104\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00108}\mbox{\hyperlink{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}{00108}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}{BUZZER\_RTOS\_On}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00109}00109\ \ \ \ \ BUZZER\_RTOS\_SendNotify(\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{BUZZER\_CMD\_ON}}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00112}\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}{00112}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}{BUZZER\_RTOS\_Off}}(\ \textcolor{keywordtype}{void}\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00113}00113\ \ \ \ \ BUZZER\_RTOS\_SendNotify(\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{BUZZER\_CMD\_OFF}}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00116}\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}{00116}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}{BUZZER\_RTOS\_Alarm}}(\ uint32\_t\ duration\_ms\ )\{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00117}00117\ \ \ \ \ uint32\_t\ cmd\ =\ ((duration\_ms\ \&\ 0xFFFFFF)\ <<\ 8)\ |\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{BUZZER\_CMD\_ALARM}};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00118}00118\ \ \ \ \ BUZZER\_RTOS\_SendNotify(cmd);}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8c_source_l00120}00120\ }
+
+\end{DoxyCode}

@@ -1,0 +1,136 @@
+\doxysubsection{MICROPHONE}
+\hypertarget{group__MICROPHONE}{}\label{group__MICROPHONE}\index{MICROPHONE@{MICROPHONE}}
+
+
+Provides the core capabilities for MAX9814 Free\+RTOS functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__MICROPHONE_gafc459c8eab4bd2211abd27225abfb926}{MICROPHONE\+\_\+\+Init}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} gain)
+\begin{DoxyCompactList}\small\item\em Initializes the microphone module and creates the control mutex. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{group__MICROPHONE_gaae4c40bbddbefe5cfa4f36652e298e8a}{MICROPHONE\+\_\+\+Read}} (void)
+\begin{DoxyCompactList}\small\item\em Reads the current sound level in decibels (dB). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MICROPHONE_ga8c1f1f61d5506acac31880f2ac6ae78a}{MICROPHONE\+\_\+\+Set\+Gain}} (\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}} gain)
+\begin{DoxyCompactList}\small\item\em Changes the gain level of the microphone. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for MAX9814 Free\+RTOS functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__MICROPHONE_gafc459c8eab4bd2211abd27225abfb926}\index{MICROPHONE@{MICROPHONE}!MICROPHONE\_Init@{MICROPHONE\_Init}}
+\index{MICROPHONE\_Init@{MICROPHONE\_Init}!MICROPHONE@{MICROPHONE}}
+\doxysubsubsubsection{\texorpdfstring{MICROPHONE\_Init()}{MICROPHONE\_Init()}}
+{\footnotesize\ttfamily \label{group__MICROPHONE_gafc459c8eab4bd2211abd27225abfb926} 
+void MICROPHONE\+\_\+\+Init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}}}]{gain}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the microphone module and creates the control mutex. 
+
+\begin{DoxyVerb}   This function creates a mutex to ensure thread-safe access to the microphone hardware.
+   It then initializes the MAX9814 driver with the specified gain configuration.
+   The gain can be changed later using MICROPHONE_SetGain().
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em gain} & Initial gain setting for the MAX9814 microphone. Possible values\+:
+\begin{DoxyItemize}
+\item MAX9814\+\_\+\+VCC\+\_\+\+GAIN (40 dB)
+\item MAX9814\+\_\+\+GND\+\_\+\+GAIN (50 dB)
+\item MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN (60 dB)
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+This function must be called before using any other MICROPHONE-\/related function. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{microphone_8c_source_l00021}{21}} of file \mbox{\hyperlink{microphone_8c_source}{microphone.\+c}}.
+
+
+
+References \mbox{\hyperlink{max9814_8c_source_l00079}{MAX9814\+\_\+\+Init()}}.
+
+\Hypertarget{group__MICROPHONE_gaae4c40bbddbefe5cfa4f36652e298e8a}\index{MICROPHONE@{MICROPHONE}!MICROPHONE\_Read@{MICROPHONE\_Read}}
+\index{MICROPHONE\_Read@{MICROPHONE\_Read}!MICROPHONE@{MICROPHONE}}
+\doxysubsubsubsection{\texorpdfstring{MICROPHONE\_Read()}{MICROPHONE\_Read()}}
+{\footnotesize\ttfamily \label{group__MICROPHONE_gaae4c40bbddbefe5cfa4f36652e298e8a} 
+float MICROPHONE\+\_\+\+Read (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Reads the current sound level in decibels (dB). 
+
+\begin{DoxyVerb}   This function collects multiple ADC samples from the microphone,
+   computes the RMS voltage, and converts it into a decibel value.
+   Access to the microphone is controlled by a mutex to avoid concurrent interference.
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+Current sound level in decibels (dB). 
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em -\/\+INFINITY} & If the RMS voltage is zero or below detection threshold. \\
+\hline
+{\em $>$0} & Valid sound level including microphone gain compensation.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe reading. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{microphone_8c_source_l00030}{30}} of file \mbox{\hyperlink{microphone_8c_source}{microphone.\+c}}.
+
+
+
+References \mbox{\hyperlink{max9814_8c_source_l00086}{MAX9814\+\_\+\+Read()}}.
+
+\Hypertarget{group__MICROPHONE_ga8c1f1f61d5506acac31880f2ac6ae78a}\index{MICROPHONE@{MICROPHONE}!MICROPHONE\_SetGain@{MICROPHONE\_SetGain}}
+\index{MICROPHONE\_SetGain@{MICROPHONE\_SetGain}!MICROPHONE@{MICROPHONE}}
+\doxysubsubsubsection{\texorpdfstring{MICROPHONE\_SetGain()}{MICROPHONE\_SetGain()}}
+{\footnotesize\ttfamily \label{group__MICROPHONE_ga8c1f1f61d5506acac31880f2ac6ae78a} 
+void MICROPHONE\+\_\+\+Set\+Gain (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__MAX9814_ga447282e5a307ab474573090ad39e4e77}{MAX9814\+\_\+\+Gain\+Value\+Type}}}]{gain}{}\end{DoxyParamCaption})}
+
+
+
+Changes the gain level of the microphone. 
+
+\begin{DoxyVerb}   This function adjusts the analog gain of the MAX9814 microphone by configuring
+   the gain control pin. It also updates the internal dB compensation value
+   used when converting voltage to decibels.
+   The access is protected by a mutex to ensure safe concurrent operation.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em gain} & Gain setting to apply. Options\+:
+\begin{DoxyItemize}
+\item MAX9814\+\_\+\+VCC\+\_\+\+GAIN (40 dB)
+\item MAX9814\+\_\+\+GND\+\_\+\+GAIN (50 dB)
+\item MAX9814\+\_\+\+FLOAT\+\_\+\+GAIN (60 dB)
+\end{DoxyItemize}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+The function blocks execution until the mutex is available for safe configuration. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{microphone_8c_source_l00043}{43}} of file \mbox{\hyperlink{microphone_8c_source}{microphone.\+c}}.
+
+
+
+References \mbox{\hyperlink{max9814_8c_source_l00095}{MAX9814\+\_\+\+Set\+Gain()}}.
+

@@ -1,0 +1,39 @@
+14:08:31 **** Build of configuration Debug for project Lab_BuzzerSemaphore2 ****
+make -r -j32 all 
+Building file: ../src/Lab_BuzzerSemaphore.c
+Building file: ../src/cr_startup_lpc175x_6x-FreeRTOS.c
+Building file: ../src/crp.c
+Invoking: MCU C Compiler
+Building file: ../src/printf-stdarg.c
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\Lab_BuzzerSemaphore2\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/Lab_BuzzerSemaphore.d" -MT"src/Lab_BuzzerSemaphore.o" -MT"src/Lab_BuzzerSemaphore.d" -o "src/Lab_BuzzerSemaphore.o" "../src/Lab_BuzzerSemaphore.c"
+Invoking: MCU C Compiler
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\Lab_BuzzerSemaphore2\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/cr_startup_lpc175x_6x-FreeRTOS.d" -MT"src/cr_startup_lpc175x_6x-FreeRTOS.o" -MT"src/cr_startup_lpc175x_6x-FreeRTOS.d" -o "src/cr_startup_lpc175x_6x-FreeRTOS.o" "../src/cr_startup_lpc175x_6x-FreeRTOS.c"
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\Lab_BuzzerSemaphore2\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\Lab_BuzzerSemaphore2\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/printf-stdarg.d" -MT"src/printf-stdarg.o" -MT"src/printf-stdarg.d" -o "src/printf-stdarg.o" "../src/printf-stdarg.c"
+Finished building: ../src/crp.c
+ 
+Finished building: ../src/cr_startup_lpc175x_6x-FreeRTOS.c
+Finished building: ../src/printf-stdarg.c
+ 
+ 
+Finished building: ../src/Lab_BuzzerSemaphore.c
+ 
+Building target: Lab_BuzzerSemaphore2.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\Debug" -Xlinker -Map="Lab_BuzzerSemaphore2.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T Lab_BuzzerSemaphore2_Debug.ld -o "Lab_BuzzerSemaphore2.axf" ./src/Lab_BuzzerSemaphore.o ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       22952 B       512 KB      4.38%
+        RamLoc32:       18856 B        32 KB     57.54%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: Lab_BuzzerSemaphore2.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "Lab_BuzzerSemaphore2.axf"; # arm-none-eabi-objcopy -v -O binary "Lab_BuzzerSemaphore2.axf" "Lab_BuzzerSemaphore2.bin" ; # checksum -p LPC1769 -d "Lab_BuzzerSemaphore2.bin";
+   text	   data	    bss	    dec	    hex	filename
+  22944	      8	  18848	  41800	   a348	Lab_BuzzerSemaphore2.axf
+ 
+
+14:08:32 Build Finished. 0 errors, 0 warnings. (took 383ms)
+

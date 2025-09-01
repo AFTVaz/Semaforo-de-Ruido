@@ -1,0 +1,7 @@
+../src/max9814.c:45:13:MAX9814_Calculate_Sensitivity	16	static
+../src/max9814.c:50:14:MAX9814_Calibrate_ADC_Offset	48	static
+../src/max9814.c:65:14:MAX9814_Calculate_ADC_Average	40	static
+../src/max9814.c:74:14:MAX9814_Conversion_To_DB	24	static
+../src/max9814.c:79:6:MAX9814_Init	16	static
+../src/max9814.c:86:7:MAX9814_Read	16	static
+../src/max9814.c:95:6:MAX9814_SetGain	16	static

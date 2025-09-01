@@ -1,0 +1,190 @@
+\doxysubsection{DELAY}
+\hypertarget{group__DELAY}{}\label{group__DELAY}\index{DELAY@{DELAY}}
+
+
+Provides the core capabilities for time delaying functions.  
+
+
+\doxysubsubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__DELAY_ga259bee748117476f5bf763c71a2f66a8}{SYSTICK\+\_\+\+FREQ}}~(System\+Core\+Clock/1000)
+\begin{DoxyCompactList}\small\item\em Macro that defines the Sys\+Tick frequency as 1 ms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{group__DELAY_gac97d2e60b33e22e2f305b3b0192c3ddd}{DELAY\+\_\+\+Get\+Timer2\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Returns whether Timer2 has been initialized. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__DELAY_gad48f4896b454f6e3f26c36f07c676b43}{DELAY\+\_\+\+Get\+Systick\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Returns whether Sys\+Tick has been initialized. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__DELAY_ga55df101b60b26167566ba841fe01c701}{DELAY\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the Sys\+Tick delay system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__DELAY_ga994e2e885ff3c8e4cdaceadb92d78f5e}{DELAY\+\_\+\+Milliseconds}} (uint32\+\_\+t millis)
+\begin{DoxyCompactList}\small\item\em Delays the execution for a given number of milliseconds. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__DELAY_gaf06050f7d65285a7e7dd2f99f980bd96}{DELAY\+\_\+\+Get\+Elapsed\+Millis}} (uint32\+\_\+t start)
+\begin{DoxyCompactList}\small\item\em Returns the number of milliseconds that have elapsed since a start point. \end{DoxyCompactList}\item 
+\Hypertarget{group__DELAY_ga9b506cdac50867037ded9183c5e0934d}\label{group__DELAY_ga9b506cdac50867037ded9183c5e0934d} 
+void {\bfseries DELAY\+\_\+\+Stopwatch\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the Timer2 stopwatch for microsecond precision delays. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__DELAY_ga53886189a6f3942871a6c73f11bc4df6}{DELAY\+\_\+\+Stopwatch}} (uint32\+\_\+t wait\+Us)
+\begin{DoxyCompactList}\small\item\em Delays the execution for a given number of microseconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for time delaying functions. 
+
+
+
+\doxysubsubsection{Macro Definition Documentation}
+\Hypertarget{group__DELAY_ga259bee748117476f5bf763c71a2f66a8}\index{DELAY@{DELAY}!SYSTICK\_FREQ@{SYSTICK\_FREQ}}
+\index{SYSTICK\_FREQ@{SYSTICK\_FREQ}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{SYSTICK\_FREQ}{SYSTICK\_FREQ}}
+{\footnotesize\ttfamily \label{group__DELAY_ga259bee748117476f5bf763c71a2f66a8} 
+\#define SYSTICK\+\_\+\+FREQ~(System\+Core\+Clock/1000)}
+
+
+
+Macro that defines the Sys\+Tick frequency as 1 ms. 
+
+SYSTICK\+\_\+\+FREQ = (System\+Core\+Clock / 1000) 
+
+Definition at line \mbox{\hyperlink{delay_8h_source_l00036}{36}} of file \mbox{\hyperlink{delay_8h_source}{delay.\+h}}.
+
+
+
+Referenced by \mbox{\hyperlink{delay_8c_source_l00029}{DELAY\+\_\+\+Init()}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__DELAY_gaf06050f7d65285a7e7dd2f99f980bd96}\index{DELAY@{DELAY}!DELAY\_GetElapsedMillis@{DELAY\_GetElapsedMillis}}
+\index{DELAY\_GetElapsedMillis@{DELAY\_GetElapsedMillis}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_GetElapsedMillis()}{DELAY\_GetElapsedMillis()}}
+{\footnotesize\ttfamily \label{group__DELAY_gaf06050f7d65285a7e7dd2f99f980bd96} 
+uint32\+\_\+t DELAY\+\_\+\+Get\+Elapsed\+Millis (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{start}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of milliseconds that have elapsed since a start point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & The starting value returned by \doxylink{group__SYSTICK_ga38f1626b445b517a164b659025e842eb}{SYSTICK\+\_\+\+Get\+Value()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Elapsed milliseconds. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00046}{46}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+
+
+References \mbox{\hyperlink{systick_8c_source_l00032}{SYSTICK\+\_\+\+Get\+Value()}}.
+
+\Hypertarget{group__DELAY_gad48f4896b454f6e3f26c36f07c676b43}\index{DELAY@{DELAY}!DELAY\_GetSystickState@{DELAY\_GetSystickState}}
+\index{DELAY\_GetSystickState@{DELAY\_GetSystickState}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_GetSystickState()}{DELAY\_GetSystickState()}}
+{\footnotesize\ttfamily \label{group__DELAY_gad48f4896b454f6e3f26c36f07c676b43} 
+bool DELAY\+\_\+\+Get\+Systick\+State (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Returns whether Sys\+Tick has been initialized. 
+
+\begin{DoxyReturn}{Returns}
+true if Sys\+Tick is initialized, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00025}{25}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+\Hypertarget{group__DELAY_gac97d2e60b33e22e2f305b3b0192c3ddd}\index{DELAY@{DELAY}!DELAY\_GetTimer2State@{DELAY\_GetTimer2State}}
+\index{DELAY\_GetTimer2State@{DELAY\_GetTimer2State}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_GetTimer2State()}{DELAY\_GetTimer2State()}}
+{\footnotesize\ttfamily \label{group__DELAY_gac97d2e60b33e22e2f305b3b0192c3ddd} 
+bool DELAY\+\_\+\+Get\+Timer2\+State (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Returns whether Timer2 has been initialized. 
+
+\begin{DoxyReturn}{Returns}
+true if Timer2 is initialized, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00021}{21}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+\Hypertarget{group__DELAY_ga55df101b60b26167566ba841fe01c701}\index{DELAY@{DELAY}!DELAY\_Init@{DELAY\_Init}}
+\index{DELAY\_Init@{DELAY\_Init}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_Init()}{DELAY\_Init()}}
+{\footnotesize\ttfamily \label{group__DELAY_ga55df101b60b26167566ba841fe01c701} 
+int DELAY\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the Sys\+Tick delay system. 
+
+\begin{DoxyReturn}{Returns}
+0 if initialization was successful, -\/1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00029}{29}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+
+
+References \mbox{\hyperlink{delay_8h_source_l00036}{SYSTICK\+\_\+\+FREQ}}, and \mbox{\hyperlink{systick_8c_source_l00023}{SYSTICK\+\_\+\+Init()}}.
+
+\Hypertarget{group__DELAY_ga994e2e885ff3c8e4cdaceadb92d78f5e}\index{DELAY@{DELAY}!DELAY\_Milliseconds@{DELAY\_Milliseconds}}
+\index{DELAY\_Milliseconds@{DELAY\_Milliseconds}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_Milliseconds()}{DELAY\_Milliseconds()}}
+{\footnotesize\ttfamily \label{group__DELAY_ga994e2e885ff3c8e4cdaceadb92d78f5e} 
+void DELAY\+\_\+\+Milliseconds (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{millis}{}\end{DoxyParamCaption})}
+
+
+
+Delays the execution for a given number of milliseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em millis} & Number of milliseconds to wait. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00038}{38}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+
+
+References \mbox{\hyperlink{systick_8c_source_l00032}{SYSTICK\+\_\+\+Get\+Value()}}.
+
+\Hypertarget{group__DELAY_ga53886189a6f3942871a6c73f11bc4df6}\index{DELAY@{DELAY}!DELAY\_Stopwatch@{DELAY\_Stopwatch}}
+\index{DELAY\_Stopwatch@{DELAY\_Stopwatch}!DELAY@{DELAY}}
+\doxysubsubsubsection{\texorpdfstring{DELAY\_Stopwatch()}{DELAY\_Stopwatch()}}
+{\footnotesize\ttfamily \label{group__DELAY_ga53886189a6f3942871a6c73f11bc4df6} 
+void DELAY\+\_\+\+Stopwatch (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{wait\+Us}{}\end{DoxyParamCaption})}
+
+
+
+Delays the execution for a given number of microseconds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wait\+Us} & Number of microseconds to wait. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{delay_8c_source_l00057}{57}} of file \mbox{\hyperlink{delay_8c_source}{delay.\+c}}.
+
+
+
+References \mbox{\hyperlink{timer2_8c_source_l00025}{TIMER2\+\_\+\+Stop\+Watch()}}.
+
+
+
+Referenced by \mbox{\hyperlink{buzzer_8c_source_l00033}{BUZZER\+\_\+\+Alarm()}}.
+

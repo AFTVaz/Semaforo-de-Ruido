@@ -1,0 +1,7 @@
+../src/delay.c:21:6:DELAY_GetTimer2State	4	static
+../src/delay.c:25:6:DELAY_GetSystickState	4	static
+../src/delay.c:29:5:DELAY_Init	16	static
+../src/delay.c:38:6:DELAY_Milliseconds	24	static
+../src/delay.c:46:10:DELAY_GetElapsedMillis	16	static
+../src/delay.c:51:6:DELAY_StopwatchInit	8	static
+../src/delay.c:57:6:DELAY_Stopwatch	16	static

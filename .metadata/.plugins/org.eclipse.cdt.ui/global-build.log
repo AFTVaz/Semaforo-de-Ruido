@@ -1,0 +1,122 @@
+18:17:19 **** Incremental Build of configuration Debug for project CMSIS_CORE_LPC17xx ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libCMSIS_CORE_LPC17xx.a" ; # arm-none-eabi-objdump -h -S "libCMSIS_CORE_LPC17xx.a" >"libCMSIS_CORE_LPC17xx.lss"
+   text	   data	    bss	    dec	    hex	filename
+    400	      4	      0	    404	    194	system_LPC17xx.o (ex libCMSIS_CORE_LPC17xx.a)
+ 
+18:17:19 **** Incremental Build of configuration Debug for project FreeRTOS-Kernel ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size libFreeRTOS-Kernel.a ; # arm-none-eabi-objdump -h -S libFreeRTOS-Kernel.a >libFreeRTOS-Kernel.lss
+   text	   data	    bss	    dec	    hex	filename
+   1232	      0	  18460	  19692	   4cec	heap_4.o (ex libFreeRTOS-Kernel.a)
+    640	      4	      0	    644	    284	port.o (ex libFreeRTOS-Kernel.a)
+      0	      0	      0	      0	      0	mpu_wrappers.o (ex libFreeRTOS-Kernel.a)
+      0	      0	      0	      0	      0	mpu_wrappers_v2.o (ex libFreeRTOS-Kernel.a)
+      0	      0	      0	      0	      0	croutine.o (ex libFreeRTOS-Kernel.a)
+   1156	      0	      0	   1156	    484	event_groups.o (ex libFreeRTOS-Kernel.a)
+    350	      0	      0	    350	    15e	list.o (ex libFreeRTOS-Kernel.a)
+   3988	      0	     56	   4044	    fcc	queue.o (ex libFreeRTOS-Kernel.a)
+   2652	      0	      0	   2652	    a5c	stream_buffer.o (ex libFreeRTOS-Kernel.a)
+  11141	      0	    268	  11409	   2c91	tasks.o (ex libFreeRTOS-Kernel.a)
+   2045	      0	     60	   2105	    839	timers.o (ex libFreeRTOS-Kernel.a)
+ 
+18:17:19 **** Incremental Build of configuration Debug(FreeRTOS) for project HAL ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libHAL.a" ; # arm-none-eabi-objdump -h -S "libHAL.a" >"libHAL.lss"
+   text	   data	    bss	    dec	    hex	filename
+    380	      0	      0	    380	    17c	adc.o (ex libHAL.a)
+    384	      4	      0	    388	    184	flash.o (ex libHAL.a)
+    354	      0	      0	    354	    162	pin.o (ex libHAL.a)
+    420	      0	      0	    420	    1a4	pinconfig.o (ex libHAL.a)
+     62	      0	      4	     66	     42	systick.o (ex libHAL.a)
+    148	      0	      0	    148	     94	timer2.o (ex libHAL.a)
+ 
+18:17:20 **** Incremental Build of configuration Debug for project DRIVERS ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libDRIVERS.a" ; # arm-none-eabi-objdump -h -S "libDRIVERS.a" >"libDRIVERS.lss"
+   text	   data	    bss	    dec	    hex	filename
+     86	      0	      0	     86	     56	buzzer.o (ex libDRIVERS.a)
+    230	      0	      2	    232	     e8	delay.o (ex libDRIVERS.a)
+    677	      0	      0	    677	    2a5	flashcontrol.o (ex libDRIVERS.a)
+    462	      0	      0	    462	    1ce	led.o (ex libDRIVERS.a)
+    772	     13	    109	    894	    37e	max9814.o (ex libDRIVERS.a)
+    544	      0	      0	    544	    220	rtc.o (ex libDRIVERS.a)
+    632	      0	     12	    644	    284	transport.o (ex libDRIVERS.a)
+ 
+18:17:20 **** Incremental Build of configuration Debug for project MQTTPacket ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libMQTTPacket.a" ; # arm-none-eabi-objdump -h -S "libMQTTPacket.a" >"libMQTTPacket.lss"
+   text	   data	    bss	    dec	    hex	filename
+   1023	      0	      0	   1023	    3ff	MQTTConnectClient.o (ex libMQTTPacket.a)
+    789	      0	      0	    789	    315	MQTTConnectServer.o (ex libMQTTPacket.a)
+    378	      0	      0	    378	    17a	MQTTDeserializePublish.o (ex libMQTTPacket.a)
+   1424	     60	      0	   1484	    5cc	MQTTFormat.o (ex libMQTTPacket.a)
+   1692	      0	      4	   1696	    6a0	MQTTPacket.o (ex libMQTTPacket.a)
+    600	      0	      0	    600	    258	MQTTSerializePublish.o (ex libMQTTPacket.a)
+    532	      0	      0	    532	    214	MQTTSubscribeClient.o (ex libMQTTPacket.a)
+    426	      0	      0	    426	    1aa	MQTTSubscribeServer.o (ex libMQTTPacket.a)
+    370	      0	      0	    370	    172	MQTTUnsubscribeClient.o (ex libMQTTPacket.a)
+    328	      0	      0	    328	    148	MQTTUnsubscribeServer.o (ex libMQTTPacket.a)
+ 
+18:17:20 **** Incremental Build of configuration Debug for project FreeRTOS-Template ****
+make -r -j32 all 
+Building target: FreeRTOS-Template.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\Debug" -Xlinker -Map="FreeRTOS-Template.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T FreeRTOS-Template_Debug.ld -o "FreeRTOS-Template.axf" ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/main.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       21708 B       512 KB      4.14%
+        RamLoc32:       18852 B        32 KB     57.53%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: FreeRTOS-Template.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "FreeRTOS-Template.axf"; # arm-none-eabi-objcopy -v -O binary "FreeRTOS-Template.axf" "FreeRTOS-Template.bin" ; # checksum -p LPC1769 -d "FreeRTOS-Template.bin";
+   text	   data	    bss	    dec	    hex	filename
+  21700	      8	  18844	  40552	   9e68	FreeRTOS-Template.axf
+ 
+18:17:21 **** Incremental Build of configuration Debug for project FreeRTOS_DRIVERS ****
+make -r -j32 all 
+make[1]: Nothing to be done for 'main-build'.
+Performing post-build steps
+arm-none-eabi-size "libFreeRTOS_DRIVERS.a" ; # arm-none-eabi-objdump -h -S "libFreeRTOS_DRIVERS.a" >"libFreeRTOS_DRIVERS.lss"
+   text	   data	    bss	    dec	    hex	filename
+    646	      0	      8	    654	    28e	buzzer_rtos.o (ex libFreeRTOS_DRIVERS.a)
+    348	      0	      4	    352	    160	clock.o (ex libFreeRTOS_DRIVERS.a)
+    300	      0	      4	    304	    130	flash_rtos.o (ex libFreeRTOS_DRIVERS.a)
+   1116	      0	     12	   1128	    468	led_rtos.o (ex libFreeRTOS_DRIVERS.a)
+    208	      0	      4	    212	     d4	microphone.o (ex libFreeRTOS_DRIVERS.a)
+   3423	     16	    530	   3969	    f81	mqtt.o (ex libFreeRTOS_DRIVERS.a)
+   1716	      0	     17	   1733	    6c5	ntp.o (ex libFreeRTOS_DRIVERS.a)
+   3519	     42	     23	   3584	    e00	wifi.o (ex libFreeRTOS_DRIVERS.a)
+ 
+18:17:21 **** Incremental Build of configuration Debug for project NSP ****
+make -r -j32 all 
+Building file: ../src/NSP.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\NSP\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/NSP.d" -MT"src/NSP.o" -MT"src/NSP.d" -o "src/NSP.o" "../src/NSP.c"
+Finished building: ../src/NSP.c
+ 
+Building target: NSP.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\MQTTPacket\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\Debug" -Xlinker -Map="NSP.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T NSP_Debug.ld -u _printf_float -u _scanf_float -o "NSP.axf" ./src/NSP.o ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lMQTTPacket -lESPSERIAL -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       77256 B       512 KB     14.74%
+        RamLoc32:       28884 B        32 KB     88.15%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: NSP.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "NSP.axf"; # arm-none-eabi-objcopy -v -O binary "NSP.axf" "NSP.bin" ; # checksum -p LPC1769 -d "NSP.bin";
+   text	   data	    bss	    dec	    hex	filename
+  76592	    664	  28220	 105476	  19c04	NSP.axf
+ 

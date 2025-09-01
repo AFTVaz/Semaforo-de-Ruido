@@ -1,0 +1,24 @@
+18:17:21 **** Incremental Build of configuration Debug for project NSP ****
+make -r -j32 all 
+Building file: ../src/NSP.c
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\NSP\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/NSP.d" -MT"src/NSP.o" -MT"src/NSP.d" -o "src/NSP.o" "../src/NSP.c"
+Finished building: ../src/NSP.c
+ 
+Building target: NSP.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\MQTTPacket\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\NSP\FreeRTOS-Kernel\Debug" -Xlinker -Map="NSP.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T NSP_Debug.ld -u _printf_float -u _scanf_float -o "NSP.axf" ./src/NSP.o ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lMQTTPacket -lESPSERIAL -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       77256 B       512 KB     14.74%
+        RamLoc32:       28884 B        32 KB     88.15%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: NSP.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "NSP.axf"; # arm-none-eabi-objcopy -v -O binary "NSP.axf" "NSP.bin" ; # checksum -p LPC1769 -d "NSP.bin";
+   text	   data	    bss	    dec	    hex	filename
+  76592	    664	  28220	 105476	  19c04	NSP.axf
+ 
+
+18:17:22 Build Finished. 0 errors, 0 warnings. (took 1s.39ms)
+

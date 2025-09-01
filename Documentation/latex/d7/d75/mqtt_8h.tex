@@ -1,0 +1,74 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+Free\+RTOS\+\_\+\+DRIVERS/inc/mqtt.h File Reference}
+\hypertarget{mqtt_8h}{}\label{mqtt_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/mqtt.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/mqtt.h}}
+
+
+Contains the MQTT (Message Queue Telemetry Transport) API.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMQTT__Item}{MQTT\+\_\+\+Item}}
+\begin{DoxyCompactList}\small\item\em Structure for storing MQTT payload data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\+\_\+\+Config\+Callback}}) (const char \texorpdfstring{$\ast$}{*}payload, int len)
+\begin{DoxyCompactList}\small\item\em Callback function type for processing attributes received via MQTT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{MQTT\+\_\+\+State\+Value\+Type}} \{ \newline
+\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a71dccce62ae50ad642698017342f924e}{MQTT\+\_\+\+STATE\+\_\+\+INIT}}
+, \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c0a0aefd5715ecc5fa4d30f1121eb6f}{MQTT\+\_\+\+STATE\+\_\+\+CONNECT}}
+, \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86ac11e59eaf9dc2e1a1c04f39d00395235}{MQTT\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+CONNECT}}
+, \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a95330b5235833111e78254a019cc96cd}{MQTT\+\_\+\+STATE\+\_\+\+SUBSCRIBE}}
+, \newline
+\mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2b59fefaaff7f0de3d8933d3ccc19129}{MQTT\+\_\+\+STATE\+\_\+\+WAIT\+\_\+\+SUBACK}}
+, \mbox{\hyperlink{group__MQTT_ggafaca4fc8174201793d8667d59e77ad86a2c52bceb74a33b1899d881e851fe7509}{MQTT\+\_\+\+STATE\+\_\+\+PUBLISH}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the internal state of the MQTT client. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{MQTT\+\_\+\+Status\+Value\+Type}} \{ \mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20a21c9d7cf53188d6a577ef484486ff70c}{MQTT\+\_\+\+IDLE}}
+, \mbox{\hyperlink{group__MQTT_gga7395c60929be2c6465db9575790c0c20aacf64652947adb12d3a5d49bdce08bba}{MQTT\+\_\+\+PROCESSING}}
+ \}
+\begin{DoxyCompactList}\small\item\em Internal status of the MQTT client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__MQTT_ga3027457e4c68ef74e482d23262acdc94}{MQTT\+\_\+\+Init}} (\mbox{\hyperlink{group__MQTT_gabe1acfb9f9b87cd190c5a431fbf99116}{MQTT\+\_\+\+Config\+Callback}} callback)
+\begin{DoxyCompactList}\small\item\em Initializes the MQTT task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__MQTT_gae6895794ae3faf8a8f48f364688975c4}{MQTT\+\_\+\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether the MQTT task is ready. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__MQTT_ga20899976470d143256cbf9f502c34ff9}{MQTT\+\_\+is\+Ready\+To\+Publish}} (void)
+\begin{DoxyCompactList}\small\item\em Checks whether the MQTT task is ready to publish a message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MQTT_gaf6e47d18c76d360b547238fde729462a}{MQTT\+\_\+\+Publish}} (const char \texorpdfstring{$\ast$}{*}payload)
+\begin{DoxyCompactList}\small\item\em Publishes a pre-\/formatted JSON payload to the MQTT broker. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MQTT_ga27cdfab45c8ed36139d0e35dcfb1d9a3}{MQTT\+\_\+\+Noise\+Publish}} (float noise\+Value, time\+\_\+t time)
+\begin{DoxyCompactList}\small\item\em Publishes noise measurement data to the MQTT broker. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__MQTT_ga7395c60929be2c6465db9575790c0c20}{MQTT\+\_\+\+Status\+Value\+Type}} \mbox{\hyperlink{group__MQTT_gaa9364d021a5b92d361eb30df792c5044}{MQTT\+\_\+\+Get\+Status}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieves the current status of the MQTT client. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__MQTT_gafaca4fc8174201793d8667d59e77ad86}{MQTT\+\_\+\+State\+Value\+Type}} \mbox{\hyperlink{group__MQTT_ga07774c59e06b7e2cf23fccf12754176e}{MQTT\+\_\+\+Get\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieves the current internal state of the MQTT client state machine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__MQTT_gaa5203e5a65ace6a86d2f96b31545b33e}{MQTT\+\_\+\+Resume}} (void)
+\begin{DoxyCompactList}\small\item\em Resume the MQTT task after Wi-\/\+Fi connection is established. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the MQTT (Message Queue Telemetry Transport) API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+13 Mai 2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Filipe Cruz (43468)
+\end{DoxyAuthor}
+Note\+: This file was made based on the file "{}foopublish.\+c"{} from author psampaio
+
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{mqtt_8h_source}{mqtt.\+h}}.
+

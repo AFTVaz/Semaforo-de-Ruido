@@ -1,0 +1,79 @@
+\doxysection{ntp.\+h}
+\hypertarget{ntp_8h_source}{}\label{ntp_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/ntp.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/ntp.h}}
+\mbox{\hyperlink{ntp_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_NTP\_H\_}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_NTP\_H\_}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00030}00030\ \textcolor{preprocessor}{\#define\ NTP\_SERVICE\_ID\ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ NTP\_CONN\_TYPE\ \ \ \ \ \ \ \ \ \ \ "{}UDP"{}}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ NTP\_SERVER\ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}pool.ntp.org"{}}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ NTP\_REMOTE\_PORT\ \ \ \ \ \ \ \ \ 123}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ NTP\_PACKET\_SIZE\ \ \ \ \ \ \ \ \ 48}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ NTP\_TRANSMIT\_S\ \ \ \ \ \ \ \ \ \ 40}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00037}00037\ \textcolor{preprocessor}{\#define\ NTP\_TRANSMIT\_F\ \ \ \ \ \ \ \ \ \ 44}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00038}00038\ \textcolor{preprocessor}{\#define\ UNIX\_EPOCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ 2208988800UL}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ NTP\_CIPSTART\_TIMEOUT\ \ \ \ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00041}00041\ \textcolor{preprocessor}{\#define\ NTP\_CIPCLOSE\_TIMEOUT\ \ \ \ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ NTP\_TRANSACTION\_TIMEOUT\ pdMS\_TO\_TICKS(5000)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ NTP\_CONN\_TIMEOUT\ \ \ \ \ \ \ \ pdMS\_TO\_TICKS(10000)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ NTP\_RECV\_DELAY\ \ \ \ \ \ \ \ \ \ pdMS\_TO\_TICKS(5)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ NTP\_COMMAND\_DELAY\ \ \ \ \ \ \ pdMS\_TO\_TICKS(100)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ NTP\_WAIT\_DELAY\ \ \ \ \ \ \ \ \ \ pdMS\_TO\_TICKS(10)}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00056}\mbox{\hyperlink{structNTP__Packet}{00056}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structNTP__Packet}{NTP\_Packet}}\{}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00057}00057\ \ \ \ \ uint8\_t\ li\_vn\_mode;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Eight\ bits.\ li,\ vn,\ and\ mode.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ li.\ \ \ \ \ \ Two\ bits.\ Leap\ indicator.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ vn.\ \ \ \ \ \ Three\ bits.\ Version\ number\ of\ the\ protocol.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mode.\ \ \ \ Three\ bits.\ Client\ will\ pick\ mode\ 3\ for\ client.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00062}00062\ \ \ \ \ uint8\_t\ stratum;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Eight\ bits.\ Stratum\ level\ of\ the\ local\ clock.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00063}00063\ \ \ \ \ uint8\_t\ poll;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Eight\ bits.\ Maximum\ interval\ between\ successive\ messages.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00064}00064\ \ \ \ \ uint8\_t\ precision;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Eight\ bits.\ Precision\ of\ the\ local\ clock.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00066}00066\ \ \ \ \ uint32\_t\ rootDelay;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Total\ round\ trip\ delay\ time.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00067}00067\ \ \ \ \ uint32\_t\ rootDispersion;\ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Max\ error\ aloud\ from\ primary\ clock\ source.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00068}00068\ \ \ \ \ uint32\_t\ refId;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Reference\ clock\ identifier.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00070}00070\ \ \ \ \ uint32\_t\ refTm\_s;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Reference\ time-\/stamp\ seconds.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00071}00071\ \ \ \ \ uint32\_t\ refTm\_f;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Reference\ time-\/stamp\ fraction\ of\ a\ second.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00073}00073\ \ \ \ \ uint32\_t\ origTm\_s;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Originate\ time-\/stamp\ seconds.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00074}00074\ \ \ \ \ uint32\_t\ origTm\_f;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Originate\ time-\/stamp\ fraction\ of\ a\ second.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00076}00076\ \ \ \ \ uint32\_t\ rxTm\_s;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Received\ time-\/stamp\ seconds.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00077}00077\ \ \ \ \ uint32\_t\ rxTm\_f;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Received\ time-\/stamp\ fraction\ of\ a\ second.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00079}00079\ \ \ \ \ uint32\_t\ txTm\_s;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Transmit\ time-\/stamp\ seconds.\ Important}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00080}00080\ \ \ \ \ uint32\_t\ txTm\_f;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 32\ bits.\ Transmit\ time-\/stamp\ fraction\ of\ a\ second.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00081}00081\ \}\ \mbox{\hyperlink{structNTP__Packet}{NTP\_Packet}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Total:\ 384\ bits\ or\ 48\ bytes.}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00088}\mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{00088}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\_StateValueType}}\ \{}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00089}\mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ad0d5745c50ace4913192a09c737b1ccc}{00089}}\ \ \ \ \ \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ad0d5745c50ace4913192a09c737b1ccc}{NTP\_IDLE}},\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00090}\mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ab8804aa21d5a07c2496574041d4ba5b1}{00090}}\ \ \ \ \ \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ab8804aa21d5a07c2496574041d4ba5b1}{NTP\_PROCESSING}},\ \ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2a33157c0f963d4fe6e5f80ce0f1c45277}{NTP\_READY}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00092}\mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2a33157c0f963d4fe6e5f80ce0f1c45277}{00092}}\ \}\ \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\_StateValueType}};}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00102}00102\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__NTP_gaccc0fb39eb7b19f86d15e01fe6937cfe}{NTP\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00113}00113\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__NTP_gaf20a777ffcf6e63cff72f0b58dabdce0}{NTP\_Ready}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00127}00127\ \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\_StateValueType}}\ \mbox{\hyperlink{group__NTP_gae13b25d0c1ba975c33fa6df1ea85be8b}{NTP\_GetState}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00138}00138\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__NTP_ga794dd16f57bb514643dada07cfa61525}{NTP\_RequestTime}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00155}00155\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__NTP_ga765930b8d45a60f24169b16c3dfae7b0}{NTP\_GetTimestamp}}(\ time\_t\ *timestamp\ );}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00169}00169\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__NTP_ga2e8934b32ca00d2b46751c035e0fa3dd}{NTP\_RequestAndWait}}(\ time\_t\ *timestamp\ );}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00171}00171\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_NTP\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ntp_8h_source_l00172}00172\ }
+
+\end{DoxyCode}

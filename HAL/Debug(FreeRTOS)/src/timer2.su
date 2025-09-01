@@ -1,0 +1,2 @@
+../src/timer2.c:18:6:TIMER2_Init	4	static
+../src/timer2.c:25:6:TIMER2_StopWatch	16	static

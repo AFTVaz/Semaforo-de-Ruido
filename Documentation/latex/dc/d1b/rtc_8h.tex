@@ -1,0 +1,63 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+DRIVERS/inc/rtc.h File Reference}
+\hypertarget{rtc_8h}{}\label{rtc_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/rtc.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/rtc.h}}
+
+
+Contains the rtc API.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__RTC_gabd8357ae3c4cf413eb6380e1369761be}{RTC\+\_\+\+PCONP\+\_\+\+ENABLE}}~9
+\item 
+\#define \mbox{\hyperlink{group__RTC_gaf6eafece7bf5fc0acb7101b612fb1b67}{CLKEN\+\_\+\+BIT\+\_\+\+POS}}~0
+\item 
+\#define \mbox{\hyperlink{group__RTC_gaf60728c8060f7714e406e6d5b763db5d}{CTIME\+\_\+\+SEC\+\_\+\+MASK}}~0x3F
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga7a0b4532dc505e1452ef46c4dd855b3e}{CTIME\+\_\+\+MIN\+\_\+\+MASK}}~0x3\+F00
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga7436f41eab7acb47e6064aab49da77fa}{CTIME\+\_\+\+HOUR\+\_\+\+MASK}}~0x1\+F0000
+\item 
+\#define \mbox{\hyperlink{group__RTC_gad3a19e7a4dc1187943b637d2337c7da5}{CTIME\+\_\+\+DOW\+\_\+\+MASK}}~0x7000000
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga769db2115d896b0d38ea7abefd4b9ed7}{CTIME\+\_\+\+DOM\+\_\+\+MASK}}~0x1F
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga6d31a8c255161c0f8825ad2704a161e6}{CTIME\+\_\+\+MONTH\+\_\+\+MASK}}~0x\+F00
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga04d5919603e9d0012b4cb239a80ae1e3}{CTIME\+\_\+\+YEAR\+\_\+\+MASK}}~0x\+FFF0000
+\item 
+\#define \mbox{\hyperlink{group__RTC_ga575f3362f38d03e5c923ac06f47ed5f4}{CTIME\+\_\+\+DOY\+\_\+\+MASK}}~0x\+FFF
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__RTC_ga3001452592b562e69fb10ca12a242cbb}{compare\+By\+Time}} (const struct tm \texorpdfstring{$\ast$}{*}a, const struct tm \texorpdfstring{$\ast$}{*}b)
+\begin{DoxyCompactList}\small\item\em Compares the time (hours, minutes, seconds) of two struct tm values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_ga8ce39fc6eece59a57c6343c3ee52cbf5}{RTC\+\_\+\+Init}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Initializes the RTC with a timestamp (seconds since 1970-\/01-\/01 00\+:00). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_gace61f28fc849bb1b75c4cec0be8bd830}{RTC\+\_\+\+Get\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves current date and time from the RTC. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_ga6547833680b375126353be4952b7edc9}{RTC\+\_\+\+Set\+Time\+Date}} (struct tm \texorpdfstring{$\ast$}{*}date\+Time)
+\begin{DoxyCompactList}\small\item\em Sets the RTC with a full date and time from a struct tm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__RTC_gacefa177b35b24cdd98a156950f7d051b}{RTC\+\_\+\+Set\+Seconds}} (time\+\_\+t seconds)
+\begin{DoxyCompactList}\small\item\em Sets the RTC time using seconds since the Unix epoch (1970-\/01-\/01 00\+:00). \end{DoxyCompactList}\item 
+time\+\_\+t \mbox{\hyperlink{group__RTC_gaed5e5912abe16282e6934f5c108f4ca9}{RTC\+\_\+\+Get\+Seconds}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of seconds since 1970-\/01-\/01 00\+:00 from RTC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the rtc API. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+5 Nov 2024 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+André Vaz (48209) e Emilio Mendes (48170)
+\end{DoxyAuthor}
+Software that is described herein is for illustrative purposes only which provides customers with programming information regarding the products. This software is supplied "{}\+AS IS"{} without any warranties. 
+
+Definition in file \mbox{\hyperlink{rtc_8h_source}{rtc.\+h}}.
+

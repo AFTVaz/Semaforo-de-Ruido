@@ -1,0 +1,3 @@
+../src/microphone.c:21:6:MICROPHONE_Init	16	static
+../src/microphone.c:30:7:MICROPHONE_Read	16	static
+../src/microphone.c:43:6:MICROPHONE_SetGain	16	static

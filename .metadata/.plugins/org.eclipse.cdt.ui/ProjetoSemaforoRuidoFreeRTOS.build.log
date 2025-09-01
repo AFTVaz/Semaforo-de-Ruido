@@ -1,0 +1,39 @@
+14:08:36 **** Build of configuration Debug for project ProjetoSemaforoRuidoFreeRTOS ****
+make -r -j32 all 
+Building file: ../src/ProjetoSemaforoRuidoFreeRTOS.c
+Building file: ../src/cr_startup_lpc175x_6x-FreeRTOS.c
+Invoking: MCU C Compiler
+Building file: ../src/crp.c
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\ProjetoSemaforoRuidoFreeRTOS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/ProjetoSemaforoRuidoFreeRTOS.d" -MT"src/ProjetoSemaforoRuidoFreeRTOS.o" -MT"src/ProjetoSemaforoRuidoFreeRTOS.d" -o "src/ProjetoSemaforoRuidoFreeRTOS.o" "../src/ProjetoSemaforoRuidoFreeRTOS.c"
+Invoking: MCU C Compiler
+Building file: ../src/printf-stdarg.c
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\ProjetoSemaforoRuidoFreeRTOS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/cr_startup_lpc175x_6x-FreeRTOS.d" -MT"src/cr_startup_lpc175x_6x-FreeRTOS.o" -MT"src/cr_startup_lpc175x_6x-FreeRTOS.d" -o "src/cr_startup_lpc175x_6x-FreeRTOS.o" "../src/cr_startup_lpc175x_6x-FreeRTOS.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\ProjetoSemaforoRuidoFreeRTOS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/crp.d" -MT"src/crp.o" -MT"src/crp.d" -o "src/crp.o" "../src/crp.c"
+Invoking: MCU C Compiler
+arm-none-eabi-gcc -DDEBUG -D__CODE_RED -DCORE_M3 -D__USE_CMSIS=CMSIS_CORE_LPC17xx -D__LPC17XX__ -D__NEWLIB__ -DxSERIAL_CONSOLE -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\ProjetoSemaforoRuidoFreeRTOS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\MQTTPacket\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\inc" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\include" -I"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\src\portable\GCC\ARM_CM3" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -fmerge-constants -fmacro-prefix-map="../src/"= -mcpu=cortex-m3 -mthumb -D__NEWLIB__ -fstack-usage -specs=nano.specs -MMD -MP -MF"src/printf-stdarg.d" -MT"src/printf-stdarg.o" -MT"src/printf-stdarg.d" -o "src/printf-stdarg.o" "../src/printf-stdarg.c"
+Finished building: ../src/crp.c
+Finished building: ../src/cr_startup_lpc175x_6x-FreeRTOS.c
+ 
+Finished building: ../src/printf-stdarg.c
+ 
+ 
+Finished building: ../src/ProjetoSemaforoRuidoFreeRTOS.c
+ 
+Building target: ProjetoSemaforoRuidoFreeRTOS.axf
+Invoking: MCU Linker
+arm-none-eabi-gcc -nostdlib -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL\Debug(FreeRTOS)" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\MQTTPacket\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS_DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\HAL" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\CMSIS_CORE_LPC17xx\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\DRIVERS\Debug" -L"C:\LEETC\SE\MCUXpressoIDE_11.10.0_3148\workspace\SEIot\FreeRTOS-Kernel\Debug" -Xlinker -Map="ProjetoSemaforoRuidoFreeRTOS.map" -Xlinker --cref -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m3 -mthumb -T ProjetoSemaforoRuidoFreeRTOS_Debug.ld -u _printf_float -u _scanf_float -o "ProjetoSemaforoRuidoFreeRTOS.axf" ./src/ProjetoSemaforoRuidoFreeRTOS.o ./src/cr_startup_lpc175x_6x-FreeRTOS.o ./src/crp.o ./src/printf-stdarg.o    -lFreeRTOS_DRIVERS -lMQTTPacket -lESPSERIAL -lDRIVERS -lHAL -lFreeRTOS-Kernel -lHALRunTime -lCMSIS_CORE_LPC17xx
+Memory region         Used Size  Region Size  %age Used
+       MFlash512:       72144 B       512 KB     13.76%
+        RamLoc32:       28960 B        32 KB     88.38%
+        RamAHB32:          0 GB        32 KB      0.00%
+Finished building target: ProjetoSemaforoRuidoFreeRTOS.axf
+ 
+Performing post-build steps
+arm-none-eabi-size "ProjetoSemaforoRuidoFreeRTOS.axf"; # arm-none-eabi-objcopy -v -O binary "ProjetoSemaforoRuidoFreeRTOS.axf" "ProjetoSemaforoRuidoFreeRTOS.bin" ; # checksum -p LPC1769 -d "ProjetoSemaforoRuidoFreeRTOS.bin";
+   text	   data	    bss	    dec	    hex	filename
+  71488	    656	  28304	 100448	  18860	ProjetoSemaforoRuidoFreeRTOS.axf
+ 
+
+14:08:36 Build Finished. 0 errors, 0 warnings. (took 387ms)
+

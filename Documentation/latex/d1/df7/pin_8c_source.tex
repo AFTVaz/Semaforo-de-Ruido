@@ -1,0 +1,74 @@
+\doxysection{pin.\+c}
+\hypertarget{pin_8c_source}{}\label{pin_8c_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/pin.c@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/src/pin.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00002}00002\ \textcolor{comment}{\ *\ pin.c}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00004}00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 01/10/2024}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ André\ Vaz\ (48209)\ e\ Emilio\ Mendes\ (48170)}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00006}00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ \_\_USE\_CMSIS}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}LPC17xx.h"{}}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pin_8h}{pin.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{pinconfig_8h}{pinconfig.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00017}00017\ \textcolor{preprocessor}{\#define\ LPC\_GPIO\_SIZE\ \ \ \ \ \ \ \ \ \ \ 0x20}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00018}00018\ \textcolor{preprocessor}{\#define\ LPC\_GPIO\_NUM\_PINS\ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00021}\mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{00021}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\_Direction}}(PIN\_ValueType\ pinId,\ PIN\_DIRType\ dir)}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00023}00023\ \ \ \ \ uint32\_t\ port\ =\ pinId\ /\ \mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00024}00024\ \ \ \ \ uint32\_t\ pin\ =\ pinId\ \%\ \mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00025}00025\ \ \ \ \ LPC\_GPIO\_TypeDef\ *gpio\ =\ (LPC\_GPIO\_TypeDef\ *)(LPC\_GPIO\_BASE\ +\ (port\ *\ LPC\_GPIO\_SIZE));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00027}00027\ \ \ \ \ \textcolor{keywordflow}{if}(\ dir\ ==\ OUTPUT\ )\{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ gpio-\/>FIODIR\ |=\ (0x1UL\ <<\ pin);}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ gpio-\/>FIODIR\ \&=\ \string~(0x1UL\ <<\ pin);}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00035}\mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{00035}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{PIN\_Set}}(PIN\_ValueType\ pinId)}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00036}00036\ \{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00037}00037\ \ \ \ \ uint32\_t\ port\ =\ pinId\ /\mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00038}00038\ \ \ \ \ uint32\_t\ pin\ =\ pinId\ \%\ \mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00039}00039\ \ \ \ \ LPC\_GPIO\_TypeDef\ *gpio=(LPC\_GPIO\_TypeDef\ *)(LPC\_GPIO\_BASE+(port\ *\ LPC\_GPIO\_SIZE));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00041}00041\ \ \ \ \ gpio-\/>FIOSET\ =\ (\ 1\ <<\ pin\ );}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00044}\mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{00044}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{PIN\_Clear}}(PIN\_ValueType\ pinId)}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00045}00045\ \{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00046}00046\ \ \ \ \ uint32\_t\ port\ =\ pinId\ /\mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00047}00047\ \ \ \ \ uint32\_t\ pin\ =\ pinId\ \%\ \mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00048}00048\ \ \ \ \ LPC\_GPIO\_TypeDef\ *gpio=(LPC\_GPIO\_TypeDef\ *)(LPC\_GPIO\_BASE+(port\ *\ LPC\_GPIO\_SIZE));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00050}00050\ \ \ \ \ gpio-\/>FIOCLR\ =\ (\ 1\ <<\ pin\ );}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00053}\mbox{\hyperlink{group__PIN_ga4654757dd7462fae40685a02db0f8244}{00053}}\ uint32\_t\ \mbox{\hyperlink{group__PIN_ga4654757dd7462fae40685a02db0f8244}{PIN\_Value}}(\ PIN\_ValueType\ pinId\ )}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00054}00054\ \{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00055}00055\ \ \ \ \ uint32\_t\ port\ =\ pinId\ /\mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00056}00056\ \ \ \ \ uint32\_t\ pin\ =\ pinId\ \%\ \mbox{\hyperlink{group__PINCONFIG_ga8fab1d4b9d486fe2289846b6628a5fb4}{LPC\_GPIO\_NUM\_PINS}};}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00057}00057\ \ \ \ \ LPC\_GPIO\_TypeDef\ *gpio=(LPC\_GPIO\_TypeDef\ *)(LPC\_GPIO\_BASE+(port\ *\ LPC\_GPIO\_SIZE));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{return}\ (gpio-\/>FIOPIN\ \&\ (1\ <<\ pin));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00063}\mbox{\hyperlink{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}{00063}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}{PIN\_PortWrite}}(\ PIN\_PortType\ portId,\ uint32\_t\ value,\ uint32\_t\ mask\ )}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00065}00065\ \ \ \ \ LPC\_GPIO\_TypeDef\ *gpio=(LPC\_GPIO\_TypeDef\ *)(LPC\_GPIO\_BASE+(portId\ *\ LPC\_GPIO\_SIZE));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00067}00067\ \ \ \ \ gpio-\/>FIOPIN\ =\ ((gpio-\/>FIOSET\ \&\ \string~mask)\ |\ (value\ \&\ mask));}
+\DoxyCodeLine{\Hypertarget{pin_8c_source_l00068}00068\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,67 @@
+\doxysubsection{SYSTICK}
+\hypertarget{group__SYSTICK}{}\label{group__SYSTICK}\index{SYSTICK@{SYSTICK}}
+
+
+Provides the core capabilities for system timer functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__SYSTICK_gac8e56b229544fa928467d8afea097b75}{SYSTICK\+\_\+\+Init}} (uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Initialises the systick API for 1 ms resolution. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__SYSTICK_ga38f1626b445b517a164b659025e842eb}{SYSTICK\+\_\+\+Get\+Value}} (void)
+\begin{DoxyCompactList}\small\item\em Get current value of ticks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for system timer functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__SYSTICK_ga38f1626b445b517a164b659025e842eb}\index{SYSTICK@{SYSTICK}!SYSTICK\_GetValue@{SYSTICK\_GetValue}}
+\index{SYSTICK\_GetValue@{SYSTICK\_GetValue}!SYSTICK@{SYSTICK}}
+\doxysubsubsubsection{\texorpdfstring{SYSTICK\_GetValue()}{SYSTICK\_GetValue()}}
+{\footnotesize\ttfamily \label{group__SYSTICK_ga38f1626b445b517a164b659025e842eb} 
+uint32\+\_\+t SYSTICK\+\_\+\+Get\+Value (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Get current value of ticks. 
+
+\begin{DoxyReturn}{Returns}
+Returns the current tick value in milliseconds. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{systick_8c_source_l00032}{32}} of file \mbox{\hyperlink{systick_8c_source}{systick.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{delay_8c_source_l00046}{DELAY\+\_\+\+Get\+Elapsed\+Millis()}}, and \mbox{\hyperlink{delay_8c_source_l00038}{DELAY\+\_\+\+Milliseconds()}}.
+
+\Hypertarget{group__SYSTICK_gac8e56b229544fa928467d8afea097b75}\index{SYSTICK@{SYSTICK}!SYSTICK\_Init@{SYSTICK\_Init}}
+\index{SYSTICK\_Init@{SYSTICK\_Init}!SYSTICK@{SYSTICK}}
+\doxysubsubsubsection{\texorpdfstring{SYSTICK\_Init()}{SYSTICK\_Init()}}
+{\footnotesize\ttfamily \label{group__SYSTICK_gac8e56b229544fa928467d8afea097b75} 
+int SYSTICK\+\_\+\+Init (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Initialises the systick API for 1 ms resolution. 
+
+\begin{DoxyReturn}{Returns}
+0 if initialisation successed; -\/1 if fails. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This function must be called prior to any other SYSTICK functions, and use the SYSTICK resource. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{systick_8c_source_l00023}{23}} of file \mbox{\hyperlink{systick_8c_source}{systick.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{delay_8c_source_l00029}{DELAY\+\_\+\+Init()}}.
+

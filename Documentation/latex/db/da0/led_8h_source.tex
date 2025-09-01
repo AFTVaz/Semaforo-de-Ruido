@@ -1,0 +1,43 @@
+\doxysection{led.\+h}
+\hypertarget{led_8h_source}{}\label{led_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/led.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/led.h}}
+\mbox{\hyperlink{led_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_LED\_H\_}}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_LED\_H\_}}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00036}\mbox{\hyperlink{group__LED_gab365a684b1689803bf2fcd8c9036ca72}{00036}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__LED_gab365a684b1689803bf2fcd8c9036ca72}{LedModelEnum}}\{}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00037}\mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72a68f800b3397590391b07a5ff6d13e3b0}{00037}}\ \ \ \ \ \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72a68f800b3397590391b07a5ff6d13e3b0}{LED\_MODEL\_ACTIVE\_HIGH}},\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72acf22250ec2b45128d8d11e5f828592a4}{LED\_MODEL\_ACTIVE\_LOW}}\ \ \ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00039}\mbox{\hyperlink{group__LED_ggab365a684b1689803bf2fcd8c9036ca72acf22250ec2b45128d8d11e5f828592a4}{00039}}\ \}\ LED\_ModelType;}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00047}\mbox{\hyperlink{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}{00047}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__LED_gabf96fd8301c1afcde92e6549f0069c1d}{LedColorEnum}}\ \{}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00048}00048\ \ \ \ \ LED\_INT\_RED,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00049}00049\ \ \ \ \ LED\_INT\_GREEN,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00050}00050\ \ \ \ \ LED\_INT\_BLUE,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00051}00051\ \ \ \ \ LED\_EXT\_RED,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00052}00052\ \ \ \ \ LED\_EXT\_GREEN,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00053}00053\ \ \ \ \ LED\_EXT\_BLUE,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00054}00054\ \ \ \ \ LED\_SEM\_RED,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00055}00055\ \ \ \ \ LED\_SEM\_YELLOW,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00056}00056\ \ \ \ \ LED\_SEM\_GREEN,}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00057}00057\ \}\ LED\_ColorValueType;}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00065}00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED_ga1a996747ffb57655e64fccdb07fc5a96}{LED\_Init}}\ (\ LED\_ColorValueType\ ledColorId,\ \textcolor{keywordtype}{bool}\ state,\ LED\_ModelType\ model\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00072}00072\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group__LED_gae5e3be8fb576148434e9bdf30cce2ada}{LED\_GetState}}(\ LED\_ColorValueType\ ledColorId\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00079}00079\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED_gaf4a65f1d317a01864028f4814d01821c}{LED\_On}}(\ LED\_ColorValueType\ ledColorId,\ LED\_ModelType\ model\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00086}00086\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED_ga0d49842394d9d13f433aff94fa96a8ad}{LED\_Off}}\ (\ LED\_ColorValueType\ ledColorId,\ LED\_ModelType\ model\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00093}00093\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__LED_ga5fc82fba5bf80c2d69752d3986aebded}{LED\_Toggle}}\ (\ LED\_ColorValueType\ ledColorId,\ LED\_ModelType\ model\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00100}00100\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__LED_gaf244d4252bb1e6eb7b6d164c5b8ed377}{LED\_GetLedByColor}}\ (\ LED\_ColorValueType\ ledColorId\ );}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00102}00102\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_LED\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{led_8h_source_l00103}00103\ }
+
+\end{DoxyCode}

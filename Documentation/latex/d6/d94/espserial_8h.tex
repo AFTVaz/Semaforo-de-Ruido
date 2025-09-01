@@ -1,0 +1,36 @@
+\doxysection{C\+:/\+LEETC/\+SE/\+MCUXpresso\+IDE\+\_\+11.10.0\+\_\+3148/workspace/\+NSP/\+DRIVERS/inc/espserial.h File Reference}
+\hypertarget{espserial_8h}{}\label{espserial_8h}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/espserial.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/espserial.h}}
+
+
+This header file provides the API for communicating with the ESP8266 module over a serial interface. The functions in this API allow for initializing the serial communication, sending commands, and receiving responses from the ESP8266.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__ESPSERIAL_ga6ca0a758318b84eda813dbf3163981f5}{ESPSERIAL\+\_\+\+Init}} (int baudrate)
+\begin{DoxyCompactList}\small\item\em Initializes the serial communication interface for the ESP8266 module. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__ESPSERIAL_gaee19f2521edbbdc9716bf3771bd3fa6a}{ESPSERIAL\+\_\+\+Send}} (void \texorpdfstring{$\ast$}{*}command, int size)
+\begin{DoxyCompactList}\small\item\em Sends data (commands) to the ESP8266 over the serial interface. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__ESPSERIAL_ga05cf9bb05ee1c4efa2e8f529b402b3ad}{ESPSERIAL\+\_\+\+Recv}} (unsigned char \texorpdfstring{$\ast$}{*}response, int max\+Size)
+\begin{DoxyCompactList}\small\item\em Receives data (response) from the ESP8266 over the serial interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This header file provides the API for communicating with the ESP8266 module over a serial interface. The functions in this API allow for initializing the serial communication, sending commands, and receiving responses from the ESP8266. 
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+17 Mar 2017 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+PSampaio
+\end{DoxyAuthor}
+Copyright(\+C) 2015-\/2025, PSampaio All rights reserved.
+
+The software provided in this file is intended for illustrative purposes only. It provides an interface for serial communication with the ESP8266 Wi-\/\+Fi module. The software is supplied "{}\+AS IS,"{} without any warranties or guarantees of any kind. 
+
+Definition in file \mbox{\hyperlink{espserial_8h_source}{espserial.\+h}}.
+

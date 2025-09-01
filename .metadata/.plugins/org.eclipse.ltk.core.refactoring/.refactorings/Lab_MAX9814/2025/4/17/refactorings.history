@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab_MAX9814/src/Lab_BuzzerSemaphore.c&apos; to &apos;Lab_MAX9814.c&apos;" description="Rename resource &apos;Lab_BuzzerSemaphore.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Lab_BuzzerSemaphore.c" name="Lab_MAX9814.c" stamp="1745680673320" updateReferences="true"/>
+</session>

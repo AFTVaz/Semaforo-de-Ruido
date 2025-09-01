@@ -1,0 +1,34 @@
+\doxysection{flashcontrol.\+h}
+\hypertarget{flashcontrol_8h_source}{}\label{flashcontrol_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/flashcontrol.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/DRIVERS/inc/flashcontrol.h}}
+\mbox{\hyperlink{flashcontrol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_FLASHCONTROL\_H\_}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_FLASHCONTROL\_H\_}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00028}00028\ \textcolor{comment}{/*\ Status\ Code\ messages\ */}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00029}00029\ \textcolor{preprocessor}{\#define\ COMMAND\_SUCCESS\_MSG\ \ \ \ \ \ \ \ \ "{}COMMAND\_SUCCESS"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00030}00030\ \textcolor{preprocessor}{\#define\ INVALID\_COMMAND\_MSG\ \ \ \ \ \ \ \ \ "{}INVALID\_COMMAND"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ SRC\_ADDR\_ERROR\_MSG\ \ \ \ \ \ \ \ \ \ "{}SRC\_ADDR\_ERROR"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ DST\_ADDR\_ERROR\_MSG\ \ \ \ \ \ \ \ \ \ "{}DST\_ADDR\_ERROR"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ SRC\_ADDR\_NOT\_MAPPED\_MSG\ \ \ \ \ "{}SRC\_ADDR\_NOT\_MAPPED"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ DST\_ADDR\_NOT\_MAPPED\_MSG\ \ \ \ \ "{}DST\_ADDR\_NOT\_MAPPED"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ COUNT\_ERROR\_MSG\ \ \ \ \ \ \ \ \ \ \ \ \ "{}COUNT\_ERROR"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ INVALID\_SECTOR\_MSG\ \ \ \ \ \ \ \ \ \ "{}INVALID\_SECTOR"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00037}00037\ \textcolor{preprocessor}{\#define\ SECTOR\_NOT\_BLANK\_MSG\ \ \ \ \ \ \ \ "{}SECTOR\_NOT\_BLANK"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00038}00038\ \textcolor{preprocessor}{\#define\ SECTOR\_NOT\_PREPARED\_MSG\ \ \ \ \ "{}SECTOR\_NOT\_PREPARED"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00039}00039\ \textcolor{preprocessor}{\#define\ COMPARE\_ERROR\_MSG\ \ \ \ \ \ \ \ \ \ \ "{}COMPARE\_ERROR"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ BUSY\_MSG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}BUSY"{}}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00047}00047\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASHCONTROL_gace77e5c27877cb6ce9fb82c0191345ad}{FLASHCONTROL\_EraseSector}}(\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sector\ );}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00060}00060\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASHCONTROL_ga4721da6792cb81415806d3eae01798a8}{FLASHCONTROL\_WriteData}}\ (\ \textcolor{keywordtype}{void}\ *dstAddr\ ,\ \textcolor{keywordtype}{void}\ *srcAddr\ ,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ );}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00073}00073\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__FLASHCONTROL_ga9fde9f2e5cb6ab96056d8294292a8a11}{FLASHCONTROL\_VerifyData}}\ (\ \textcolor{keywordtype}{void}\ *dstAddr\ ,\ \textcolor{keywordtype}{void}\ *srcAddr\ ,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size\ );}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00080}00080\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{group__FLASHCONTROL_ga473f89b16b41bad98d79b153e4b3b1ec}{FLASHCONTROL\_GetResultMsg}}(\ \textcolor{keywordtype}{int}\ resultValue\ );}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00082}00082\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_FLASHCONTROL\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{flashcontrol_8h_source_l00083}00083\ }
+
+\end{DoxyCode}

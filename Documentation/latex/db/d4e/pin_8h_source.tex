@@ -1,0 +1,174 @@
+\doxysection{pin.\+h}
+\hypertarget{pin_8h_source}{}\label{pin_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/inc/pin.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/HAL/inc/pin.h}}
+\mbox{\hyperlink{pin_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_PIN\_H\_}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_PIN\_H\_}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00030}00030\ \textcolor{comment}{/*\ Encoder\ pins\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_A\ \ \ \ \ \ \ P0\_3\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ CLK\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_B\ \ \ \ \ \ \ P0\_2\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ DT\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ ENCODER\_BUTTON\ \ \ \ \ \ P1\_31\ \ \ \ \ \ \ }\textcolor{comment}{/*\ SW\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00035}00035\ \textcolor{comment}{/*\ Buzzer\ pins\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ BUZZER\_PIN\ \ \ \ \ \ \ \ \ \ P2\_3}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00038}00038\ \textcolor{comment}{/*\ LED\ pins\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00039}00039\ \textcolor{preprocessor}{\#define\ LED\_RED\_INTERNAL\ \ \ \ P0\_22}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ LED\_GREEN\_INTERNAL\ \ P3\_25}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00041}00041\ \textcolor{preprocessor}{\#define\ LED\_BLUE\_INTERNAL\ \ \ P3\_26}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ LED\_RED\_EXTERNAL\ \ \ \ P2\_3}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ LED\_GREEN\_EXTERNAL\ \ P2\_4}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ LED\_BLUE\_EXTERNAL\ \ \ P2\_5}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ LED\_RED\_SEM\ \ \ \ \ \ \ \ \ P2\_10}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ LED\_YELLOW\_SEM\ \ \ \ \ \ P2\_11}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ LED\_GREEN\_SEM\ \ \ \ \ \ \ P2\_12}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00049}00049\ \textcolor{comment}{/*\ ADC\ pins\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00050}00050\ \textcolor{preprocessor}{\#define\ ADC\_AD00\_PIN\ \ \ \ \ \ \ \ P0\_23}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00051}00051\ \textcolor{preprocessor}{\#define\ ADC\_AD01\_PIN\ \ \ \ \ \ \ \ P0\_24}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00052}00052\ \textcolor{preprocessor}{\#define\ ADC\_AD02\_PIN\ \ \ \ \ \ \ \ P0\_25}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ ADC\_AD03\_PIN\ \ \ \ \ \ \ \ P0\_26}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ ADC\_AD04\_PIN\ \ \ \ \ \ \ \ P1\_30}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00055}00055\ \textcolor{preprocessor}{\#define\ ADC\_AD05\_PIN\ \ \ \ \ \ \ \ P1\_31}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ ADC\_AD06\_PIN\ \ \ \ \ \ \ \ P0\_2}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ ADC\_AD07\_PIN\ \ \ \ \ \ \ \ P0\_3}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00059}00059\ \textcolor{comment}{/*\ MAX9814\ pins\ */}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00060}00060\ \textcolor{preprocessor}{\#define\ MAX9814\_GAIN\_PIN\ \ \ \ P0\_21}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00065}\mbox{\hyperlink{group__PIN_ga5d28abde6fa780c3f4845300e2452844}{00065}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__PIN_ga5d28abde6fa780c3f4845300e2452844}{PIN\_ValueEnum}}\{}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00066}00066\ \ \ \ \ P0\_0\ =\ (0\ *\ 32\ +\ 0),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00067}00067\ \ \ \ \ P0\_1\ =\ (0\ *\ 32\ +\ 1),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00068}00068\ \ \ \ \ P0\_2\ =\ (0\ *\ 32\ +\ 2),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00069}00069\ \ \ \ \ P0\_3\ =\ (0\ *\ 32\ +\ 3),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00070}00070\ \ \ \ \ P0\_4\ =\ (0\ *\ 32\ +\ 4),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00071}00071\ \ \ \ \ P0\_5\ =\ (0\ *\ 32\ +\ 5),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00072}00072\ \ \ \ \ P0\_6\ =\ (0\ *\ 32\ +\ 6),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00073}00073\ \ \ \ \ P0\_7\ =\ (0\ *\ 32\ +\ 7),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00074}00074\ \ \ \ \ P0\_8\ =\ (0\ *\ 32\ +\ 8),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00075}00075\ \ \ \ \ P0\_9\ =\ (0\ *\ 32\ +\ 9),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00076}00076\ \ \ \ \ P0\_10\ =\ (0\ *\ 32\ +\ 10),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00077}00077\ \ \ \ \ P0\_11\ =\ (0\ *\ 32\ +\ 11),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//P0\_12\ =\ (0\ *\ 32\ +\ 12),\ \ \ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//P0\_13\ =\ (0\ *\ 32\ +\ 13),\ \ \ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//P0\_14\ =\ (0\ *\ 32\ +\ 14),\ \ \ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00081}00081\ \ \ \ \ P0\_15\ =\ (0\ *\ 32\ +\ 15),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00082}00082\ \ \ \ \ P0\_16\ =\ (0\ *\ 32\ +\ 16),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00083}00083\ \ \ \ \ P0\_17\ =\ (0\ *\ 32\ +\ 17),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00084}00084\ \ \ \ \ P0\_18\ =\ (0\ *\ 32\ +\ 18),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00085}00085\ \ \ \ \ P0\_19\ =\ (0\ *\ 32\ +\ 19),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00086}00086\ \ \ \ \ P0\_20\ =\ (0\ *\ 32\ +\ 20),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00087}00087\ \ \ \ \ P0\_21\ =\ (0\ *\ 32\ +\ 21),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00088}00088\ \ \ \ \ P0\_22\ =\ (0\ *\ 32\ +\ 22),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00089}00089\ \ \ \ \ P0\_23\ =\ (0\ *\ 32\ +\ 23),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00090}00090\ \ \ \ \ P0\_24\ =\ (0\ *\ 32\ +\ 24),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00091}00091\ \ \ \ \ P0\_25\ =\ (0\ *\ 32\ +\ 25),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00092}00092\ \ \ \ \ P0\_26\ =\ (0\ *\ 32\ +\ 26),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00093}00093\ \ \ \ \ P0\_27\ =\ (0\ *\ 32\ +\ 27),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00094}00094\ \ \ \ \ P0\_28\ =\ (0\ *\ 32\ +\ 28),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00095}00095\ \ \ \ \ P0\_29\ =\ (0\ *\ 32\ +\ 29),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00096}00096\ \ \ \ \ P0\_30\ =\ (0\ *\ 32\ +\ 30),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00098}00098\ \ \ \ \ P1\_0\ =\ (1\ *\ 32\ +\ 0),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00099}00099\ \ \ \ \ P1\_1\ =\ (1\ *\ 32\ +\ 1),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00100}00100\ \ \ \ \ P1\_2\ =\ (1\ *\ 32\ +\ 2),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00101}00101\ \ \ \ \ P1\_3\ =\ (1\ *\ 32\ +\ 3),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00102}00102\ \ \ \ \ \textcolor{comment}{//P1\_4\ =\ (1\ *\ 32\ +\ 4),\ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00103}00103\ \ \ \ \ \textcolor{comment}{//P1\_5\ =\ (1\ *\ 32\ +\ 5),\ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//P1\_6\ =\ (1\ *\ 32\ +\ 6),\ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//P1\_7\ =\ (1\ *\ 32\ +\ 7),\ \ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00106}00106\ \ \ \ \ P1\_8\ =\ (1\ *\ 32\ +\ 8),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00107}00107\ \ \ \ \ P1\_9\ =\ (1\ *\ 32\ +\ 9),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//P1\_10\ =\ (1\ *\ 32\ +\ 10),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//P1\_11\ =\ (1\ *\ 32\ +\ 11),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//P1\_12\ =\ (1\ *\ 32\ +\ 12),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//P1\_13\ =\ (1\ *\ 32\ +\ 13),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00112}00112\ \ \ \ \ \textcolor{comment}{//P1\_14\ =\ (1\ *\ 32\ +\ 14),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//P1\_15\ =\ (1\ *\ 32\ +\ 15),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00114}00114\ \ \ \ \ P1\_16\ =\ (1\ *\ 32\ +\ 16),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00115}00115\ \ \ \ \ P1\_17\ =\ (1\ *\ 32\ +\ 17),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00116}00116\ \ \ \ \ P1\_18\ =\ (1\ *\ 32\ +\ 18),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00117}00117\ \ \ \ \ P1\_19\ =\ (1\ *\ 32\ +\ 19),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00118}00118\ \ \ \ \ P1\_20\ =\ (1\ *\ 32\ +\ 20),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00119}00119\ \ \ \ \ P1\_21\ =\ (1\ *\ 32\ +\ 21),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//P1\_22\ =\ (1\ *\ 32\ +\ 22),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//P1\_23\ =\ (1\ *\ 32\ +\ 23),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//P1\_24\ =\ (1\ *\ 32\ +\ 24),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//P1\_25\ =\ (1\ *\ 32\ +\ 25),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00124}00124\ \ \ \ \ \textcolor{comment}{//P1\_26\ =\ (1\ *\ 32\ +\ 26),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//P1\_27\ =\ (1\ *\ 32\ +\ 27),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00126}00126\ \ \ \ \ P1\_28\ =\ (1\ *\ 32\ +\ 28),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00127}00127\ \ \ \ \ P1\_29\ =\ (1\ *\ 32\ +\ 29),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00128}00128\ \ \ \ \ P1\_30\ =\ (1\ *\ 32\ +\ 30),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00129}00129\ \ \ \ \ P1\_31\ =\ (1\ *\ 32\ +\ 31),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00131}00131\ \ \ \ \ P2\_0\ =\ (2\ *\ 32\ +\ 0),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00132}00132\ \ \ \ \ P2\_1\ =\ (2\ *\ 32\ +\ 1),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00133}00133\ \ \ \ \ P2\_2\ =\ (2\ *\ 32\ +\ 2),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00134}00134\ \ \ \ \ P2\_3\ =\ (2\ *\ 32\ +\ 3),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00135}00135\ \ \ \ \ P2\_4\ =\ (2\ *\ 32\ +\ 4),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00136}00136\ \ \ \ \ P2\_5\ =\ (2\ *\ 32\ +\ 5),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00137}00137\ \ \ \ \ P2\_6\ =\ (2\ *\ 32\ +\ 6),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00138}00138\ \ \ \ \ P2\_7\ =\ (2\ *\ 32\ +\ 7),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00139}00139\ \ \ \ \ P2\_8\ =\ (2\ *\ 32\ +\ 8),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00140}00140\ \ \ \ \ P2\_9\ =\ (2\ *\ 32\ +\ 9),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00141}00141\ \ \ \ \ P2\_10\ =\ (2\ *\ 32\ +\ 10),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00142}00142\ \ \ \ \ P2\_11\ =\ (2\ *\ 32\ +\ 11),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00143}00143\ \ \ \ \ P2\_12\ =\ (2\ *\ 32\ +\ 12),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00144}00144\ \ \ \ \ P2\_13\ =\ (2\ *\ 32\ +\ 13),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00145}00145\ \ \ \ \ P2\_14\ =\ (2\ *\ 32\ +\ 14),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00146}00146\ \ \ \ \ P2\_15\ =\ (2\ *\ 32\ +\ 15),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00147}00147\ \ \ \ \ P2\_16\ =\ (2\ *\ 32\ +\ 16),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00148}00148\ \ \ \ \ P2\_17\ =\ (2\ *\ 32\ +\ 17),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00149}00149\ \ \ \ \ P2\_18\ =\ (2\ *\ 32\ +\ 18),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00150}00150\ \ \ \ \ P2\_19\ =\ (2\ *\ 32\ +\ 19),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00151}00151\ \ \ \ \ P2\_20\ =\ (2\ *\ 32\ +\ 20),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00152}00152\ \ \ \ \ P2\_21\ =\ (2\ *\ 32\ +\ 21),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00153}00153\ \ \ \ \ P2\_22\ =\ (2\ *\ 32\ +\ 22),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00154}00154\ \ \ \ \ P2\_23\ =\ (2\ *\ 32\ +\ 23),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00155}00155\ \ \ \ \ P2\_24\ =\ (2\ *\ 32\ +\ 24),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00156}00156\ \ \ \ \ P2\_25\ =\ (2\ *\ 32\ +\ 25),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00157}00157\ \ \ \ \ P2\_26\ =\ (2\ *\ 32\ +\ 26),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00158}00158\ \ \ \ \ P2\_27\ =\ (2\ *\ 32\ +\ 27),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//P2\_28\ =\ (2\ *\ 32\ +\ 28),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00160}00160\ \ \ \ \ \textcolor{comment}{//P2\_29\ =\ (2\ *\ 32\ +\ 29),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00161}00161\ \ \ \ \ \textcolor{comment}{//P2\_30\ =\ (2\ *\ 32\ +\ 30),\ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00162}00162\ \ \ \ \ \textcolor{comment}{//P2\_31\ =\ (2\ *\ 32\ +\ 31)\ \ \ \ \ //RESERVED}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00164}00164\ \ \ \ \ P3\_25\ =\ (3\ *\ 32\ +\ 25),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00165}00165\ \ \ \ \ P3\_26\ =\ (3\ *\ 32\ +\ 26),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00167}00167\ \ \ \ \ P4\_28\ =\ (4\ *\ 32\ +\ 28),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00168}00168\ \ \ \ \ P4\_29\ =\ (4\ *\ 32\ +\ 29),}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00170}00170\ \}PIN\_ValueType;}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00175}\mbox{\hyperlink{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}{00175}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__PIN_ga85d12e067890c194f890f31c3b9bac2a}{PIN\_PortEnum}}\{}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00176}00176\ \ \ \ \ Port0\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00177}00177\ \ \ \ \ Port1\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00178}00178\ \ \ \ \ Port2\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00179}00179\ \ \ \ \ Port3\ =\ 3}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00180}00180\ \}PIN\_PortType;}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00185}\mbox{\hyperlink{group__PIN_ga1f864fb7859e046506175133cd77aa91}{00185}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{group__PIN_ga1f864fb7859e046506175133cd77aa91}{PIN\_DirectionEnum}}\{}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00186}00186\ \ \ \ \ INPUT,\ OUTPUT}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00187}00187\ \}PIN\_DIRType;}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00195}00195\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga5c0d2ed6a7f72c50a13d270128222ee4}{PIN\_Direction}}(\ PIN\_ValueType\ pinId,\ PIN\_DIRType\ dir\ );}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00202}00202\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga13902f416c781690b7f4a0ca9050b667}{PIN\_Set}}(\ PIN\_ValueType\ pinId\ );}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00209}00209\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga652b39254ee8eaf76e63a0284d07e647}{PIN\_Clear}}(\ PIN\_ValueType\ pinId\ );}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00217}00217\ uint32\_t\ \mbox{\hyperlink{group__PIN_ga4654757dd7462fae40685a02db0f8244}{PIN\_Value}}(\ PIN\_ValueType\ pinId\ );}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00228}00228\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__PIN_ga15b3c76aa63a26414f2449cea08b2cc3}{PIN\_PortWrite}}(\ PIN\_PortType\ portId,\ uint32\_t\ value,\ uint32\_t\ mask\ );}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00230}00230\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_PIN\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{pin_8h_source_l00231}00231\ }
+
+\end{DoxyCode}

@@ -1,0 +1,154 @@
+\doxysubsection{FLASHCONTROL}
+\hypertarget{group__FLASHCONTROL}{}\label{group__FLASHCONTROL}\index{FLASHCONTROL@{FLASHCONTROL}}
+
+
+Provides the core capabilities for flash memory control functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__FLASHCONTROL_gace77e5c27877cb6ce9fb82c0191345ad}{FLASHCONTROL\+\_\+\+Erase\+Sector}} (unsigned int sector)
+\begin{DoxyCompactList}\small\item\em Erases the specified flash memory sector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__FLASHCONTROL_ga4721da6792cb81415806d3eae01798a8}{FLASHCONTROL\+\_\+\+Write\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Writes data from source to the specified flash destination address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__FLASHCONTROL_ga9fde9f2e5cb6ab96056d8294292a8a11}{FLASHCONTROL\+\_\+\+Verify\+Data}} (void \texorpdfstring{$\ast$}{*}dst\+Addr, void \texorpdfstring{$\ast$}{*}src\+Addr, unsigned int size)
+\begin{DoxyCompactList}\small\item\em Verifies that the contents of the flash match the source buffer. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__FLASHCONTROL_ga473f89b16b41bad98d79b153e4b3b1ec}{FLASHCONTROL\+\_\+\+Get\+Result\+Msg}} (int result\+Value)
+\begin{DoxyCompactList}\small\item\em Converts a status code into a human-\/readable message string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for flash memory control functions. 
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__FLASHCONTROL_gace77e5c27877cb6ce9fb82c0191345ad}\index{FLASHCONTROL@{FLASHCONTROL}!FLASHCONTROL\_EraseSector@{FLASHCONTROL\_EraseSector}}
+\index{FLASHCONTROL\_EraseSector@{FLASHCONTROL\_EraseSector}!FLASHCONTROL@{FLASHCONTROL}}
+\doxysubsubsubsection{\texorpdfstring{FLASHCONTROL\_EraseSector()}{FLASHCONTROL\_EraseSector()}}
+{\footnotesize\ttfamily \label{group__FLASHCONTROL_gace77e5c27877cb6ce9fb82c0191345ad} 
+int FLASHCONTROL\+\_\+\+Erase\+Sector (\begin{DoxyParamCaption}\item[{unsigned int}]{sector}{}\end{DoxyParamCaption})}
+
+
+
+Erases the specified flash memory sector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sector} & Flash sector number to erase. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code indicating success or error. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flashcontrol_8c_source_l00020}{20}} of file \mbox{\hyperlink{flashcontrol_8c_source}{flashcontrol.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8c_source_l00034}{FLASH\+\_\+\+Erase\+Sector()}}.
+
+
+
+Referenced by \mbox{\hyperlink{flash__rtos_8c_source_l00029}{FLASH\+\_\+\+RTOS\+\_\+\+Erase\+Sector()}}.
+
+\Hypertarget{group__FLASHCONTROL_ga473f89b16b41bad98d79b153e4b3b1ec}\index{FLASHCONTROL@{FLASHCONTROL}!FLASHCONTROL\_GetResultMsg@{FLASHCONTROL\_GetResultMsg}}
+\index{FLASHCONTROL\_GetResultMsg@{FLASHCONTROL\_GetResultMsg}!FLASHCONTROL@{FLASHCONTROL}}
+\doxysubsubsubsection{\texorpdfstring{FLASHCONTROL\_GetResultMsg()}{FLASHCONTROL\_GetResultMsg()}}
+{\footnotesize\ttfamily \label{group__FLASHCONTROL_ga473f89b16b41bad98d79b153e4b3b1ec} 
+char \texorpdfstring{$\ast$}{*} FLASHCONTROL\+\_\+\+Get\+Result\+Msg (\begin{DoxyParamCaption}\item[{int}]{result\+Value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a status code into a human-\/readable message string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em result\+Value} & Status code returned by flash operations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a constant string with the message, or NULL if unknown. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flashcontrol_8c_source_l00078}{78}} of file \mbox{\hyperlink{flashcontrol_8c_source}{flashcontrol.\+c}}.
+
+\Hypertarget{group__FLASHCONTROL_ga9fde9f2e5cb6ab96056d8294292a8a11}\index{FLASHCONTROL@{FLASHCONTROL}!FLASHCONTROL\_VerifyData@{FLASHCONTROL\_VerifyData}}
+\index{FLASHCONTROL\_VerifyData@{FLASHCONTROL\_VerifyData}!FLASHCONTROL@{FLASHCONTROL}}
+\doxysubsubsubsection{\texorpdfstring{FLASHCONTROL\_VerifyData()}{FLASHCONTROL\_VerifyData()}}
+{\footnotesize\ttfamily \label{group__FLASHCONTROL_ga9fde9f2e5cb6ab96056d8294292a8a11} 
+int FLASHCONTROL\+\_\+\+Verify\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Verifies that the contents of the flash match the source buffer. 
+
+\begin{DoxyVerb}   Comparison is word-aligned and may pad the size to the next multiple of 4 bytes.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Destination flash address. \\
+\hline
+{\em src\+Addr} & Source buffer address in RAM. \\
+\hline
+{\em size} & Number of bytes to compare (up to 4096).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code indicating success or error. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flashcontrol_8c_source_l00061}{61}} of file \mbox{\hyperlink{flashcontrol_8c_source}{flashcontrol.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8h_source_l00039}{COUNT\+\_\+\+ERROR}}, \mbox{\hyperlink{flash_8h_source_l00036}{DST\+\_\+\+ADDR\+\_\+\+ERROR}}, \mbox{\hyperlink{flash_8c_source_l00085}{FLASH\+\_\+\+Verify\+Data()}}, and \mbox{\hyperlink{flash_8h_source_l00035}{SRC\+\_\+\+ADDR\+\_\+\+ERROR}}.
+
+
+
+Referenced by \mbox{\hyperlink{flash__rtos_8c_source_l00055}{FLASH\+\_\+\+RTOS\+\_\+\+Verify\+Data()}}.
+
+\Hypertarget{group__FLASHCONTROL_ga4721da6792cb81415806d3eae01798a8}\index{FLASHCONTROL@{FLASHCONTROL}!FLASHCONTROL\_WriteData@{FLASHCONTROL\_WriteData}}
+\index{FLASHCONTROL\_WriteData@{FLASHCONTROL\_WriteData}!FLASHCONTROL@{FLASHCONTROL}}
+\doxysubsubsubsection{\texorpdfstring{FLASHCONTROL\_WriteData()}{FLASHCONTROL\_WriteData()}}
+{\footnotesize\ttfamily \label{group__FLASHCONTROL_ga4721da6792cb81415806d3eae01798a8} 
+int FLASHCONTROL\+\_\+\+Write\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{dst\+Addr}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{src\+Addr}{, }\item[{unsigned int}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Writes data from source to the specified flash destination address. 
+
+\begin{DoxyVerb}   Data is padded to the next valid flash write size (256/512/1024/4096 bytes).
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em dst\+Addr} & Destination address in flash memory. \\
+\hline
+{\em src\+Addr} & Source address in RAM. \\
+\hline
+{\em size} & Number of bytes to write (must be \texorpdfstring{$<$}{<}= 4096).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status code indicating success or error. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{flashcontrol_8c_source_l00024}{24}} of file \mbox{\hyperlink{flashcontrol_8c_source}{flashcontrol.\+c}}.
+
+
+
+References \mbox{\hyperlink{flash_8h_source_l00039}{COUNT\+\_\+\+ERROR}}, \mbox{\hyperlink{flash_8h_source_l00036}{DST\+\_\+\+ADDR\+\_\+\+ERROR}}, and \mbox{\hyperlink{flash_8c_source_l00058}{FLASH\+\_\+\+Write\+Data()}}.
+
+
+
+Referenced by \mbox{\hyperlink{flash__rtos_8c_source_l00042}{FLASH\+\_\+\+RTOS\+\_\+\+Write\+Data()}}.
+

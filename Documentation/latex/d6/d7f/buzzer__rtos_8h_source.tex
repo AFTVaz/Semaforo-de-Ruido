@@ -1,0 +1,30 @@
+\doxysection{buzzer\+\_\+rtos.\+h}
+\hypertarget{buzzer__rtos_8h_source}{}\label{buzzer__rtos_8h_source}\index{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/buzzer\_rtos.h@{C:/LEETC/SE/MCUXpressoIDE\_11.10.0\_3148/workspace/NSP/FreeRTOS\_DRIVERS/inc/buzzer\_rtos.h}}
+\mbox{\hyperlink{buzzer__rtos_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00025}00025\ \textcolor{preprocessor}{\#ifndef\ \_BUZZER\_RTOS\_H\_}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_BUZZER\_RTOS\_H\_}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00035}\mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{00035}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00036}\mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{00036}}\ \ \ \ \ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad410736794672249621514f36f9e6377}{BUZZER\_CMD\_ON}}\ =\ 0x01,\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00037}\mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{00037}}\ \ \ \ \ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefdad195b70eb1f6bfa743d1b2cdb139fed7}{BUZZER\_CMD\_OFF}}\ =\ 0x02,\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00038}00038\ \ \ \ \ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{BUZZER\_CMD\_ALARM}}\ =\ 0x03\ \ \ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00039}\mbox{\hyperlink{group__BUZZER__FreeRTOS_gga42ea0bfe50acc4756f8a7f3871bdfefda70eb0325843b99faf8c964c9aade8d27}{00039}}\ \}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga42ea0bfe50acc4756f8a7f3871bdfefd}{BUZZER\_Command}};}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00050}00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga06abcc8a7c42a03b254853a54047984d}{BUZZER\_RTOS\_Init}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00063}00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga5a07bd4ffb50b176b8c72cddb53de7af}{BUZZER\_RTOS\_Task}}(\ \textcolor{keywordtype}{void}\ *pvParameters\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00065}00065\ \textcolor{keywordtype}{bool}\ BUZZER\_RTOS\_Ready(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00073}00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_gacd55bd8b92c32ada8731c9cc437ff86f}{BUZZER\_RTOS\_On}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00081}00081\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga4d1f93efbfc5bef3ca2c6badbe44a087}{BUZZER\_RTOS\_Off}}(\ \textcolor{keywordtype}{void}\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00092}00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__BUZZER__FreeRTOS_ga05c7726cb09566d84cb09a3a3be14c7f}{BUZZER\_RTOS\_Alarm}}(\ uint32\_t\ duration\ );}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00094}00094\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_BUZZER\_RTOS\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{buzzer__rtos_8h_source_l00095}00095\ }
+
+\end{DoxyCode}

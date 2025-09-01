@@ -1,0 +1,274 @@
+\doxysubsection{NTP}
+\hypertarget{group__NTP}{}\label{group__NTP}\index{NTP@{NTP}}
+
+
+Provides the core capabilities for NTP related functions.  
+
+
+\doxysubsubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structNTP__Packet}{NTP\+\_\+\+Packet}}
+\begin{DoxyCompactList}\small\item\em Represents a 48-\/byte NTP (Network Time Protocol) packet structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}} \{ \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ad0d5745c50ace4913192a09c737b1ccc}{NTP\+\_\+\+IDLE}}
+, \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ab8804aa21d5a07c2496574041d4ba5b1}{NTP\+\_\+\+PROCESSING}}
+, \mbox{\hyperlink{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2a33157c0f963d4fe6e5f80ce0f1c45277}{NTP\+\_\+\+READY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Internal state of the NTP client. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__NTP_gaccc0fb39eb7b19f86d15e01fe6937cfe}{NTP\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the NTP module and creates the background task. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_gaf20a777ffcf6e63cff72f0b58dabdce0}{NTP\+\_\+\+Ready}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if the NTP module has been initialised. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}} \mbox{\hyperlink{group__NTP_gae13b25d0c1ba975c33fa6df1ea85be8b}{NTP\+\_\+\+Get\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Retrieves the current state of the NTP client. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__NTP_ga794dd16f57bb514643dada07cfa61525}{NTP\+\_\+\+Request\+Time}} (void)
+\begin{DoxyCompactList}\small\item\em Sends a time request to the configured NTP server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_ga765930b8d45a60f24169b16c3dfae7b0}{NTP\+\_\+\+Get\+Timestamp}} (time\+\_\+t \texorpdfstring{$\ast$}{*}timestamp)
+\begin{DoxyCompactList}\small\item\em Retrieves the latest timestamp received from the NTP server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__NTP_ga2e8934b32ca00d2b46751c035e0fa3dd}{NTP\+\_\+\+Request\+And\+Wait}} (time\+\_\+t \texorpdfstring{$\ast$}{*}timestamp)
+\begin{DoxyCompactList}\small\item\em Sends an NTP request and blocks until a response is received. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Provides the core capabilities for NTP related functions. 
+
+
+
+\doxysubsubsection{Enumeration Type Documentation}
+\Hypertarget{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}\index{NTP@{NTP}!NTP\_StateValueType@{NTP\_StateValueType}}
+\index{NTP\_StateValueType@{NTP\_StateValueType}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_StateValueType}{NTP\_StateValueType}}
+{\footnotesize\ttfamily \label{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2} 
+enum \mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}}}
+
+
+
+Internal state of the NTP client. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NTP\_IDLE@{NTP\_IDLE}!NTP@{NTP}}\index{NTP@{NTP}!NTP\_IDLE@{NTP\_IDLE}}}\Hypertarget{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ad0d5745c50ace4913192a09c737b1ccc}\label{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2} 
+NTP\+\_\+\+IDLE&NTP client is idle or ready for a new request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NTP\_PROCESSING@{NTP\_PROCESSING}!NTP@{NTP}}\index{NTP@{NTP}!NTP\_PROCESSING@{NTP\_PROCESSING}}}\Hypertarget{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2ab8804aa21d5a07c2496574041d4ba5b1}\label{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2} 
+NTP\+\_\+\+PROCESSING&NTP client is processing a time request \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NTP\_READY@{NTP\_READY}!NTP@{NTP}}\index{NTP@{NTP}!NTP\_READY@{NTP\_READY}}}\Hypertarget{group__NTP_gga0bf5ba4e5e4ab7ba668a6174d120bbd2a33157c0f963d4fe6e5f80ce0f1c45277}\label{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2} 
+NTP\+\_\+\+READY&NTP client has received a valid timestamp \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{ntp_8h_source_l00088}{88}} of file \mbox{\hyperlink{ntp_8h_source}{ntp.\+h}}.
+
+
+
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group__NTP_gae13b25d0c1ba975c33fa6df1ea85be8b}\index{NTP@{NTP}!NTP\_GetState@{NTP\_GetState}}
+\index{NTP\_GetState@{NTP\_GetState}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_GetState()}{NTP\_GetState()}}
+{\footnotesize\ttfamily \label{group__NTP_gae13b25d0c1ba975c33fa6df1ea85be8b} 
+\mbox{\hyperlink{group__NTP_ga0bf5ba4e5e4ab7ba668a6174d120bbd2}{NTP\+\_\+\+State\+Value\+Type}} NTP\+\_\+\+Get\+State (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the current state of the NTP client. 
+
+\begin{DoxyVerb}   Returns the internally tracked NTP client state, ensuring thread safety
+   by using a FreeRTOS mutex.
+\end{DoxyVerb}
+
+
+\begin{DoxyReturn}{Returns}
+The current state as a value of NTP\+\_\+\+State\+Value\+Type.
+\end{DoxyReturn}
+
+\begin{DoxyRetVals}{Return values}
+{\em NTP\+\_\+\+IDLE} & If the client is idle or ready for a new request. \\
+\hline
+{\em NTP\+\_\+\+PROCESSING} & If the client is processing a time request. \\
+\hline
+{\em NTP\+\_\+\+READY} & If the client has received a valid timestamp. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00206}{206}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+
+
+References \mbox{\hyperlink{ntp_8h_source_l00089}{NTP\+\_\+\+IDLE}}.
+
+
+
+Referenced by \mbox{\hyperlink{ntp_8c_source_l00243}{NTP\+\_\+\+Request\+And\+Wait()}}, and \mbox{\hyperlink{ntp_8c_source_l00217}{NTP\+\_\+\+Request\+Time()}}.
+
+\Hypertarget{group__NTP_ga765930b8d45a60f24169b16c3dfae7b0}\index{NTP@{NTP}!NTP\_GetTimestamp@{NTP\_GetTimestamp}}
+\index{NTP\_GetTimestamp@{NTP\_GetTimestamp}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_GetTimestamp()}{NTP\_GetTimestamp()}}
+{\footnotesize\ttfamily \label{group__NTP_ga765930b8d45a60f24169b16c3dfae7b0} 
+bool NTP\+\_\+\+Get\+Timestamp (\begin{DoxyParamCaption}\item[{time\+\_\+t \texorpdfstring{$\ast$}{*}}]{timestamp}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the latest timestamp received from the NTP server. 
+
+\begin{DoxyVerb}   This function returns the converted "struct tm" (UTC/GMT) if a valid
+   timestamp is available. It resets the internal state to "NTP_IDLE"
+   after a successful retrieval.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Pointer to a "{}time\+\_\+t"{} where the result will be stored.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & If a valid timestamp was available and "{}timestamp"{} was populated. \\
+\hline
+{\em false} & If the timestamp is not available or "{}timestamp"{} is NULL.\\
+\hline
+\end{DoxyRetVals}
+\begin{DoxyNote}{Note}
+This function is non-\/blocking and should be used after calling NTP\+\_\+\+Request\+Time. Use NTP\+\_\+\+Request\+And\+Wait for a blocking alternative. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00224}{224}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+
+
+References \mbox{\hyperlink{ntp_8h_source_l00089}{NTP\+\_\+\+IDLE}}, and \mbox{\hyperlink{ntp_8h_source_l00091}{NTP\+\_\+\+READY}}.
+
+
+
+Referenced by \mbox{\hyperlink{ntp_8c_source_l00243}{NTP\+\_\+\+Request\+And\+Wait()}}.
+
+\Hypertarget{group__NTP_gaccc0fb39eb7b19f86d15e01fe6937cfe}\index{NTP@{NTP}!NTP\_Init@{NTP\_Init}}
+\index{NTP\_Init@{NTP\_Init}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_Init()}{NTP\_Init()}}
+{\footnotesize\ttfamily \label{group__NTP_gaccc0fb39eb7b19f86d15e01fe6937cfe} 
+void NTP\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the NTP module and creates the background task. 
+
+\begin{DoxyVerb}   This function sets up the mutex used to protect access to shared NTP state
+   and creates the FreeRTOS task responsible for handling NTP time synchronisation.
+\end{DoxyVerb}
+
+
+\begin{DoxyNote}{Note}
+Must be called once before any other NTP-\/related function. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00195}{195}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+
+
+Referenced by \mbox{\hyperlink{wifi_8c_source_l00259}{WIFI\+\_\+\+Init()}}.
+
+\Hypertarget{group__NTP_gaf20a777ffcf6e63cff72f0b58dabdce0}\index{NTP@{NTP}!NTP\_Ready@{NTP\_Ready}}
+\index{NTP\_Ready@{NTP\_Ready}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_Ready()}{NTP\_Ready()}}
+{\footnotesize\ttfamily \label{group__NTP_gaf20a777ffcf6e63cff72f0b58dabdce0} 
+bool NTP\+\_\+\+Ready (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the NTP module has been initialised. 
+
+\begin{DoxyVerb}   This function verifies whether the NTP background task has been successfully created,
+   indicating that the NTP module is ready to process time requests.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & If the NTP task has been created and the module is ready. \\
+\hline
+{\em false} & If the NTP task has not been created (NTP\+\_\+\+Init was not called or failed). \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00202}{202}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+\Hypertarget{group__NTP_ga2e8934b32ca00d2b46751c035e0fa3dd}\index{NTP@{NTP}!NTP\_RequestAndWait@{NTP\_RequestAndWait}}
+\index{NTP\_RequestAndWait@{NTP\_RequestAndWait}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_RequestAndWait()}{NTP\_RequestAndWait()}}
+{\footnotesize\ttfamily \label{group__NTP_ga2e8934b32ca00d2b46751c035e0fa3dd} 
+bool NTP\+\_\+\+Request\+And\+Wait (\begin{DoxyParamCaption}\item[{time\+\_\+t \texorpdfstring{$\ast$}{*}}]{timestamp}{}\end{DoxyParamCaption})}
+
+
+
+Sends an NTP request and blocks until a response is received. 
+
+\begin{DoxyVerb}   This function combines the request and polling logic to retrieve
+   the timestamp in a blocking manner, useful in cases where the application
+   flow depends on synchronized time.
+\end{DoxyVerb}
+
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Pointer to a "{}time\+\_\+t"{} where the result will be stored.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & If the timestamp was received and "{}timestamp"{} was successfully populated. \\
+\hline
+{\em false} & If an error or if "{}timestamp"{} is NULL. \\
+\hline
+\end{DoxyRetVals}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00243}{243}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+
+
+References \mbox{\hyperlink{ntp_8c_source_l00206}{NTP\+\_\+\+Get\+State()}}, \mbox{\hyperlink{ntp_8c_source_l00224}{NTP\+\_\+\+Get\+Timestamp()}}, \mbox{\hyperlink{ntp_8h_source_l00089}{NTP\+\_\+\+IDLE}}, and \mbox{\hyperlink{ntp_8c_source_l00217}{NTP\+\_\+\+Request\+Time()}}.
+
+\Hypertarget{group__NTP_ga794dd16f57bb514643dada07cfa61525}\index{NTP@{NTP}!NTP\_RequestTime@{NTP\_RequestTime}}
+\index{NTP\_RequestTime@{NTP\_RequestTime}!NTP@{NTP}}
+\doxysubsubsubsection{\texorpdfstring{NTP\_RequestTime()}{NTP\_RequestTime()}}
+{\footnotesize\ttfamily \label{group__NTP_ga794dd16f57bb514643dada07cfa61525} 
+void NTP\+\_\+\+Request\+Time (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Sends a time request to the configured NTP server. 
+
+\begin{DoxyVerb}   This function notifies the NTP task to start the process of connecting,
+   sending the NTP packet, and waiting for a valid response.
+\end{DoxyVerb}
+
+
+\begin{DoxyNote}{Note}
+This function is non-\/blocking needs a follow up call of NTP\+\_\+\+Get\+Time. Use NTP\+\_\+\+Request\+And\+Wait to block until time is available. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{ntp_8c_source_l00217}{217}} of file \mbox{\hyperlink{ntp_8c_source}{ntp.\+c}}.
+
+
+
+References \mbox{\hyperlink{ntp_8c_source_l00206}{NTP\+\_\+\+Get\+State()}}, \mbox{\hyperlink{ntp_8h_source_l00089}{NTP\+\_\+\+IDLE}}, and \mbox{\hyperlink{ntp_8h_source_l00090}{NTP\+\_\+\+PROCESSING}}.
+
+
+
+Referenced by \mbox{\hyperlink{ntp_8c_source_l00243}{NTP\+\_\+\+Request\+And\+Wait()}}.
+

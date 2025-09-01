@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;NSP_teste/src/NSP.c&apos; to &apos;NSP_teste.c&apos;" description="Rename resource &apos;NSP.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/NSP.c" name="NSP_teste.c" stamp="1749777845759" updateReferences="true"/>
+</session>
